@@ -52,8 +52,12 @@ export function TreatmentsScroll({ products }: TreatmentsScrollProps) {
   }, []);
 
   useEffect(() => {
-    updateScrollState();
     const el = scrollRef.current;
+    if (el) {
+      el.scrollLeft = 0;
+    }
+
+    updateScrollState();
     if (!el) return;
 
     el.addEventListener("scroll", updateScrollState, { passive: true });
@@ -73,17 +77,16 @@ export function TreatmentsScroll({ products }: TreatmentsScrollProps) {
           <NavButton direction="right" disabled={!canScrollRight} onClick={() => scrollByDirection("right")} />
         </Reveal>
 
-        <div className="relative">
+        <div className="relative overflow-hidden">
           <SideButton direction="left" disabled={!canScrollLeft} onClick={() => scrollByDirection("left")} />
           <SideButton direction="right" disabled={!canScrollRight} onClick={() => scrollByDirection("right")} />
 
           <div
             ref={scrollRef}
             className={cn(
-              "flex gap-5 overflow-x-auto overscroll-x-contain pb-4",
+              "scrollbar-hide flex gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain",
               "snap-x snap-mandatory scroll-smooth",
-              "scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-              "-mx-5 px-5 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12",
+              "pb-6 -mb-6",
             )}
             aria-label="Treatment options"
           >
@@ -132,10 +135,7 @@ export function TreatmentsScroll({ products }: TreatmentsScrollProps) {
               return (
                 <div
                   key={product.id}
-                  className={cn(
-                    "snap-start shrink-0",
-                    index === 0 ? "w-[min(88vw,520px)]" : "w-[min(78vw,400px)]",
-                  )}
+                  className="w-[min(78vw,400px)] shrink-0 snap-start"
                 >
                   {prefersReducedMotion ? (
                     card
@@ -202,7 +202,7 @@ function SideButton({
       onClick={onClick}
       className={cn(
         "absolute top-1/2 z-10 hidden size-11 -translate-y-1/2 items-center justify-center rounded-full border border-ink/10 bg-white/90 text-ink shadow-elevated backdrop-blur-sm transition-all lg:flex",
-        direction === "left" ? "-left-3" : "-right-3",
+        direction === "left" ? "left-3" : "right-3",
         "hover:scale-105 hover:text-accent",
         "disabled:pointer-events-none disabled:opacity-0",
       )}

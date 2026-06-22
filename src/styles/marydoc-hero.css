@@ -55,7 +55,10 @@
   display: grid;
   grid-template-columns: 270px 1fr;
   gap: clamp(36px, 5vw, 84px);
-  margin-left: max(24px, (100vw - 1180px) / 2);
+  width: min(1180px, 100%);
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: 24px;
   padding-bottom: clamp(110px, 11vw, 150px);
 }
 
@@ -255,7 +258,8 @@
 }
 
 .mary-startband__card {
-  width: min(1180px, 100% - 48px);
+  width: min(1180px, calc(100% - 48px));
+  max-width: calc(100% - 48px);
   margin-inline: auto;
   background: #fff;
   border: 1px solid var(--line);
@@ -417,6 +421,14 @@
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
 
+/* Above-the-fold hero content must be visible for LCP / no-JS */
+.mary-hero .mary-hero__title,
+.mary-hero .mary-hero__carousel,
+.mary-hero .mary-hero__side {
+  opacity: 1;
+  transform: none;
+}
+
 .reveal.is-in {
   opacity: 1;
   transform: none;
@@ -429,6 +441,8 @@
   z-index: 100;
   display: flex;
   justify-content: center;
+  width: 100%;
+  max-width: 100%;
   padding: 18px 24px 0;
   pointer-events: none;
 }
@@ -439,6 +453,8 @@
   align-items: center;
   gap: 36px;
   width: min(1180px, 100%);
+  max-width: 100%;
+  min-width: 0;
   padding: 10px 12px 10px 22px;
   border-radius: var(--radius-full);
   background: rgba(11, 42, 22, 0.58);
@@ -457,7 +473,8 @@
 .mary-logo {
   display: inline-flex;
   align-items: center;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
   text-decoration: none;
   color: inherit;
   line-height: 0;
@@ -467,7 +484,8 @@
   display: block;
   height: 44px;
   width: auto;
-  max-width: none;
+  max-width: min(220px, 36vw);
+  object-fit: contain;
 }
 
 .mary-logo__icon {
@@ -537,6 +555,7 @@
   align-items: center;
   gap: 18px;
   flex-shrink: 0;
+  min-width: 0;
 }
 
 .mary-header__phone {
@@ -703,6 +722,8 @@
   border: none;
   background: none;
   cursor: pointer;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .mary-burger span {
@@ -730,16 +751,28 @@
   inset: 0;
   z-index: 90;
   background: var(--paper);
-  padding: 120px 32px 40px;
+  padding: calc(var(--header-h) + 20px) 0 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  overflow: hidden;
   transform: translateY(-100%);
   transition: transform 0.45s var(--ease);
 }
 
 .mary-drawer.is-open {
   transform: translateY(0);
+}
+
+.mary-drawer__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 32px calc(40px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .mary-drawer__link {
@@ -792,7 +825,8 @@
 @media (max-width: 1024px) {
   .mary-header__nav,
   .mary-header__phone,
-  .mary-header-state {
+  .mary-header-state,
+  .mary-header__cta {
     display: none;
   }
 
@@ -810,7 +844,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 28px;
-    padding-right: 24px;
+    padding-right: 0;
   }
 
   .mary-spin {
@@ -838,8 +872,18 @@
   }
 
   .mary-header__pill {
-    gap: 14px;
-    padding: 8px 8px 8px 16px;
+    gap: 10px;
+    padding: 8px 8px 8px 12px;
+  }
+
+  .mary-header .mary-logo img {
+    height: 34px;
+    max-width: min(150px, 40vw);
+  }
+
+  .mary-drawer__scroll {
+    padding-inline: 20px;
+    padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px));
   }
 
   :root {
@@ -847,6 +891,7 @@
   }
 
   .mary-hero__wrap {
+    padding-inline: 14px;
     padding-bottom: 90px;
   }
 
@@ -874,10 +919,12 @@
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 14px;
-    padding-right: 24px;
+    padding-right: 0;
   }
 
   .mary-startband__card {
+    width: min(1180px, calc(100% - 28px));
+    max-width: calc(100% - 28px);
     margin-top: -56px;
   }
 

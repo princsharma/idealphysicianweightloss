@@ -110,15 +110,16 @@ interface HorizontalScrollProps {
 
 export function HorizontalScroll({ children, className, ariaLabel }: HorizontalScrollProps) {
   return (
-    <div
-      className={cn(
-        "flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4",
-        "scrollbar-none [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-        className,
-      )}
-      aria-label={ariaLabel}
-    >
-      {children}
+    <div className="overflow-hidden">
+      <div
+        className={cn(
+          "scrollbar-hide flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden pb-5 -mb-5",
+          className,
+        )}
+        aria-label={ariaLabel}
+      >
+        {children}
+      </div>
     </div>
   );
 }

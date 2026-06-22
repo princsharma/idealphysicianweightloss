@@ -91,12 +91,19 @@ export function HeroCarousel() {
   }, [goTo, startAuto, stopAuto]);
 
   return (
-    <div className="mary-hero__carousel reveal" ref={wrapRef} onMouseEnter={stopAuto} onMouseLeave={startAuto}>
+    <div className="mary-hero__carousel" ref={wrapRef} onMouseEnter={stopAuto} onMouseLeave={startAuto}>
       <div className="mary-carousel">
         <div className="mary-carousel__track" ref={trackRef}>
-          {GALLERY.map((image) => (
+          {GALLERY.map((image, index) => (
             <figure key={image.src}>
-              <Image src={image.src} alt={image.alt} width={385} height={305} className="h-full w-full object-cover" />
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={385}
+                height={305}
+                priority={index === 0}
+                className="h-full w-full object-cover"
+              />
             </figure>
           ))}
         </div>

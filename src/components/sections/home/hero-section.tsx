@@ -1,6 +1,5 @@
 import { HeroCarousel } from "@/components/client/hero-carousel";
 import { HeroStartBand } from "@/components/client/hero-start-band";
-import { HeroReveal } from "@/components/client/hero-reveal";
 import { siteConfig } from "@/config/site";
 import { homeContent } from "@/lib/constants/home-content";
 
@@ -30,7 +29,7 @@ export function HeroSection() {
         </svg>
 
         <div className="mary-hero__wrap">
-          <aside className="mary-hero__side reveal">
+          <aside className="mary-hero__side">
             <a {...bookingLinkProps} className="mary-spin" aria-label="Start your evaluation">
               <svg className="mary-spin__ring" viewBox="0 0 158 158" aria-hidden>
                 <defs>
@@ -70,7 +69,7 @@ export function HeroSection() {
           </aside>
 
           <div className="mary-hero__main">
-            <h1 className="mary-hero__title reveal">
+            <h1 className="mary-hero__title">
               {hero.titleLine1}
               <br />
               {hero.titleLine2}
@@ -78,8 +77,6 @@ export function HeroSection() {
             <HeroCarousel />
           </div>
         </div>
-
-        <HeroReveal />
       </section>
 
       <HeroStartBand />

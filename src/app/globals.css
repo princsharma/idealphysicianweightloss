@@ -124,6 +124,7 @@
   html {
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -140,6 +141,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -169,6 +171,22 @@
   .snap-section-end {
     scroll-snap-align: end;
     scroll-snap-stop: normal;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar,
+  .scrollbar-hide::-webkit-scrollbar-track,
+  .scrollbar-hide::-webkit-scrollbar-thumb,
+  .scrollbar-hide::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
   }
 
   @keyframes marquee {

@@ -64,9 +64,6 @@ export function Header() {
             <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`} className="mary-header__phone">
               {siteConfig.contact.phone}
             </a>
-            <a {...bookingLinkProps} className="mary-btn--lime mary-btn--sm">
-              Get Started
-            </a>
           </div>
 
           <button
@@ -84,24 +81,26 @@ export function Header() {
       </header>
 
       <div className={`mary-drawer${drawerOpen ? " is-open" : ""}`} id="drawer">
-        <nav className="flex flex-col">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="mary-drawer__link" onClick={closeDrawer}>
-              {link.label}
-            </a>
-          ))}
-        </nav>
-        <HeaderStateSelect variant="drawer" onSelect={closeDrawer} />
-        <a {...bookingLinkProps} className="mary-btn--lime mary-drawer__cta" onClick={closeDrawer}>
-          Start My Evaluation
-        </a>
-        <a
-          href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
-          className="mary-drawer__phone"
-          onClick={closeDrawer}
-        >
-          Call {siteConfig.contact.phone}
-        </a>
+        <div className="mary-drawer__scroll">
+          <nav className="flex flex-col">
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} className="mary-drawer__link" onClick={closeDrawer}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <HeaderStateSelect variant="drawer" onSelect={closeDrawer} />
+          <a {...bookingLinkProps} className="mary-btn--lime mary-drawer__cta" onClick={closeDrawer}>
+            Start My Evaluation
+          </a>
+          <a
+            href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
+            className="mary-drawer__phone"
+            onClick={closeDrawer}
+          >
+            Call {siteConfig.contact.phone}
+          </a>
+        </div>
       </div>
     </>
   );
