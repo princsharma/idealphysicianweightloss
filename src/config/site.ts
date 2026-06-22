@@ -8,7 +8,7 @@ export const siteConfig = {
   locale: "en-US",
   contact: {
     phone: "(888) 315-1715",
-    email: "",
+    email: "care@idealphysicianweightloss.com",
   },
   social: {
     facebook: "",

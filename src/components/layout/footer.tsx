@@ -78,14 +78,18 @@ export function Footer() {
             </p>
             <div className="flex gap-2">
               {[
-                { label: "Facebook", Icon: Share2 },
-                { label: "Instagram", Icon: Globe },
-                { label: "LinkedIn", Icon: Link2 },
-                { label: "Email", Icon: Mail },
-              ].map(({ label, Icon }) => (
+                { label: "Facebook", Icon: Share2, href: siteConfig.social.facebook || "#" },
+                { label: "Instagram", Icon: Globe, href: siteConfig.social.instagram || "#" },
+                { label: "LinkedIn", Icon: Link2, href: siteConfig.social.linkedin || "#" },
+                {
+                  label: "Email",
+                  Icon: Mail,
+                  href: siteConfig.contact.email ? `mailto:${siteConfig.contact.email}` : "/contact",
+                },
+              ].map(({ label, Icon, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
                   aria-label={label}
                   className="rounded-full p-2.5 text-white/30 transition-colors hover:bg-white/5 hover:text-white"
                 >

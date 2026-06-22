@@ -834,17 +834,54 @@
     display: flex;
   }
 
+  .mary-header {
+    padding: 16px 18px 0;
+  }
+
+  .mary-header__pill {
+    gap: 12px;
+    padding: 12px 14px 12px 18px;
+    min-height: 56px;
+  }
+
+  .mary-header .mary-logo {
+    padding: 6px 12px;
+  }
+
+  .mary-header .mary-logo img {
+    height: 40px;
+    max-width: min(200px, 48vw);
+  }
+
+  .mary-burger {
+    padding: 12px;
+    margin-right: -2px;
+  }
+
+  .mary-burger span {
+    width: 26px;
+    height: 2.5px;
+  }
+
+  :root {
+    --header-h: 84px;
+  }
+
   .mary-hero__wrap {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 36px;
+  }
+
+  .mary-hero__main {
+    order: 1;
   }
 
   .mary-hero__side {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    order: 2;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 28px;
-    padding-right: 0;
+    padding-top: 0;
   }
 
   .mary-spin {
@@ -868,17 +905,32 @@
 
 @media (max-width: 640px) {
   .mary-header {
-    padding: 12px 14px 0;
+    padding: 14px 16px 0;
   }
 
   .mary-header__pill {
-    gap: 10px;
-    padding: 8px 8px 8px 12px;
+    gap: 14px;
+    padding: 14px 12px 14px 16px;
+    min-height: 64px;
+  }
+
+  .mary-header .mary-logo {
+    padding: 8px 14px;
   }
 
   .mary-header .mary-logo img {
-    height: 34px;
-    max-width: min(150px, 40vw);
+    height: 44px;
+    max-width: min(220px, 58vw);
+  }
+
+  .mary-burger {
+    padding: 14px;
+    margin-right: -4px;
+  }
+
+  .mary-burger span {
+    width: 28px;
+    height: 3px;
   }
 
   .mary-drawer__scroll {
@@ -887,7 +939,7 @@
   }
 
   :root {
-    --header-h: 72px;
+    --header-h: 92px;
   }
 
   .mary-hero__wrap {
@@ -897,6 +949,10 @@
 
   .mary-hero__side {
     gap: 20px;
+  }
+
+  .mary-hero__note {
+    max-width: none;
   }
 
   .mary-spin {
