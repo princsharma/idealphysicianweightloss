@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { homeContent } from "@/lib/constants/home-content";
+import { siteConfig } from "@/config/site";
 
 const STATES = [
   "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
@@ -93,22 +94,20 @@ export function HeroStartBand() {
               }
             }}
           />
-          <button
-            type="button"
-            className="mary-btn--lime mary-selector__go"
-            onClick={() => {
-              if (!selected) {
-                setOpen(true);
-                return;
-              }
+          <a
+            {...{
+              href: siteConfig.bookingUrl,
+              target: "_blank",
+              rel: "noopener noreferrer",
             }}
+            className="mary-btn--lime mary-selector__go"
           >
-            {selected ? `Continue — ${selected}` : startBar.cta}
+            {startBar.cta}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </button>
+          </a>
           <div className={`mary-selector__menu${open ? " is-open" : ""}`} id="stateMenu" role="listbox">
             {filtered.length === 0 ? (
               <div className="mary-selector__none">No matching state — check our coverage list below.</div>

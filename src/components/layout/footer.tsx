@@ -3,6 +3,7 @@
 import { ArrowUpRight, Globe, Link2, Mail, Share2 } from "lucide-react";
 
 import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
+import { Logo } from "@/components/layout/logo";
 import { Button } from "@/components/ui/button";
 import { SectionContainer } from "@/components/ui/scroll-section";
 import { siteConfig } from "@/config/site";
@@ -18,12 +19,7 @@ export function Footer() {
         <div className="flex flex-col gap-10 border-b border-white/5 pb-16 lg:flex-row lg:items-end lg:justify-between">
           <Reveal direction="up" distance={24}>
             <div className="max-w-md">
-              <div className="flex items-center gap-2.5">
-                <div className="flex size-8 items-center justify-center rounded-full bg-accent-bright">
-                  <span className="text-xs font-bold text-accent-foreground">IP</span>
-                </div>
-                <span className="font-display text-lg font-semibold">{siteConfig.name}</span>
-              </div>
+              <Logo size="footer" />
               <p className="mt-4 text-sm leading-relaxed text-white/50">
                 {siteConfig.description}
               </p>
@@ -55,16 +51,20 @@ export function Footer() {
                   {column.title}
                 </h4>
                 <ul className="mt-5 space-y-3">
-                  {column.links.map((link) => (
+                  {column.links.map((link) => {
+                    const external = link.href.startsWith("http");
+                    return (
                     <li key={link.href}>
                       <a
                         href={link.href}
                         className="text-sm text-white/50 transition-colors hover:text-white"
+                        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       >
                         {link.label}
                       </a>
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
               </div>
             </StaggerChild>

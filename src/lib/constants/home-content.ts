@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site";
+
 export const homeContent = {
   hero: {
     titleLine1: "Lose Weight",
@@ -295,7 +297,7 @@ export const homeContent = {
         links: [
           { label: "FAQ", href: "#faq" },
           { label: "Contact Us", href: "/contact" },
-          { label: "Patient Portal", href: "/portal" },
+          { label: "Patient Portal", href: siteConfig.bookingUrl },
           { label: "Insurance", href: "/insurance" },
         ],
       },

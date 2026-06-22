@@ -345,6 +345,7 @@
   color: var(--forest-ink);
   border: none;
   cursor: pointer;
+  text-decoration: none;
   box-shadow: 0 10px 30px rgba(152, 197, 78, 0.45);
   transition: transform 0.25s var(--ease), background 0.25s;
   white-space: nowrap;
@@ -456,10 +457,17 @@
 .mary-logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
   flex-shrink: 0;
   text-decoration: none;
   color: inherit;
+  line-height: 0;
+}
+
+.mary-header .mary-logo img {
+  display: block;
+  height: 44px;
+  width: auto;
+  max-width: none;
 }
 
 .mary-logo__icon {
@@ -540,6 +548,146 @@
 
 .mary-header__phone:hover {
   color: #c8e496;
+}
+
+/* ── HEADER STATE DROPDOWN ── */
+.mary-header-state {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mary-header-state__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px 0 12px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--line);
+  background: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.mary-header-state__trigger:hover {
+  border-color: var(--lime);
+  background: var(--paper);
+  box-shadow: 0 4px 16px rgba(18, 63, 34, 0.12);
+}
+
+.mary-header-state__pin {
+  width: 16px;
+  height: 16px;
+  color: var(--forest);
+  flex-shrink: 0;
+}
+
+.mary-header-state__label {
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mary-header-state__chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--ink-subtle);
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease);
+}
+
+.mary-header-state__chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.mary-header-state__menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 100%;
+  width: max-content;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevated);
+  padding: 6px;
+  display: none;
+  z-index: 120;
+}
+
+.mary-header-state__menu.is-open {
+  display: block;
+  animation: mary-pop 0.22s var(--ease);
+}
+
+.mary-header-state__opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mary-header-state__opt:hover,
+.mary-header-state__opt.is-selected {
+  background: var(--lime-tint);
+  color: var(--forest-ink);
+}
+
+.mary-drawer__states {
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.mary-drawer__states-label {
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+  margin-bottom: 12px;
+}
+
+.mary-drawer__states-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mary-drawer__state-opt {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--line);
+  background: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.mary-drawer__state-opt:hover,
+.mary-drawer__state-opt.is-selected {
+  border-color: var(--lime);
+  background: var(--lime-tint);
+  color: var(--forest-ink);
 }
 
 .mary-btn--sm {
@@ -643,7 +791,8 @@
 
 @media (max-width: 1024px) {
   .mary-header__nav,
-  .mary-header__phone {
+  .mary-header__phone,
+  .mary-header-state {
     display: none;
   }
 

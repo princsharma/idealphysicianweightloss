@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import Link from "next/link";
+import { Logo } from "@/components/layout/logo";
+import { HeaderStateSelect } from "@/components/layout/header-state-select";
 import { siteConfig } from "@/config/site";
 
 const navLinks = [
@@ -12,6 +13,12 @@ const navLinks = [
   { label: "Reviews", href: "#testimonials" },
   { label: "FAQ", href: "#faq" },
 ];
+
+const bookingLinkProps = {
+  href: siteConfig.bookingUrl,
+  target: "_blank",
+  rel: "noopener noreferrer",
+} as const;
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -42,16 +49,7 @@ export function Header() {
     <>
       <header className={`mary-header${scrolled ? " is-scrolled" : ""}`} id="header">
         <div className="mary-header__pill">
-          <Link href="/" className="mary-logo" aria-label={siteConfig.name}>
-            <svg className="mary-logo__icon" viewBox="0 0 48 48" fill="none" aria-hidden>
-              <path d="M24 43C24 43 7 28.5 7 17.5C7 11 11.5 6.5 18 6.5C20.8 6.5 23.2 8.3 24 11C24.8 8.3 27.2 6.5 30 6.5C36.5 6.5 41 11 41 17.5C41 28.5 24 43 24 43Z" fill="#98c54e" />
-              <path d="M24 39C24 39 11 27 11 17.8C11 13.4 14.4 10 18.8 10C21.2 10 23.3 11.6 24 13.9C24.7 11.6 26.8 10 29.2 10C33.6 10 37 13.4 37 17.8C37 27 24 39 24 39Z" fill="#1f6838" />
-            </svg>
-            <span className="mary-logo__word">
-              <b>Ideal</b>
-              <i>Physician</i>
-            </span>
-          </Link>
+          <Logo priority />
 
           <nav className="mary-header__nav" aria-label="Primary">
             {navLinks.map((link) => (
@@ -62,10 +60,11 @@ export function Header() {
           </nav>
 
           <div className="mary-header__cta">
+            <HeaderStateSelect />
             <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`} className="mary-header__phone">
               {siteConfig.contact.phone}
             </a>
-            <a href="#start" className="mary-btn--lime mary-btn--sm">
+            <a {...bookingLinkProps} className="mary-btn--lime mary-btn--sm">
               Get Started
             </a>
           </div>
@@ -92,7 +91,8 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <a href="#start" className="mary-btn--lime mary-drawer__cta" onClick={closeDrawer}>
+        <HeaderStateSelect variant="drawer" onSelect={closeDrawer} />
+        <a {...bookingLinkProps} className="mary-btn--lime mary-drawer__cta" onClick={closeDrawer}>
           Start My Evaluation
         </a>
         <a

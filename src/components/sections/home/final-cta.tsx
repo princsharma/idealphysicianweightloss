@@ -4,6 +4,7 @@ import { MagneticButton } from "@/components/client/magnetic-button";
 import { Reveal } from "@/components/client/reveal";
 import { LinkButton } from "@/components/ui/link-button";
 import { DisplayHeading, ScrollSection, SectionContainer } from "@/components/ui/scroll-section";
+import { siteConfig } from "@/config/site";
 import { homeContent } from "@/lib/constants/home-content";
 
 export function FinalCtaSection() {
@@ -28,12 +29,12 @@ export function FinalCtaSection() {
         <Reveal delay={0.25} direction="up" distance={20} variant="scale">
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <MagneticButton>
-              <LinkButton href="#get-started" size="xl" className="rounded-full">
+              <LinkButton href={siteConfig.bookingUrl} size="xl" className="rounded-full">
                 {finalCta.primaryCta}
                 <ArrowUpRight className="size-4" />
               </LinkButton>
             </MagneticButton>
-            <LinkButton href="#get-started" variant="outline-dark" size="lg" className="rounded-full">
+            <LinkButton href={siteConfig.bookingUrl} variant="outline-dark" size="lg" className="rounded-full">
               {finalCta.secondaryCta}
             </LinkButton>
           </div>

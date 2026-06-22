@@ -4,6 +4,12 @@ import { HeroReveal } from "@/components/client/hero-reveal";
 import { siteConfig } from "@/config/site";
 import { homeContent } from "@/lib/constants/home-content";
 
+const bookingLinkProps = {
+  href: siteConfig.bookingUrl,
+  target: "_blank",
+  rel: "noopener noreferrer",
+} as const;
+
 export function HeroSection() {
   const { hero } = homeContent;
 
@@ -25,7 +31,7 @@ export function HeroSection() {
 
         <div className="mary-hero__wrap">
           <aside className="mary-hero__side reveal">
-            <a href="#start" className="mary-spin" aria-label="Start your evaluation">
+            <a {...bookingLinkProps} className="mary-spin" aria-label="Start your evaluation">
               <svg className="mary-spin__ring" viewBox="0 0 158 158" aria-hidden>
                 <defs>
                   <path id="spinPath" d="M79,79 m-56,0 a56,56 0 1,1 112,0 a56,56 0 1,1 -112,0" />
@@ -38,10 +44,13 @@ export function HeroSection() {
                 </text>
               </svg>
               <span className="mary-spin__core">
-                <svg viewBox="0 0 48 48" fill="none" aria-hidden>
-                  <path d="M24 43C24 43 7 28.5 7 17.5C7 11 11.5 6.5 18 6.5C20.8 6.5 23.2 8.3 24 11C24.8 8.3 27.2 6.5 30 6.5C36.5 6.5 41 11 41 17.5C41 28.5 24 43 24 43Z" fill="#98c54e" />
-                  <path d="M24 39C24 39 11 27 11 17.8C11 13.4 14.4 10 18.8 10C21.2 10 23.3 11.6 24 13.9C24.7 11.6 26.8 10 29.2 10C33.6 10 37 13.4 37 17.8C37 27 24 39 24 39Z" fill="#1f6838" />
-                </svg>
+                <img
+                  src="/logo.png"
+                  alt=""
+                  width={48}
+                  height={48}
+                  className="block h-8 w-12 object-contain"
+                />
               </span>
             </a>
 
