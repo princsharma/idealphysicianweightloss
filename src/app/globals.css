@@ -122,16 +122,8 @@
   }
 
   html {
-    scroll-snap-type: y proximity;
     scroll-behavior: smooth;
     overflow-x: clip;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-snap-type: none;
-      scroll-behavior: auto;
-    }
   }
 
   body {
@@ -156,21 +148,48 @@
 }
 
 @layer utilities {
-  .snap-section {
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
-    min-height: 100svh;
-  }
-
+  .snap-section,
   .snap-section-tall {
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
     min-height: 100svh;
   }
 
-  .snap-section-end {
-    scroll-snap-align: end;
-    scroll-snap-stop: normal;
+  .scroll-stack-section {
+    min-height: 100svh;
+    position: sticky;
+    top: 0;
+    isolation: isolate;
+  }
+
+  .scroll-snap-page .scroll-stack > :nth-child(1) { z-index: 1; }
+  .scroll-snap-page .scroll-stack > :nth-child(2) { z-index: 2; }
+  .scroll-snap-page .scroll-stack > :nth-child(3) { z-index: 3; }
+  .scroll-snap-page .scroll-stack > :nth-child(4) { z-index: 4; }
+  .scroll-snap-page .scroll-stack > :nth-child(5) { z-index: 5; }
+  .scroll-snap-page .scroll-stack > :nth-child(6) { z-index: 6; }
+  .scroll-snap-page .scroll-stack > :nth-child(7) { z-index: 7; }
+  .scroll-snap-page .scroll-stack > :nth-child(8) { z-index: 8; }
+  .scroll-snap-page .scroll-stack > :nth-child(9) { z-index: 9; }
+  .scroll-snap-page .scroll-stack > :nth-child(10) { z-index: 10; }
+
+  .scroll-snap-page .scroll-stack > .scroll-stack-section:not(:first-child) {
+    box-shadow: 0 -28px 64px rgba(11, 42, 22, 0.14);
+  }
+
+  /* Exit section before footer — scrolls normally, not sticky */
+  .scroll-snap-page .scroll-stack > .snap-section:not(.scroll-stack-section) {
+    position: relative;
+  }
+
+  .scroll-snap-page .scroll-stack-after {
+    position: relative;
+    z-index: 20;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-stack-section {
+      position: relative;
+      box-shadow: none;
+    }
   }
 
   .scrollbar-hide {

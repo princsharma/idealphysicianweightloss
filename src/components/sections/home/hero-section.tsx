@@ -70,9 +70,8 @@ export function HeroSection() {
 
           <div className="mary-hero__main">
             <h1 className="mary-hero__title">
-              {hero.titleLine1}
-              <br />
-              {hero.titleLine2}
+              <span className="mary-hero__title-line">{hero.titleLine1}</span>
+              <span className="mary-hero__title-line mary-hero__title-line--accent">{hero.titleLine2}</span>
             </h1>
             <HeroCarousel />
           </div>

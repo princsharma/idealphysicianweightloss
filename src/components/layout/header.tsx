@@ -7,11 +7,12 @@ import { HeaderStateSelect } from "@/components/layout/header-state-select";
 import { siteConfig } from "@/config/site";
 
 const navLinks = [
-  { label: "How It Works", href: "#process" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Treatments", href: "#treatments" },
-  { label: "Reviews", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "/about" },
+  { label: "How It Works", href: "/#process" },
+  { label: "Why Us", href: "/#why-us" },
+  { label: "Treatments", href: "/#treatments" },
+  { label: "Reviews", href: "/#testimonials" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 const bookingLinkProps = {

@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Reveal } from "@/components/client/reveal";
@@ -11,6 +12,7 @@ interface Product {
   id: string;
   name: string;
   subtitle: string;
+  image: string;
   description: string;
   benefits: readonly string[];
   color: string;
@@ -93,21 +95,32 @@ export function TreatmentsScroll({ products }: TreatmentsScrollProps) {
             {products.map((product, index) => {
               const card = (
                 <article data-treatment-card>
-                  <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-border-strong bg-surface shadow-soft transition-shadow duration-300 hover:shadow-elevated">
-                    <div
-                      className={cn(
-                        "relative flex h-48 items-end bg-gradient-to-br p-6 sm:h-56",
-                        product.color,
-                      )}
-                    >
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.25),transparent_55%)]" />
-                      <div className="relative">
-                        <p className="text-xs font-medium uppercase tracking-widest text-white/70">
-                          {product.subtitle}
-                        </p>
-                        <h3 className="mt-1 font-display text-3xl font-semibold text-white">
-                          {product.name}
-                        </h3>
+                  <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border-strong bg-surface shadow-soft transition-shadow duration-300 hover:shadow-elevated">
+                    <div className="relative overflow-hidden bg-gradient-to-b from-cream to-paper">
+                      <div className="relative h-52 w-full sm:h-60">
+                        <Image
+                          src={product.image}
+                          alt={`${product.name} — ${product.subtitle}`}
+                          fill
+                          className="object-contain object-center p-4 pb-2 sm:p-5 sm:pb-3"
+                          sizes="(max-width: 640px) 78vw, 400px"
+                        />
+                      </div>
+                      <div
+                        className={cn(
+                          "relative bg-gradient-to-br px-6 py-5",
+                          product.color,
+                        )}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-forest-ink/20 to-transparent" aria-hidden />
+                        <div className="relative">
+                          <p className="text-xs font-medium uppercase tracking-widest text-white/75">
+                            {product.subtitle}
+                          </p>
+                          <h3 className="mt-1 font-display text-3xl font-semibold text-white">
+                            {product.name}
+                          </h3>
+                        </div>
                       </div>
                     </div>
 

@@ -1,8 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { SERVICE_STATES } from "@/lib/constants/service-states";
+import { getStatePagePath } from "@/lib/constants/state-routes";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -37,6 +39,7 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 export function HeaderStateSelect({ variant = "header", onSelect, className }: HeaderStateSelectProps) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -56,6 +59,13 @@ export function HeaderStateSelect({ variant = "header", onSelect, className }: H
     setSelected(state);
     setOpen(false);
     onSelect?.();
+
+    const statePage = getStatePagePath(state);
+    if (statePage) {
+      router.push(statePage);
+      return;
+    }
+
     window.open(siteConfig.bookingUrl, "_blank", "noopener,noreferrer");
   }
 

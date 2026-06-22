@@ -1,3 +1,4 @@
+export { CountUp } from "@/components/client/count-up";
 export { Reveal, Stagger, StaggerChild, Float, RevealLine } from "@/components/client/reveal";
 export { MagneticButton } from "@/components/client/magnetic-button";
 export { Carousel, HorizontalScroll } from "@/components/client/carousel";

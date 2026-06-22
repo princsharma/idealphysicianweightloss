@@ -1,5 +1,6 @@
 "use client";
 
+import { CountUp } from "@/components/client/count-up";
 import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
 import { TrustMarquee } from "@/components/client/trust-marquee";
 import { DisplayHeading, ScrollSection, SectionContainer } from "@/components/ui/scroll-section";
@@ -27,10 +28,7 @@ export function StatsSection() {
             <StaggerChild key={stat.label}>
               <div className="border-b border-ink/10 py-10 odd:pl-0 even:pl-6 sm:even:pl-10 lg:border-b-0 lg:border-r lg:py-14 lg:pl-0 lg:pr-10 last:lg:border-r-0">
                 <p className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-none tracking-tight text-ink">
-                  {stat.value}
-                  {stat.suffix && (
-                    <span className="text-[0.45em] font-medium text-ink-muted">{stat.suffix}</span>
-                  )}
+                  <CountUp value={stat.value} suffix={stat.suffix} />
                 </p>
                 <p className="mt-4 text-sm font-medium text-ink">{stat.label}</p>
                 <p className="mt-1 text-xs text-ink-subtle">{stat.detail}</p>

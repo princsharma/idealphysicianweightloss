@@ -10,6 +10,8 @@ interface ScrollSectionProps {
   id?: string;
   theme?: "dark" | "light";
   snap?: SnapMode | false;
+  /** Sticky layer in the scroll stack. Disable on the last section before the footer. */
+  stack?: boolean;
 }
 
 export function ScrollSection({
@@ -18,7 +20,10 @@ export function ScrollSection({
   id,
   theme = "dark",
   snap = "screen",
+  stack,
 }: ScrollSectionProps) {
+  const useStack = stack ?? snap !== false;
+
   return (
     <section
       id={id}
@@ -26,6 +31,7 @@ export function ScrollSection({
         "relative flex flex-col overflow-hidden",
         snap === "screen" && "snap-section",
         snap === "tall" && "snap-section-tall",
+        useStack && "scroll-stack-section",
         theme === "dark" && "bg-dark text-white",
         theme === "light" && "gradient-light text-ink",
         className,

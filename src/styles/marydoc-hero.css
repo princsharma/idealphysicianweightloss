@@ -174,12 +174,34 @@
 
 .mary-hero__title {
   font-family: var(--font-head);
-  font-weight: 300;
-  font-size: clamp(2.6rem, 6.4vw, 5rem);
-  line-height: 1.14;
-  letter-spacing: 0.005em;
-  color: #f4f8ec;
+  font-weight: 600;
+  font-size: clamp(2.85rem, 7.2vw, 5.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: #fff;
   margin-bottom: clamp(34px, 4.5vw, 60px);
+  text-wrap: balance;
+}
+
+.mary-hero__title-line {
+  display: block;
+}
+
+.mary-hero__title-line--accent {
+  font-weight: 500;
+  margin-top: 0.06em;
+  background: linear-gradient(
+    105deg,
+    #f7fce8 0%,
+    var(--lime-bright) 38%,
+    var(--lime-soft) 72%,
+    #e8f4c8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 24px rgba(174, 219, 98, 0.22));
 }
 
 .mary-hero__carousel {
