@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Reveal } from "@/components/client/reveal";
+import { getMedicationHref } from "@/lib/constants/medications";
 import { cn } from "@/lib/utils";
 
 interface Product {
@@ -135,7 +136,7 @@ export function TreatmentsScroll({ products }: TreatmentsScrollProps) {
                         ))}
                       </ul>
                       <a
-                        href={`/treatments/${product.id}`}
+                        href={getMedicationHref(product.id)}
                         className="mt-auto inline-flex items-center gap-1 pt-8 text-sm font-semibold text-accent transition-colors hover:text-accent-bright"
                       >
                         View details <ArrowUpRight className="size-4" />

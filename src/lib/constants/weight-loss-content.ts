@@ -348,7 +348,7 @@ export const weightLossContent = {
           "We currently serve patients in 48 states via telehealth. Complete the eligibility quiz to confirm availability in your area.",
       },
     ],
-    viewAllHref: "/#faq",
+    viewAllHref: "/weight-loss/faq",
     viewAllLabel: "View all FAQs",
   },
   testimonials: {

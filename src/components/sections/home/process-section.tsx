@@ -23,7 +23,7 @@ export function ProcessSection() {
               <span className="text-gradient">{howItWorks.titleHighlight}</span>
             </DisplayHeading>
             <p className="mt-6 text-white/50">
-              A clear path from first question to first results — no waiting rooms, no guesswork.
+            No in-person visits required. Our streamlined process connects you with a licensed provider for GLP-1 evaluation and ongoing care.
             </p>
             <RevealLine className="mt-10 bg-accent/30" delay={0.2} />
           </Reveal>
@@ -68,6 +68,15 @@ export function ProcessSection() {
                 );
               })}
             </ol>
+
+            <Reveal delay={0.2}>
+              <div className="mt-10 border-t border-white/10 pt-8 pl-14 lg:pl-20">
+                <p className="text-xs font-medium text-white/50">Disclaimer</p>
+                <p className="mt-2 max-w-lg text-xs italic leading-relaxed text-white/40">
+                  {howItWorks.disclaimer}
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </SectionContainer>

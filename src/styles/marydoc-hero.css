@@ -662,6 +662,139 @@
   color: var(--forest-ink);
 }
 
+/* ── HEADER MEDICATIONS DROPDOWN ── */
+.mary-header-meds {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mary-header-meds__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 2px;
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.mary-header-meds__trigger:hover {
+  color: #fff;
+}
+
+.mary-header-meds__chevron {
+  width: 14px;
+  height: 14px;
+  opacity: 0.75;
+  transition: transform 0.2s;
+}
+
+.mary-header-meds__chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.mary-header-meds__menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 280px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevated);
+  padding: 6px;
+  display: none;
+  z-index: 120;
+}
+
+.mary-header-meds__menu.is-open {
+  display: block;
+  animation: mary-pop 0.22s var(--ease);
+}
+
+.mary-header-meds__opt {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.mary-header-meds__opt:hover {
+  background: var(--lime-tint);
+}
+
+.mary-header-meds__name {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--forest-ink);
+}
+
+.mary-header-meds__sub {
+  font-size: 0.75rem;
+  color: var(--ink-subtle);
+}
+
+.mary-drawer__meds {
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.mary-drawer__meds-label {
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+  margin-bottom: 12px;
+}
+
+.mary-drawer__meds-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mary-drawer__meds-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--line);
+  background: var(--cream);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.mary-drawer__meds-link:hover {
+  border-color: var(--lime);
+  background: var(--lime-tint);
+}
+
+.mary-drawer__meds-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.mary-drawer__meds-sub {
+  font-size: 0.78rem;
+  color: var(--ink-subtle);
+}
+
 .mary-drawer__states {
   margin-top: 8px;
   padding-top: 20px;
@@ -822,6 +955,7 @@
   .mary-header__nav,
   .mary-header__phone,
   .mary-header-state,
+  .mary-header-meds,
   .mary-header__cta {
     display: none;
   }

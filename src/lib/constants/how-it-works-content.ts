@@ -11,7 +11,7 @@ export const howItWorksContent = {
       "From your first health quiz to ongoing physician support — a clear, transparent path to physician-guided weight loss without waiting rooms or guesswork.",
     primaryCta: "Start evaluation",
     secondaryCta: "View pricing",
-    secondaryHref: "/pricing",
+    secondaryHref: "/weight-loss/pricing",
   },
   overview: {
     eyebrow: "Simple start",
@@ -203,7 +203,7 @@ export const howItWorksContent = {
           "Your physician will discuss alternative options and recommendations. There is no obligation to continue if treatment is not clinically appropriate for you.",
       },
     ],
-    viewAllHref: "/faq",
+    viewAllHref: "/weight-loss/faq",
     viewAllLabel: "View all FAQs",
   },
   cta: {

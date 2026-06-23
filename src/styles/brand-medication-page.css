@@ -1,0 +1,251 @@
+/* Brand medication pages — premium layout shared across all 6 medications */
+
+.brand-med-page {
+  --med-accent: var(--forest);
+  --med-accent-soft: color-mix(in srgb, var(--forest) 12%, transparent);
+  --med-accent-glow: color-mix(in srgb, var(--lime) 25%, transparent);
+}
+
+.brand-med-page--blue {
+  --med-accent: #1d4ed8;
+  --med-accent-soft: color-mix(in srgb, #1d4ed8 12%, transparent);
+}
+
+.brand-med-page--teal {
+  --med-accent: #0f766e;
+  --med-accent-soft: color-mix(in srgb, #0f766e 12%, transparent);
+}
+
+.brand-med-page--violet {
+  --med-accent: #6d28d9;
+  --med-accent-soft: color-mix(in srgb, #6d28d9 12%, transparent);
+}
+
+.brand-med-page--amber {
+  --med-accent: #b45309;
+  --med-accent-soft: color-mix(in srgb, #b45309 12%, transparent);
+}
+
+.brand-med-page--emerald {
+  --med-accent: #047857;
+  --med-accent-soft: color-mix(in srgb, #047857 12%, transparent);
+}
+
+.brand-med-page--rose {
+  --med-accent: #be123c;
+  --med-accent-soft: color-mix(in srgb, #be123c 12%, transparent);
+}
+
+.med-hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, var(--med-accent-glow), transparent 55%),
+    linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
+}
+
+.med-hero__grid {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .med-hero__grid {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 4rem;
+  }
+}
+
+.med-hero__image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-strong);
+  background: linear-gradient(145deg, var(--paper), var(--cream));
+  box-shadow: var(--shadow-elevated);
+  padding: 2rem;
+}
+
+.med-hero__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.med-hero__card {
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+}
+
+@media (min-width: 640px) {
+  .med-hero__card {
+    padding: 2.5rem;
+  }
+}
+
+.med-split {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .med-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .med-split--reverse > :first-child {
+    order: 2;
+  }
+
+  .med-split--reverse > :last-child {
+    order: 1;
+  }
+}
+
+.med-image-card {
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-elevated);
+  min-height: 20rem;
+}
+
+.med-check-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.med-check-item__icon {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: var(--med-accent-soft);
+  color: var(--med-accent);
+}
+
+.med-disclaimer {
+  margin-top: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-strong);
+  background: var(--med-accent-soft);
+  padding: 1rem 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+.med-step-card {
+  height: 100%;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.75rem;
+  backdrop-filter: blur(8px);
+}
+
+.med-step-card__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime-bright);
+}
+
+.med-safety-card {
+  height: 100%;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem;
+}
+
+.med-safety-card__icon {
+  display: inline-flex;
+  margin-bottom: 0.75rem;
+  padding: 0.625rem;
+  border-radius: 0.75rem;
+  background: var(--med-accent-soft);
+  color: var(--med-accent);
+}
+
+.med-video {
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-elevated);
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+
+.med-video__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.med-benefit-card {
+  display: flex;
+  gap: 0.875rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  padding: 1rem 1.125rem;
+}
+
+.med-testimonial-card {
+  height: 100%;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  padding: 1.75rem;
+}
+
+.med-doctor-card {
+  height: 100%;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1.25rem;
+}
+
+.med-doctor-card__image {
+  overflow: hidden;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+}
+
+.med-pre-faq {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-strong);
+  background: linear-gradient(135deg, var(--med-accent-soft), var(--cream));
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .med-pre-faq {
+    grid-template-columns: 1fr auto;
+    padding: 2.5rem 3rem;
+  }
+}
+
+.med-pre-faq__image {
+  width: min(100%, 14rem);
+  margin-inline: auto;
+}

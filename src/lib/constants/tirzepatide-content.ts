@@ -303,6 +303,6 @@ export const tirzepatideContent: MedicationLandingContent = {
       "Schedule a consultation with a licensed physician to find out if tirzepatide is right for your weight loss journey.",
     primaryCta: "Get started",
     secondaryCta: "Compare semaglutide",
-    secondaryHref: "/semaglutide",
+    secondaryHref: "/weight-loss/semaglutide",
   },
 };

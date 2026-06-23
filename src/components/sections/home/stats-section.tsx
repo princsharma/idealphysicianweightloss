@@ -4,10 +4,31 @@ import { CountUp } from "@/components/client/count-up";
 import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
 import { TrustMarquee } from "@/components/client/trust-marquee";
 import { DisplayHeading, ScrollSection, SectionContainer } from "@/components/ui/scroll-section";
+import { cn } from "@/lib/utils";
 import { homeContent } from "@/lib/constants/home-content";
 
+type HomeStat = (typeof homeContent.stats)[number];
+
+const statValueClass =
+  "text-[clamp(1.25rem,2.2vw,1.875rem)] leading-[1.15] tracking-tight";
+
+function StatValue({ stat }: { stat: HomeStat }) {
+  if ("display" in stat) {
+    return <span className={cn("block", statValueClass)}>{stat.display}</span>;
+  }
+
+  return (
+    <CountUp
+      value={stat.value}
+      suffix={stat.suffix}
+      className={cn("inline-flex items-baseline gap-1.5", statValueClass)}
+      suffixClassName="text-[0.85em] font-semibold text-ink"
+    />
+  );
+}
+
 export function StatsSection() {
-  const { stats } = homeContent;
+  const { stats, statsDisclaimer } = homeContent;
 
   return (
     <ScrollSection theme="light" snap={false} className="justify-center pt-4">
@@ -18,8 +39,8 @@ export function StatsSection() {
       <SectionContainer className="flex flex-1 flex-col justify-center py-12 sm:py-16">
         <Reveal direction="left" distance={24}>
           <DisplayHeading size="md" className="max-w-xl text-ink">
-            The numbers behind{" "}
-            <span className="text-gradient">real transformations</span>
+          Clinically Guided. {" "}
+            <span className="text-gradient">Measurably Effective</span>
           </DisplayHeading>
         </Reveal>
 
@@ -27,15 +48,21 @@ export function StatsSection() {
           {stats.map((stat) => (
             <StaggerChild key={stat.label}>
               <div className="border-b border-ink/10 py-10 odd:pl-0 even:pl-6 sm:even:pl-10 lg:border-b-0 lg:border-r lg:py-14 lg:pl-0 lg:pr-10 last:lg:border-r-0">
-                <p className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-none tracking-tight text-ink">
-                  <CountUp value={stat.value} suffix={stat.suffix} />
-                </p>
+                <div className="font-display font-semibold text-ink">
+                  <StatValue stat={stat} />
+                </div>
                 <p className="mt-4 text-sm font-medium text-ink">{stat.label}</p>
                 <p className="mt-1 text-xs text-ink-subtle">{stat.detail}</p>
               </div>
             </StaggerChild>
           ))}
         </Stagger>
+
+        <Reveal delay={0.1}>
+          <p className="mt-8 max-w-4xl text-xs italic leading-relaxed text-ink-subtle">
+            {statsDisclaimer}
+          </p>
+        </Reveal>
       </SectionContainer>
     </ScrollSection>
   );

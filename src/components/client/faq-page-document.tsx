@@ -218,7 +218,7 @@ export function FaqPageDocument() {
         </ScrollSection>
       ) : null}
 
-      <ScrollSection theme="light" snap={false} className="py-20 sm:py-28">
+      <ScrollSection theme="light" snap={false} className="overflow-visible py-20 sm:py-28">
         <SectionContainer>
           {query.trim() ? (
             <div>

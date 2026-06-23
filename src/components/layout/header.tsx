@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from "react";
 
+import { HeaderMedicationsNav } from "@/components/layout/header-medications-nav";
 import { Logo } from "@/components/layout/logo";
 import { HeaderStateSelect } from "@/components/layout/header-state-select";
 import { siteConfig } from "@/config/site";
 
 const navLinks = [
   { label: "Weight Loss", href: "/weight-loss" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Treatments", href: "/weight-loss#medications" },
-  { label: "FAQ", href: "/faq" },
+  { label: "How It Works", href: "/weight-loss/how-it-works" },
+  { label: "Pricing", href: "/weight-loss/pricing" },
+  { label: "FAQ", href: "/weight-loss/faq" },
   { label: "About", href: "/about" },
 ];
 
@@ -53,7 +53,13 @@ export function Header() {
           <Logo priority />
 
           <nav className="mary-header__nav" aria-label="Primary">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 3).map((link) => (
+              <a key={link.href} href={link.href} className="mary-header__link">
+                {link.label}
+              </a>
+            ))}
+            <HeaderMedicationsNav />
+            {navLinks.slice(3).map((link) => (
               <a key={link.href} href={link.href} className="mary-header__link">
                 {link.label}
               </a>
@@ -84,7 +90,15 @@ export function Header() {
       <div className={`mary-drawer${drawerOpen ? " is-open" : ""}`} id="drawer">
         <div className="mary-drawer__scroll">
           <nav className="flex flex-col">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 3).map((link) => (
+              <a key={link.href} href={link.href} className="mary-drawer__link" onClick={closeDrawer}>
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <HeaderMedicationsNav variant="drawer" onSelect={closeDrawer} />
+          <nav className="flex flex-col">
+            {navLinks.slice(3).map((link) => (
               <a key={link.href} href={link.href} className="mary-drawer__link" onClick={closeDrawer}>
                 {link.label}
               </a>

@@ -215,7 +215,7 @@ export const pricingContent = {
           "Coverage varies by plan and state. Our team can help you understand options during your evaluation — many patients use HSA/FSA or transparent self-pay pricing.",
       },
     ],
-    viewAllHref: "/faq",
+    viewAllHref: "/weight-loss/faq",
     viewAllLabel: "View all FAQs",
   },
   cta: {
@@ -224,6 +224,6 @@ export const pricingContent = {
     description: "Physician consultation, GLP-1 medication, and ongoing support — all in one transparent plan.",
     primaryCta: "Get started",
     secondaryCta: "View how it works",
-    secondaryHref: "/how-it-works",
+    secondaryHref: "/weight-loss/how-it-works",
   },
 } as const;
