@@ -14,7 +14,7 @@ export function WhyUsSection() {
   const { medicalFirst } = homeContent;
 
   return (
-    <ScrollSection id="why-us" theme="dark" snap="tall" className="noise py-24 sm:py-32">
+    <ScrollSection id="why-us" theme="dark" snap={false} className="noise py-24 sm:py-32">
       <SectionContainer>
         <div className="grid gap-20 lg:grid-cols-2 lg:gap-24">
           <div>

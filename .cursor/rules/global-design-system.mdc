@@ -1,0 +1,63 @@
+---
+description: Global design system, content, and page-building standards
+alwaysApply: true
+---
+
+# Global page & design requirements
+
+## Design system (mandatory)
+
+Use the **homepage design system only**. Do not introduce alternate palettes, fonts, or component styles.
+
+- **Tokens**: `src/app/globals.css` (`--forest`, `--lime`, `--paper`, `--ink`, shadows, radii, `--ease`)
+- **Tailwind**: `@theme` aliases (`bg-dark`, `text-ink-muted`, `text-accent-bright`, etc.)
+- **Sections**: `ScrollSection`, `SectionContainer`, `DisplayHeading`, `Eyebrow` from `@/components/ui/scroll-section`
+- **Cards**: `BentoCard`, `BentoGrid` from `@/components/ui/bento-card`
+- **Actions**: `Button`, `LinkButton`, `MagneticButton` — match homepage CTAs
+- **Motion**: `Reveal`, `Stagger`, `StaggerChild` from `@/components/client/reveal` (Framer Motion)
+- **Icons**: Lucide React only
+- **Surfaces**: `hero-forest`, `gradient-light`, `gradient-cta`, `noise`, `orb`, `glass-dark`, `glass-light`, `card-hover`
+
+Page-specific CSS (`src/styles/*.css`) may only extend tokens — never new brand colors.
+
+## Content (Ongo → Ideal Physician)
+
+- Extract **factual/legal/medical text** from Ongo Weight Loss pages when building content pages.
+- Store copy in `src/lib/constants/*-content.ts`; swap brand to `siteConfig.name` and site contact info.
+- **Do not copy Ongo layouts.** Reorganize for readability and hierarchy without changing legal or medical meaning.
+- Never paraphrase legal disclaimers, HIPAA, privacy, or terms unless explicitly asked.
+
+## Page structure pattern
+
+```tsx
+// app/[route]/page.tsx
+export const metadata = createMetadata({ title, description, openGraph });
+export default function Page() {
+  return (
+    <>
+      <Header />
+      <main id="main-content" tabIndex={-1}>
+        {/* ScrollSection-based sections */}
+        <Footer />
+      </main>
+    </>
+  );
+}
+```
+
+Legal/info pages: hero → structured sections → contact/CTA. Use reading progress or sticky TOC when content is long.
+
+## Quality bar
+
+- **Responsive**: mobile-first; test `sm` / `lg` breakpoints
+- **Accessible**: semantic HTML, labels, focus states, `aria-*`, skip link respected
+- **SEO**: `createMetadata()` on every route
+- **Performance**: prefer Server Components; `"use client"` only for forms, scroll, accordion
+- **Feel**: premium healthcare SaaS — bento grids, subtle gradients, glass where homepage uses it, restrained micro-interactions
+
+## Before shipping a new page
+
+1. Reuses existing UI primitives (no one-off button/card styles)
+2. Copy lives in constants file, not hardcoded in JSX
+3. Footer legal links updated if new policy page
+4. `npm run build` passes

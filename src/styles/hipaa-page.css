@@ -1,0 +1,147 @@
+/* HIPAA Notice page */
+
+.hipaa-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 3px;
+  background: var(--line);
+}
+
+.hipaa-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--forest) 0%, var(--lime) 100%);
+  transition: width 0.12s linear;
+}
+
+.hipaa-hero-visual {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  border-radius: var(--radius-2xl);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hipaa-hero-visual__card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hipaa-icon-badge {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius);
+  background: var(--lime-tint);
+  color: var(--forest);
+}
+
+.hipaa-disclosure-banner {
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+  color: #fff;
+  box-shadow: var(--shadow-elevated);
+}
+
+.hipaa-disclosure-banner__title {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.hipaa-disclosure-banner__text {
+  margin-top: 0.65rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hipaa-right-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgba(174, 219, 98, 0.15);
+  color: var(--lime-bright);
+  flex-shrink: 0;
+}
+
+.hipaa-responsibility-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+}
+
+.hipaa-external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hipaa-external-link:hover {
+  color: var(--forest-soft);
+}
+
+.hipaa-contact-card {
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hipaa-contact-card__icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+  background: rgba(174, 219, 98, 0.15);
+  color: var(--lime-bright);
+}
+
+.hipaa-contact-card__org {
+  margin-top: 1rem;
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hipaa-contact-card__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--lime-bright);
+  transition: color 0.2s var(--ease);
+}
+
+.hipaa-contact-card__link:hover {
+  color: #fff;
+}

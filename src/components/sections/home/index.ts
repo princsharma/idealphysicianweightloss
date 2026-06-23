@@ -1,4 +1,5 @@
 export { HeroSection } from "@/components/sections/home/hero-section";
+export { HeroStartSection } from "@/components/sections/home/hero-start-section";
 export { StatsSection } from "@/components/sections/home/stats-section";
 export { ProcessSection } from "@/components/sections/home/process-section";
 export { TreatmentsSection } from "@/components/sections/home/treatments-section";

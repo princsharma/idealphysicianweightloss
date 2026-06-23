@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Users } from "lucide-react";
 
 import { Reveal } from "@/components/client/reveal";
 import { SectionContainer } from "@/components/ui/scroll-section";
@@ -8,33 +9,44 @@ export function AboutHeroSection() {
   const { hero } = aboutContent;
 
   return (
-    <section className="about-hero noise">
-      <SectionContainer className="about-hero__grid pb-12 lg:pb-16">
-        <Reveal direction="left" distance={32}>
-          <div className="pb-6 lg:pb-12">
-            <p className="about-hero__label">{hero.label}</p>
-            <h1 className="about-hero__title">{hero.title}</h1>
-          </div>
-        </Reveal>
+    <section className="about-ref-hero">
+      <SectionContainer>
+        <div className="about-ref-hero__grid">
+          <Reveal direction="left" distance={28}>
+            <div className="about-ref-hero__copy">
+              <h1 className="about-ref-hero__title">{hero.title}</h1>
+              <p className="about-ref-hero__desc">{hero.description}</p>
+            </div>
+          </Reveal>
 
-        <Reveal variant="scale" duration={0.9} delay={0.08} className="about-hero__portrait-wrap">
-          <div className="about-hero__portrait relative h-full w-full max-w-[380px]">
-            <Image
-              src={hero.image.src}
-              alt={hero.image.alt}
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 1024px) 70vw, 380px"
-              priority
-            />
-          </div>
-        </Reveal>
+          <Reveal variant="scale" duration={0.85} delay={0.08}>
+            <div className="about-ref-hero__image-wrap">
+              <Image
+                src={hero.image.src}
+                alt={hero.image.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 480px"
+                priority
+              />
+            </div>
+          </Reveal>
+        </div>
 
-        <Reveal direction="right" distance={28} delay={0.12}>
-          <div className="pb-6 lg:pb-12 lg:text-left">
-            <h2 className="about-hero__aside-title">{hero.asideTitle}</h2>
-            <p className="about-hero__aside-text">{hero.asideText}</p>
-          </div>
+        <Reveal direction="up" distance={20} delay={0.15}>
+          <ul className="about-ref-hero__stats">
+            {hero.stats.map((stat) => (
+              <li key={stat.label} className="about-ref-stat">
+                <span className="about-ref-stat__icon" aria-hidden>
+                  <Users className="size-5" />
+                </span>
+                <div>
+                  <p className="about-ref-stat__value">{stat.value}</p>
+                  <p className="about-ref-stat__label">{stat.label}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </SectionContainer>
     </section>

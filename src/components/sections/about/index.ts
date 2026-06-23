@@ -1,5 +1,10 @@
 export { AboutHeroSection } from "@/components/sections/about/about-hero-section";
-export { AboutIntroSection } from "@/components/sections/about/about-intro-section";
-export { AboutPackagesSection } from "@/components/sections/about/about-packages-section";
-export { AboutGallerySection } from "@/components/sections/about/about-gallery-section";
+export { AboutMissionSection } from "@/components/sections/about/about-mission-section";
+export { AboutFounderSection } from "@/components/sections/about/about-founder-section";
+export { AboutWhyChooseSection } from "@/components/sections/about/about-why-choose-section";
+export { AboutStepsSection } from "@/components/sections/about/about-steps-section";
+export { AboutValuesSection } from "@/components/sections/about/about-values-section";
+export { AboutScienceSection } from "@/components/sections/about/about-science-section";
+export { AboutTeamSection } from "@/components/sections/about/about-team-section";
+export { AboutDeliverySection } from "@/components/sections/about/about-delivery-section";
 export { AboutCtaSection } from "@/components/sections/about/about-cta-section";

@@ -2,16 +2,13 @@ import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-type SnapMode = "screen" | "tall";
-
 interface ScrollSectionProps {
   children: ReactNode;
   className?: string;
   id?: string;
   theme?: "dark" | "light";
-  snap?: SnapMode | false;
-  /** Sticky layer in the scroll stack. Disable on the last section before the footer. */
-  stack?: boolean;
+  /** @deprecated Snap scroll removed — kept for API compatibility */
+  snap?: false | "screen" | "tall";
 }
 
 export function ScrollSection({
@@ -19,19 +16,12 @@ export function ScrollSection({
   className,
   id,
   theme = "dark",
-  snap = "screen",
-  stack,
 }: ScrollSectionProps) {
-  const useStack = stack ?? snap !== false;
-
   return (
     <section
       id={id}
       className={cn(
         "relative flex flex-col overflow-hidden",
-        snap === "screen" && "snap-section",
-        snap === "tall" && "snap-section-tall",
-        useStack && "scroll-stack-section",
         theme === "dark" && "bg-dark text-white",
         theme === "light" && "gradient-light text-ink",
         className,

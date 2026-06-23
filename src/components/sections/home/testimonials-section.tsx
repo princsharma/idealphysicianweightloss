@@ -12,7 +12,7 @@ export function TestimonialsSection() {
   const { testimonials } = homeContent;
 
   return (
-    <ScrollSection theme="light" snap="screen" className="justify-center py-20">
+    <ScrollSection theme="light" snap={false} className="justify-center py-20">
       <SectionContainer className="flex flex-1 flex-col justify-center">
         <Reveal className="mb-14 text-center" direction="up" distance={28}>
           <Eyebrow className="text-accent">Stories</Eyebrow>

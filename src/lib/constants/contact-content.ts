@@ -59,6 +59,7 @@ export const contactContent = {
       "Billing & insurance",
       "Prescription & refills",
       "Technical help",
+      "Accessibility feedback",
       "Other",
     ],
     successTitle: "Message received",

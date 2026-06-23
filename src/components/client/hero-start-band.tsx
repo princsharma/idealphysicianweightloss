@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { homeContent } from "@/lib/constants/home-content";
 import { siteConfig } from "@/config/site";
+import { homeContent } from "@/lib/constants/home-content";
+import { cn } from "@/lib/utils";
 
 const STATES = [
   "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
@@ -45,14 +46,14 @@ export function HeroStartBand() {
   }, []);
 
   return (
-    <section className="mary-startband" id="start">
-      <div className="mary-startband__card">
-        <div className="mary-startband__copy">
-          <b>Start your evaluation</b>
-          <span>{startBar.steps}</span>
-        </div>
+    <div className="mary-startband__card">
+      <div className="mary-startband__copy">
+        <b>Start your evaluation</b>
+        <span>{startBar.steps}</span>
+      </div>
 
-        <div className="mary-selector" ref={wrapperRef}>
+      <div className="mary-selector" ref={wrapperRef}>
+        <div className="mary-selector__field">
           <svg className="mary-selector__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
             <circle cx="12" cy="10" r="3" />
@@ -94,47 +95,46 @@ export function HeroStartBand() {
               }
             }}
           />
-          <a
-            {...{
-              href: siteConfig.bookingUrl,
-              target: "_blank",
-              rel: "noopener noreferrer",
-            }}
-            className="mary-btn--lime mary-selector__go"
-          >
-            {startBar.cta}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </a>
-          <div className={`mary-selector__menu${open ? " is-open" : ""}`} id="stateMenu" role="listbox">
-            {filtered.length === 0 ? (
-              <div className="mary-selector__none">No matching state — check our coverage list below.</div>
-            ) : (
-              filtered.map((state, i) => (
-                <button
-                  key={state}
-                  type="button"
-                  role="option"
-                  className={`mary-selector__opt${i === hotIndex ? " is-hot" : ""}`}
-                  onClick={() => pick(state)}
-                >
-                  {state}
-                </button>
-              ))
-            )}
-          </div>
         </div>
-
-        <div className="mary-startband__micro">
-          <span>🔒 HIPAA secure</span>
-          <i>·</i>
-          <span>💸 Money-back guarantee</span>
-          <i>·</i>
-          <span>⏱ 2-min signup</span>
+        <a
+          href={siteConfig.bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mary-btn--lime mary-selector__go"
+        >
+          {startBar.cta}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <div className={cn("mary-selector__menu", open && "is-open")} id="stateMenu" role="listbox">
+          {filtered.length === 0 ? (
+            <div className="mary-selector__none">No matching state — check our coverage list below.</div>
+          ) : (
+            filtered.map((state, i) => (
+              <button
+                key={state}
+                type="button"
+                role="option"
+                aria-selected={selected === state}
+                className={cn("mary-selector__opt", i === hotIndex && "is-hot")}
+                onClick={() => pick(state)}
+              >
+                {state}
+              </button>
+            ))
+          )}
         </div>
       </div>
-    </section>
+
+      <div className="mary-startband__micro">
+        <span>HIPAA secure</span>
+        <i>·</i>
+        <span>Money-back guarantee</span>
+        <i>·</i>
+        <span>2-min signup</span>
+      </div>
+    </div>
   );
 }

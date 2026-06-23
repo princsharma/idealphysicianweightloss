@@ -2,7 +2,10 @@ import {
   Activity,
   BadgeCheck,
   ClipboardList,
+  Globe,
+  Headphones,
   Package,
+  Pill,
   Receipt,
   Shield,
   Stethoscope,
@@ -27,6 +30,9 @@ const iconMap = {
   activity: Activity,
   users: Users,
   receipt: Receipt,
+  pill: Pill,
+  headphones: Headphones,
+  globe: Globe,
 } as const;
 
 export type IconName = keyof typeof iconMap;

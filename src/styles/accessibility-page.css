@@ -1,0 +1,107 @@
+/* Accessibility page */
+
+.a11y-hero-visual {
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  border-radius: var(--radius-2xl);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.a11y-icon-badge {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-lg);
+  background: var(--lime-tint);
+  color: var(--forest);
+}
+
+.a11y-icon-badge--dark {
+  background: rgba(174, 219, 98, 0.15);
+  color: var(--lime-bright);
+}
+
+.a11y-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+}
+
+.a11y-list-item--dark {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.a11y-kbd-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.55rem;
+  border-radius: 50%;
+  background: var(--lime-bright);
+  flex-shrink: 0;
+}
+
+.a11y-kbd-dot--forest {
+  background: var(--lime);
+}
+
+.a11y-contact-card {
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.a11y-contact-card__org {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.a11y-contact-card__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--lime-bright);
+  transition: color 0.2s var(--ease);
+}
+
+.a11y-contact-card__link:hover {
+  color: #fff;
+}
+
+.a11y-contact-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-full);
+  background: var(--lime-bright);
+  color: var(--forest-ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lime);
+  transition: transform 0.25s var(--ease);
+}
+
+.a11y-contact-card__cta:hover {
+  transform: translateY(-2px);
+}

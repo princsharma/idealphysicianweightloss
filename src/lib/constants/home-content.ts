@@ -284,7 +284,7 @@ export const homeContent = {
         title: "Company",
         links: [
           { label: "About Us", href: "/about" },
-          { label: "How It Works", href: "#how-it-works" },
+          { label: "How It Works", href: "/how-it-works" },
           { label: "Our Physicians", href: "/physicians" },
           { label: "Careers", href: "/careers" },
         ],
@@ -292,6 +292,9 @@ export const homeContent = {
       {
         title: "Treatments",
         links: [
+          { label: "Weight Loss Program", href: "/weight-loss" },
+          { label: "Semaglutide", href: "/semaglutide" },
+          { label: "Tirzepatide", href: "/tirzepatide" },
           { label: "Wegovy", href: "/treatments/wegovy" },
           { label: "Ozempic", href: "/treatments/ozempic" },
           { label: "Zepbound", href: "/treatments/zepbound" },
@@ -301,7 +304,8 @@ export const homeContent = {
       {
         title: "Support",
         links: [
-          { label: "FAQ", href: "#faq" },
+          { label: "FAQ", href: "/faq" },
+          { label: "Pricing", href: "/pricing" },
           { label: "Contact Us", href: "/contact" },
           { label: "Patient Portal", href: siteConfig.bookingUrl },
           { label: "Insurance", href: "/insurance" },
@@ -312,7 +316,12 @@ export const homeContent = {
         links: [
           { label: "Privacy Policy", href: "/privacy" },
           { label: "Terms of Service", href: "/terms" },
+          { label: "Medical Disclaimer", href: "/medical-disclaimer" },
+          { label: "Refund & Billing", href: "/refund" },
+          { label: "Editorial Policy", href: "/editorial" },
+          { label: "Compliance Hub", href: "/compliance" },
           { label: "HIPAA Notice", href: "/hipaa" },
+          { label: "Accessibility", href: "/accessibility" },
           { label: "Telehealth Consent", href: "/telehealth" },
         ],
       },

@@ -1,0 +1,39 @@
+/* Weight Loss hub page */
+
+.wl-hero-visual {
+  position: relative;
+  min-height: 420px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 1024px) {
+  .wl-hero-visual {
+    min-height: 520px;
+  }
+}
+
+.wl-hero-visual__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--dark) 70%, transparent),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.wl-hero-visual__badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}

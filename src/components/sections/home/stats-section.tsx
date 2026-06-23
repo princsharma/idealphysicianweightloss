@@ -10,7 +10,7 @@ export function StatsSection() {
   const { stats } = homeContent;
 
   return (
-    <ScrollSection theme="light" snap="screen" className="justify-center pt-4">
+    <ScrollSection theme="light" snap={false} className="justify-center pt-4">
       <Reveal variant="fade" duration={0.6}>
         <TrustMarquee />
       </Reveal>

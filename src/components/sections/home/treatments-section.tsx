@@ -12,7 +12,7 @@ export function TreatmentsSection() {
   const { medications } = homeContent;
 
   return (
-    <ScrollSection id="treatments" theme="light" snap="screen" className="justify-center py-20">
+    <ScrollSection id="treatments" theme="light" snap={false} className="justify-center py-20">
       <SectionContainer className="flex flex-1 flex-col justify-center">
         <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <Reveal className="max-w-2xl" direction="left" distance={28}>

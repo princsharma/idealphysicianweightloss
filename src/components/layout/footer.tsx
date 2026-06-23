@@ -14,7 +14,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="scroll-stack-after border-t border-white/5 bg-dark py-16 text-white">
+    <footer className="border-t border-white/5 bg-dark py-16 text-white">
       <SectionContainer>
         <div className="flex flex-col gap-10 border-b border-white/5 pb-16 lg:flex-row lg:items-end lg:justify-between">
           <Reveal direction="up" distance={24}>

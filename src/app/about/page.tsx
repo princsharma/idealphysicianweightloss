@@ -1,9 +1,14 @@
 import {
   AboutCtaSection,
-  AboutGallerySection,
+  AboutDeliverySection,
+  AboutFounderSection,
   AboutHeroSection,
-  AboutIntroSection,
-  AboutPackagesSection,
+  AboutMissionSection,
+  AboutScienceSection,
+  AboutStepsSection,
+  AboutTeamSection,
+  AboutValuesSection,
+  AboutWhyChooseSection,
 } from "@/components/sections/about";
 import { Footer, Header } from "@/components/layout";
 import { createMetadata } from "@/config/metadata";
@@ -27,9 +32,14 @@ export default function AboutPage() {
       <Header />
       <main id="main-content" tabIndex={-1}>
         <AboutHeroSection />
-        <AboutIntroSection />
-        <AboutPackagesSection />
-        <AboutGallerySection />
+        <AboutMissionSection />
+        <AboutFounderSection />
+        <AboutWhyChooseSection />
+        <AboutStepsSection />
+        <AboutValuesSection />
+        <AboutScienceSection />
+        <AboutTeamSection />
+        <AboutDeliverySection />
         <AboutCtaSection />
         <Footer />
       </main>

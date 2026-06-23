@@ -1,0 +1,659 @@
+/* Privacy Policy — premium legal reading experience */
+
+.privacy-page {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+/* ── Reading progress ── */
+
+.privacy-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 3px;
+  background: var(--line);
+}
+
+.privacy-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--forest) 0%, var(--lime) 100%);
+  transition: width 0.12s linear;
+}
+
+/* ── Hero ── */
+
+.privacy-hero {
+  padding-top: calc(var(--header-h) + 2.5rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(152, 197, 78, 0.12) 0%, transparent 55%),
+    linear-gradient(165deg, var(--forest-deep) 0%, var(--forest) 42%, var(--forest-ink) 100%);
+  color: #fff;
+}
+
+.privacy-hero__inner {
+  max-width: 42rem;
+}
+
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--lime-bright);
+}
+
+.privacy-hero__title {
+  font-family: var(--font-head);
+  font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.privacy-hero__intro {
+  margin-top: 1.25rem;
+  max-width: 38rem;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ── Layout ── */
+
+.privacy-body {
+  padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(3rem, 7vw, 5rem);
+}
+
+.privacy-layout {
+  display: grid;
+  gap: 2.5rem;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+@media (min-width: 1100px) {
+  .privacy-layout {
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 3.5rem;
+  }
+}
+
+/* ── Sticky sidebar TOC ── */
+
+.privacy-sidebar {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .privacy-sidebar {
+    display: block;
+    position: sticky;
+    top: calc(var(--header-h) + 1.25rem);
+    align-self: start;
+    width: 260px;
+    max-height: calc(100vh - var(--header-h) - 2rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 0.5rem;
+    scrollbar-width: thin;
+    z-index: 10;
+  }
+}
+
+.privacy-toc__label {
+  margin-bottom: 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+}
+
+.privacy-toc__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.privacy-toc__link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius);
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  text-align: left;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.privacy-toc__link:hover {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.privacy-toc__link.is-active {
+  background: var(--lime-tint);
+  color: var(--forest-ink);
+  font-weight: 600;
+}
+
+.privacy-toc__num {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.4rem;
+  background: var(--cream);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--forest);
+  flex-shrink: 0;
+}
+
+.privacy-toc__link.is-active .privacy-toc__num {
+  background: var(--lime-bright);
+  color: var(--forest-ink);
+}
+
+.privacy-toc__chevron {
+  margin-left: auto;
+  opacity: 0;
+  color: var(--forest);
+  transition: opacity 0.2s var(--ease);
+}
+
+.privacy-toc__link.is-active .privacy-toc__chevron {
+  opacity: 1;
+}
+
+/* ── Mobile TOC ── */
+
+.privacy-toc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 50;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--forest-ink);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-elevated);
+  cursor: pointer;
+}
+
+@media (min-width: 1100px) {
+  .privacy-toc-toggle {
+    display: none;
+  }
+}
+
+.privacy-toc-drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  padding: calc(var(--header-h) + 1rem) 1.25rem 5rem;
+  background: rgba(11, 42, 22, 0.45);
+  backdrop-filter: blur(6px);
+  overflow-y: auto;
+}
+
+.privacy-toc-drawer.is-open {
+  display: block;
+}
+
+@media (min-width: 1100px) {
+  .privacy-toc-drawer {
+    display: none !important;
+  }
+}
+
+.privacy-toc-drawer .privacy-toc-drawer__panel {
+  max-width: 24rem;
+  margin-inline: auto;
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-elevated);
+}
+
+.privacy-toc-drawer .privacy-toc__list {
+  margin-top: 0.75rem;
+}
+
+/* ── Section cards ── */
+
+.privacy-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.privacy-section-card {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--radius-xl);
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+}
+
+.privacy-section-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.privacy-section-card__num {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  background: var(--lime-tint);
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--forest);
+  flex-shrink: 0;
+}
+
+.privacy-section-card__title {
+  font-family: var(--font-head);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  padding-top: 0.35rem;
+}
+
+/* ── Prose ── */
+
+.privacy-prose {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.privacy-prose__p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--ink-muted);
+}
+
+.privacy-prose__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.privacy-prose__list li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-muted);
+}
+
+.privacy-prose__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--lime);
+}
+
+/* ── Callouts ── */
+
+.privacy-callout {
+  display: flex;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.privacy-callout__icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.6rem;
+  flex-shrink: 0;
+}
+
+.privacy-callout__title {
+  margin-bottom: 0.35rem;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.privacy-callout__text {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--ink-muted);
+}
+
+.privacy-callout--info {
+  background: var(--lime-tint);
+  border-color: rgba(152, 197, 78, 0.35);
+}
+
+.privacy-callout--info .privacy-callout__icon {
+  background: var(--lime-bright);
+  color: var(--forest-ink);
+}
+
+.privacy-callout--notice {
+  background: var(--cream);
+  border-color: var(--border);
+}
+
+.privacy-callout--notice .privacy-callout__icon {
+  background: var(--white);
+  color: var(--forest);
+}
+
+.privacy-callout--contact {
+  background: rgba(31, 104, 56, 0.06);
+  border-color: rgba(31, 104, 56, 0.15);
+}
+
+.privacy-callout--contact .privacy-callout__icon {
+  background: var(--forest);
+  color: var(--lime-bright);
+}
+
+/* ── Inline contact card (section 11) ── */
+
+.privacy-contact-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--cream);
+  border: 1px solid var(--border);
+}
+
+.privacy-contact-card__icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius);
+  background: var(--forest);
+  color: var(--lime-bright);
+  flex-shrink: 0;
+}
+
+.privacy-contact-card__org {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.privacy-contact-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--forest);
+  transition: color 0.2s var(--ease);
+}
+
+.privacy-contact-card__link:hover {
+  color: var(--forest-soft);
+}
+
+/* ── Contact band ── */
+
+.privacy-contact-band {
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(152, 197, 78, 0.18) 0%, transparent 60%),
+    var(--forest-ink);
+}
+
+.privacy-contact-band__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: clamp(2rem, 4vw, 2.75rem);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 768px) {
+  .privacy-contact-band__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.privacy-contact-band__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime-bright);
+}
+
+.privacy-contact-band__title {
+  margin-top: 0.5rem;
+  font-family: var(--font-head);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.privacy-contact-band__desc {
+  margin-top: 0.75rem;
+  max-width: 28rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.privacy-contact-band__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.privacy-contact-band__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-full);
+  background: var(--lime-bright);
+  color: var(--forest-ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lime);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.privacy-contact-band__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.privacy-contact-band__btn--outline {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+}
+
+.privacy-contact-band__btn--outline:hover {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+
+/* ── Header on privacy page ── */
+
+.privacy-page .mary-header {
+  --header-text: #fff;
+  --header-bg: transparent;
+}
+
+.privacy-page .mary-header.is-scrolled {
+  --header-text: var(--ink);
+  --header-bg: rgba(251, 253, 247, 0.92);
+}
+
+@media (max-width: 1099px) {
+  .privacy-content {
+    padding-bottom: 4rem;
+  }
+}
+
+/* ── Expandable accordion sections (terms) ── */
+
+.privacy-section-card--accordion {
+  padding: 0;
+  overflow: hidden;
+  transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.privacy-section-card--accordion.is-open {
+  border-color: rgba(31, 104, 56, 0.2);
+  box-shadow: var(--shadow-md);
+}
+
+.privacy-section-card__trigger {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.privacy-section-card__trigger:hover .privacy-section-card__title {
+  color: var(--forest);
+}
+
+.privacy-section-card__chevron {
+  margin-left: auto;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+  color: var(--ink-subtle);
+  transition: transform 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.privacy-section-card__chevron.is-open {
+  transform: rotate(180deg);
+  color: var(--forest);
+}
+
+.privacy-section-card--accordion .privacy-section-card__num {
+  margin-top: 0.1rem;
+}
+
+.privacy-section-card--accordion .privacy-section-card__title {
+  flex: 1;
+  padding-top: 0.35rem;
+  margin: 0;
+  transition: color 0.2s var(--ease);
+}
+
+.privacy-section-card__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease);
+}
+
+.privacy-section-card__panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.privacy-section-card__panel-inner {
+  overflow: hidden;
+}
+
+.privacy-section-card__panel.is-open .privacy-section-card__panel-inner {
+  border-top: 1px solid var(--line);
+}
+
+.privacy-section-card--accordion .privacy-prose {
+  padding: 0 clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 3vw, 2rem);
+}
+
+.privacy-prose__link {
+  font-weight: 600;
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.privacy-prose__link:hover {
+  color: var(--forest-soft);
+}
+
+/* ── Header on terms page ── */
+
+.terms-page .mary-header {
+  --header-text: #fff;
+  --header-bg: transparent;
+}
+
+.terms-page .mary-header.is-scrolled {
+  --header-text: var(--ink);
+  --header-bg: rgba(251, 253, 247, 0.92);
+}

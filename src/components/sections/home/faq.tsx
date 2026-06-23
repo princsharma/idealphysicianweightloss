@@ -18,7 +18,7 @@ export function FaqSection() {
   const [openId, setOpenId] = useState<string | null>(faq.items[0]?.id ?? null);
 
   return (
-    <ScrollSection id="faq" theme="dark" snap="screen" className="justify-center py-20">
+    <ScrollSection id="faq" theme="dark" snap={false} className="justify-center py-20">
       <SectionContainer className="flex flex-1 flex-col justify-center">
         <div className="grid gap-16 lg:grid-cols-12">
           <Reveal className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start" direction="left" distance={28}>

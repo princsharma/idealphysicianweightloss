@@ -7,12 +7,12 @@ import { HeaderStateSelect } from "@/components/layout/header-state-select";
 import { siteConfig } from "@/config/site";
 
 const navLinks = [
+  { label: "Weight Loss", href: "/weight-loss" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Treatments", href: "/weight-loss#medications" },
+  { label: "FAQ", href: "/faq" },
   { label: "About", href: "/about" },
-  { label: "How It Works", href: "/#process" },
-  { label: "Why Us", href: "/#why-us" },
-  { label: "Treatments", href: "/#treatments" },
-  { label: "Reviews", href: "/#testimonials" },
-  { label: "FAQ", href: "/#faq" },
 ];
 
 const bookingLinkProps = {

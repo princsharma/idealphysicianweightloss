@@ -11,7 +11,7 @@ export function FinalCtaSection() {
   const { finalCta } = homeContent;
 
   return (
-    <ScrollSection theme="dark" snap="screen" stack={false} className="gradient-cta noise justify-center">
+    <ScrollSection theme="dark" snap={false} className="gradient-cta noise justify-center">
       <div className="orb left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 bg-accent/15" aria-hidden />
 
       <SectionContainer className="relative flex flex-1 flex-col items-center justify-center py-20 text-center">

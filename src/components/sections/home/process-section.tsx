@@ -13,7 +13,7 @@ export function ProcessSection() {
   const { howItWorks } = homeContent;
 
   return (
-    <ScrollSection id="process" theme="dark" snap="screen" className="noise justify-center py-20">
+    <ScrollSection id="process" theme="dark" snap={false} className="noise justify-center py-20">
       <SectionContainer className="flex flex-1 flex-col justify-center">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <Reveal className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start" direction="left" distance={32}>
