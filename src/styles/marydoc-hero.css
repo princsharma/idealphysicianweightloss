@@ -451,7 +451,7 @@
   width: min(1180px, 100%);
   max-width: 100%;
   min-width: 0;
-  padding: 10px 12px 10px 22px;
+  padding: 10px 34px 10px 30px;
   border-radius: var(--radius-full);
   background: rgba(11, 42, 22, 0.58);
   backdrop-filter: blur(18px);
@@ -559,6 +559,8 @@
   font-weight: 600;
   color: var(--lime-bright);
   text-decoration: none;
+  padding-right: 4px;
+  white-space: nowrap;
 }
 
 .mary-header__phone:hover {

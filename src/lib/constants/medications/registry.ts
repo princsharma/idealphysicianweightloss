@@ -17,7 +17,7 @@ export const medicationNavItems = products.map((product) => ({
 }));
 
 export function getMedicationHref(slug: string) {
-  return `/weight-loss/medications/${slug}`;
+  return `/weight-loss/${slug}`;
 }
 
 export function isMedicationSlug(slug: string): slug is MedicationSlug {

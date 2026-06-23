@@ -17,7 +17,12 @@ const nextConfig: NextConfig = {
       { source: "/how-it-works", destination: "/weight-loss/how-it-works", permanent: true },
       { source: "/pricing", destination: "/weight-loss/pricing", permanent: true },
       { source: "/faq", destination: "/weight-loss/faq", permanent: true },
-      { source: "/treatments/:slug", destination: "/weight-loss/medications/:slug", permanent: true },
+      { source: "/treatments/:slug", destination: "/weight-loss/:slug", permanent: true },
+      {
+        source: "/weight-loss/medications/:slug",
+        destination: "/weight-loss/:slug",
+        permanent: true,
+      },
     ];
   },
 };

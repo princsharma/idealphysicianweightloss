@@ -54,7 +54,7 @@ export function HeaderMedicationsNav({
   if (variant === "drawer") {
     return (
       <div className={cn("mary-drawer__meds", className)}>
-        <p className="mary-drawer__meds-label">Medications</p>
+        <p className="mary-drawer__meds-label">GLP-1</p>
         <div className="mary-drawer__meds-list">
           {medicationNavItems.map((item) => (
             <Link
@@ -81,7 +81,7 @@ export function HeaderMedicationsNav({
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
-        Medications
+        GLP-1
         <ChevronIcon open={open} />
       </button>
 
