@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useRef } from "react";
 
-import { HERO_GALLERY, HERO_IMAGE_SIZES } from "@/lib/constants/hero-gallery";
+import { HERO_GALLERY } from "@/lib/constants/hero-gallery";
 
 const EXTRA_SLIDES = HERO_GALLERY.slice(1);
 
@@ -12,14 +11,13 @@ export function HeroCarouselExtras() {
     <>
       {EXTRA_SLIDES.map((image) => (
         <figure key={image.src}>
-          <Image
+          <img
             src={image.src}
             alt={image.alt}
             width={385}
             height={305}
             loading="lazy"
-            quality={70}
-            sizes={HERO_IMAGE_SIZES}
+            decoding="async"
             className="h-full w-full object-cover"
           />
         </figure>

@@ -130,9 +130,12 @@
 
 .mary-hero__main {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .mary-hero__title {
+  order: 1;
   font-family: var(--font-head);
   font-weight: 600;
   font-size: clamp(2.85rem, 7.2vw, 5.75rem);
@@ -165,6 +168,7 @@
 }
 
 .mary-hero__carousel {
+  order: 2;
   position: relative;
 }
 

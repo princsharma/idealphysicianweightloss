@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 
 import { HeroSection } from "@/components/sections/home/hero-section";
 import { Header } from "@/components/layout";
+import { HERO_LCP } from "@/lib/constants/hero-gallery";
 
 const HeroStartSection = dynamic(() =>
   import("@/components/sections/home/hero-start-section").then((m) => ({ default: m.HeroStartSection })),
@@ -34,6 +35,13 @@ const Footer = dynamic(() =>
 export default function HomePage() {
   return (
     <>
+      <link
+        rel="preload"
+        as="image"
+        href={HERO_LCP.src}
+        type="image/webp"
+        fetchPriority="high"
+      />
       <Header />
       <main id="main-content" tabIndex={-1}>
         <HeroSection />
