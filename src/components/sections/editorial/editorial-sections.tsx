@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
-import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
+import { Reveal, RevealLi, Stagger, StaggerChild } from "@/components/client/reveal";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-card";
 import { LinkButton } from "@/components/ui/link-button";
 import {
@@ -158,14 +158,18 @@ export function EditorialReviewProcess() {
               <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent/60 via-white/10 to-transparent" aria-hidden />
               <ol>
                 {reviewProcess.steps.map((step, index) => (
-                  <Reveal key={step.slice(0, 40)} delay={index * 0.1} direction="right" distance={20}>
-                    <li className={cn("relative pb-10 pl-14", index === reviewProcess.steps.length - 1 && "pb-0")}>
+                  <RevealLi
+                    key={step.slice(0, 40)}
+                    delay={index * 0.1}
+                    direction="right"
+                    distance={20}
+                    className={cn("relative pb-10 pl-14", index === reviewProcess.steps.length - 1 && "pb-0")}
+                  >
                       <span className="hub-timeline-dot" aria-hidden>
                         {index + 1}
                       </span>
                       <p className="text-sm leading-relaxed text-white/70 sm:text-base">{step}</p>
-                    </li>
-                  </Reveal>
+                  </RevealLi>
                 ))}
               </ol>
             </div>

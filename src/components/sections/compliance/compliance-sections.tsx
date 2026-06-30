@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
-import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
+import { Reveal, RevealLi, Stagger, StaggerChild } from "@/components/client/reveal";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-card";
 import { LinkButton } from "@/components/ui/link-button";
 import { PolicyFaq } from "@/components/ui/policy-faq";
@@ -219,15 +219,19 @@ export function CompliancePrescription() {
               {prescription.steps.map((step, index) => {
                 const isLast = index === prescription.steps.length - 1;
                 return (
-                  <Reveal key={step.title} delay={index * 0.12} direction="right" distance={24}>
-                    <li className={cn("relative pb-14 pl-14 lg:pl-20", isLast && "pb-0")}>
+                  <RevealLi
+                    key={step.title}
+                    delay={index * 0.12}
+                    direction="right"
+                    distance={24}
+                    className={cn("relative pb-14 pl-14 lg:pl-20", isLast && "pb-0")}
+                  >
                       <span className="hub-timeline-dot" aria-hidden>
                         {index + 1}
                       </span>
                       <h3 className="font-display text-xl font-semibold text-white sm:text-2xl">{step.title}</h3>
                       <p className="mt-3 max-w-xl text-base leading-relaxed text-white/55">{step.text}</p>
-                    </li>
-                  </Reveal>
+                  </RevealLi>
                 );
               })}
             </ol>

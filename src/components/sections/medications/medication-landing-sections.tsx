@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
-import { Reveal, RevealLine, Stagger, StaggerChild } from "@/components/client/reveal";
+import { Reveal, RevealLi, RevealLine, Stagger, StaggerChild } from "@/components/client/reveal";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-card";
 import { LinkButton } from "@/components/ui/link-button";
 import { PolicyFaq } from "@/components/ui/policy-faq";
@@ -349,8 +349,13 @@ export function MedicationTreatment({ content }: { content: MedicationLandingCon
                 const Icon = getIcon(step.icon);
                 const isLast = index === treatment.steps.length - 1;
                 return (
-                  <Reveal key={step.title} delay={index * 0.1} direction="right" distance={20}>
-                    <li className={cn("relative pb-12 pl-14 lg:pl-20", isLast && "pb-0")}>
+                  <RevealLi
+                    key={step.title}
+                    delay={index * 0.1}
+                    direction="right"
+                    distance={20}
+                    className={cn("relative pb-12 pl-14 lg:pl-20", isLast && "pb-0")}
+                  >
                       <span className="absolute left-0 flex size-8 items-center justify-center rounded-full border border-forest/30 bg-surface font-display text-sm font-semibold text-forest lg:size-10">
                         {index + 1}
                       </span>
@@ -363,8 +368,7 @@ export function MedicationTreatment({ content }: { content: MedicationLandingCon
                           <Icon className="size-5 text-forest" aria-hidden />
                         </div>
                       </div>
-                    </li>
-                  </Reveal>
+                  </RevealLi>
                 );
               })}
             </ol>

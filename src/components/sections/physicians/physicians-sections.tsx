@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
-import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
+import { Reveal, RevealLi, Stagger, StaggerChild } from "@/components/client/reveal";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-card";
 import { LinkButton } from "@/components/ui/link-button";
 import {
@@ -152,19 +152,25 @@ export function PhysiciansWhyChoose() {
             <p className="mt-5 text-base leading-relaxed text-ink-muted">{whyChoose.description}</p>
           </Reveal>
 
-          <ol className="relative space-y-0 lg:col-span-8">
+          <div className="relative lg:col-span-8">
             <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-forest/30 via-ink/10 to-transparent lg:left-6" aria-hidden />
+            <ol className="space-y-0">
             {whyChoose.items.map((item, index) => (
-              <Reveal key={item.slice(0, 40)} delay={index * 0.1} direction="right" distance={20}>
-                <li className={cn("relative pb-10 pl-14 lg:pl-20", index === whyChoose.items.length - 1 && "pb-0")}>
+              <RevealLi
+                key={item.slice(0, 40)}
+                delay={index * 0.1}
+                direction="right"
+                distance={20}
+                className={cn("relative pb-10 pl-14 lg:pl-20", index === whyChoose.items.length - 1 && "pb-0")}
+              >
                   <span className="absolute left-0 flex size-8 items-center justify-center rounded-full border border-forest/30 bg-surface font-display text-sm font-semibold text-forest lg:size-10">
                     {index + 1}
                   </span>
                   <p className="text-base leading-relaxed text-ink-muted">{item}</p>
-                </li>
-              </Reveal>
+              </RevealLi>
             ))}
-          </ol>
+            </ol>
+          </div>
         </div>
       </SectionContainer>
     </ScrollSection>

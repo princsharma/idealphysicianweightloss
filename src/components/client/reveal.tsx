@@ -174,6 +174,49 @@ export function StaggerChild({
   );
 }
 
+interface RevealLiProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  duration?: number;
+  direction?: RevealDirection;
+  distance?: number;
+  once?: boolean;
+  amount?: number;
+}
+
+export function RevealLi({
+  children,
+  className,
+  delay = 0,
+  duration = 0.75,
+  direction = "up",
+  distance = 36,
+  once = true,
+  amount = 0.2,
+}: RevealLiProps) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <li className={cn(className)}>{children}</li>;
+  }
+
+  const variants = createRevealVariants(direction, distance, true);
+
+  return (
+    <motion.li
+      className={cn(className)}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once, amount, margin: "0px 0px -8% 0px" }}
+      variants={variants}
+      transition={{ duration, delay, ease: EASE }}
+    >
+      {children}
+    </motion.li>
+  );
+}
+
 interface FloatProps {
   children: ReactNode;
   className?: string;

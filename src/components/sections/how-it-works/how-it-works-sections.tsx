@@ -6,7 +6,7 @@ import {
 import Image from "next/image";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
-import { Reveal, RevealLine, Stagger, StaggerChild } from "@/components/client/reveal";
+import { Reveal, RevealLi, RevealLine, Stagger, StaggerChild } from "@/components/client/reveal";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-card";
 import { LinkButton } from "@/components/ui/link-button";
 import { PolicyFaq } from "@/components/ui/policy-faq";
@@ -115,16 +115,20 @@ export function HowItWorksTimeline() {
             <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent/60 via-white/10 to-transparent" aria-hidden />
             <ol>
               {timeline.phases.map((phase, index) => (
-                <Reveal key={phase.title} delay={index * 0.08} direction="right" distance={20}>
-                  <li className={cn("relative pb-12 pl-14 lg:pl-20", index === timeline.phases.length - 1 && "pb-0")}>
+                <RevealLi
+                  key={phase.title}
+                  delay={index * 0.08}
+                  direction="right"
+                  distance={20}
+                  className={cn("relative pb-12 pl-14 lg:pl-20", index === timeline.phases.length - 1 && "pb-0")}
+                >
                     <span className="hub-timeline-dot" aria-hidden>
                       {index + 1}
                     </span>
                     <p className="text-xs font-semibold uppercase tracking-wider text-lime-bright">{phase.phase}</p>
                     <h3 className="mt-1 font-display text-xl font-semibold text-white">{phase.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/60 sm:text-base">{phase.text}</p>
-                  </li>
-                </Reveal>
+                </RevealLi>
               ))}
             </ol>
           </div>

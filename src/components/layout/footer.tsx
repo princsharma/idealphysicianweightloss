@@ -13,6 +13,17 @@ export function Footer() {
   const { footer } = homeContent;
   const year = new Date().getFullYear();
 
+  const socialLinks = [
+    { label: "Facebook", Icon: Share2, href: siteConfig.social.facebook },
+    { label: "Instagram", Icon: Globe, href: siteConfig.social.instagram },
+    { label: "LinkedIn", Icon: Link2, href: siteConfig.social.linkedin },
+    {
+      label: "Email",
+      Icon: Mail,
+      href: siteConfig.contact.email ? `mailto:${siteConfig.contact.email}` : "/contact",
+    },
+  ].filter((item) => item.href && item.href !== "#");
+
   return (
     <footer className="border-t border-white/5 bg-dark py-16 text-white">
       <SectionContainer>
@@ -47,9 +58,9 @@ export function Footer() {
           {footer.columns.map((column) => (
             <StaggerChild key={column.title} direction="up" distance={20}>
               <div>
-                <h4 className="text-xs font-medium uppercase tracking-[0.15em] text-white/40">
+                <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/40">
                   {column.title}
-                </h4>
+                </p>
                 <ul className="mt-5 space-y-3">
                   {column.links.map((link) => {
                     const external = link.href.startsWith("http");
@@ -77,16 +88,7 @@ export function Footer() {
               © {year} {siteConfig.name}
             </p>
             <div className="flex gap-2">
-              {[
-                { label: "Facebook", Icon: Share2, href: siteConfig.social.facebook || "#" },
-                { label: "Instagram", Icon: Globe, href: siteConfig.social.instagram || "#" },
-                { label: "LinkedIn", Icon: Link2, href: siteConfig.social.linkedin || "#" },
-                {
-                  label: "Email",
-                  Icon: Mail,
-                  href: siteConfig.contact.email ? `mailto:${siteConfig.contact.email}` : "/contact",
-                },
-              ].map(({ label, Icon, href }) => (
+              {socialLinks.map(({ label, Icon, href }) => (
                 <a
                   key={label}
                   href={href}

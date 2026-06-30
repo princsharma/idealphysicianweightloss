@@ -1,4 +1,4 @@
-import { Reveal, RevealLine } from "@/components/client/reveal";
+import { Reveal, RevealLi, RevealLine } from "@/components/client/reveal";
 import {
   DisplayHeading,
   Eyebrow,
@@ -37,13 +37,16 @@ export function ProcessSection() {
                 const isLast = index === howItWorks.steps.length - 1;
 
                 return (
-                  <Reveal key={step.id} delay={index * 0.12} direction="right" distance={24}>
-                    <li
-                      className={cn(
-                        "relative grid gap-6 pb-16 pl-14 lg:grid-cols-[1fr_auto] lg:pl-20",
-                        isLast && "pb-0",
-                      )}
-                    >
+                  <RevealLi
+                    key={step.id}
+                    delay={index * 0.12}
+                    direction="right"
+                    distance={24}
+                    className={cn(
+                      "relative grid gap-6 pb-16 pl-14 lg:grid-cols-[1fr_auto] lg:pl-20",
+                      isLast && "pb-0",
+                    )}
+                  >
                       <span
                         className="absolute left-0 flex size-8 items-center justify-center rounded-full border border-accent/40 bg-dark font-display text-sm font-semibold text-accent-bright lg:size-12 lg:text-base"
                         aria-hidden
@@ -63,8 +66,7 @@ export function ProcessSection() {
                       <div className="flex size-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 lg:size-16">
                         <Icon className="size-6 text-accent-bright lg:size-7" aria-hidden />
                       </div>
-                    </li>
-                  </Reveal>
+                  </RevealLi>
                 );
               })}
             </ol>
