@@ -445,11 +445,6 @@
   max-width: 100%;
   padding: 18px 24px 0;
   pointer-events: none;
-  transition: padding 0.35s var(--ease);
-}
-
-.mary-header.is-scrolled {
-  padding: 0;
 }
 
 .mary-header__pill {
@@ -467,26 +462,12 @@
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
-  transition:
-    box-shadow 0.35s var(--ease),
-    background 0.35s var(--ease),
-    border-radius 0.35s var(--ease),
-    width 0.35s var(--ease),
-    padding 0.35s var(--ease),
-    border-color 0.35s var(--ease);
+  transition: box-shadow 0.3s, background 0.3s;
 }
 
 .mary-header.is-scrolled .mary-header__pill {
-  width: 100%;
-  max-width: none;
-  border-radius: 0;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 10px clamp(20px, 4vw, 48px);
-  background: rgba(11, 42, 22, 0.94);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+  background: rgba(11, 42, 22, 0.82);
+  box-shadow: 0 12px 44px rgba(0, 0, 0, 0.3);
 }
 
 .mary-logo {
@@ -993,18 +974,10 @@
     padding: 16px 18px 0;
   }
 
-  .mary-header.is-scrolled {
-    padding: 0;
-  }
-
   .mary-header__pill {
     gap: 12px;
     padding: 12px 14px 12px 18px;
     min-height: 56px;
-  }
-
-  .mary-header.is-scrolled .mary-header__pill {
-    padding: 12px 18px;
   }
 
   .mary-header .mary-logo {
@@ -1072,18 +1045,10 @@
     padding: 14px 16px 0;
   }
 
-  .mary-header.is-scrolled {
-    padding: 0;
-  }
-
   .mary-header__pill {
     gap: 14px;
     padding: 14px 12px 14px 16px;
     min-height: 64px;
-  }
-
-  .mary-header.is-scrolled .mary-header__pill {
-    padding: 14px 16px;
   }
 
   .mary-header .mary-logo {

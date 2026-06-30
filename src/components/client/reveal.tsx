@@ -2,7 +2,9 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
+  useRef,
   type CSSProperties,
   type ElementType,
   type ReactNode,
@@ -75,7 +77,7 @@ function RevealBase({
   );
 }
 
-type RevealProps = Omit<RevealBaseProps, "as">;
+interface RevealProps extends Omit<RevealBaseProps, "as"> {}
 
 export function Reveal(props: RevealProps) {
   return <RevealBase {...props} />;
@@ -101,13 +103,14 @@ export function Stagger({
   stagger = 0.1,
   delayChildren = 0.05,
 }: StaggerProps) {
-  const counter = { index: 0 };
+  const indexRef = useRef(0);
+  indexRef.current = 0;
 
-  const nextDelay = () => {
-    const delay = delayChildren + counter.index * stagger;
-    counter.index += 1;
+  const nextDelay = useCallback(() => {
+    const delay = delayChildren + indexRef.current * stagger;
+    indexRef.current += 1;
     return delay;
-  };
+  }, [delayChildren, stagger]);
 
   return (
     <StaggerContext.Provider value={{ nextDelay }}>
@@ -139,7 +142,7 @@ export function StaggerChild({
   );
 }
 
-type RevealLiProps = Omit<RevealBaseProps, "as">;
+interface RevealLiProps extends Omit<RevealBaseProps, "as"> {}
 
 export function RevealLi(props: RevealLiProps) {
   return <RevealBase {...props} as="li" />;

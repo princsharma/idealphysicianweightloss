@@ -21,13 +21,21 @@ export function useInView<T extends Element>({
   const [pending, setPending] = useState(false);
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+      setInView(true);
+      setPending(false);
+      return;
+    }
 
     const el = ref.current;
     if (!el) return;
 
     const rect = el.getBoundingClientRect();
     const belowFold = rect.top > window.innerHeight * 0.85;
+    if (belowFold) {
+      setInView(false);
+      setPending(true);
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -42,20 +50,8 @@ export function useInView<T extends Element>({
     );
 
     observer.observe(el);
-
-    if (belowFold) {
-      requestAnimationFrame(() => {
-        setInView(false);
-        setPending(true);
-      });
-    }
-
     return () => observer.disconnect();
   }, [amount, once, prefersReducedMotion, rootMargin]);
 
-  return {
-    ref,
-    inView: prefersReducedMotion || inView,
-    pending: prefersReducedMotion ? false : pending,
-  };
+  return { ref, inView: prefersReducedMotion || inView, pending };
 }

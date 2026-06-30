@@ -10,15 +10,19 @@ import {
   RefundSubscription,
 } from "@/components/sections/refund";
 import { Footer, Header } from "@/components/layout";
-import { createPageMetadata } from "@/lib/seo";
+import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 
 import "@/styles/hub-page.css";
 
-export const metadata = createPageMetadata({
+export const metadata = createMetadata({
   title: "Refund & Billing Policy",
   description: `Cancellation, refund eligibility, subscription policy, and billing support at ${siteConfig.name}.`,
-  path: "/refund",
+  openGraph: {
+    title: `Refund & Billing Policy | ${siteConfig.name}`,
+    description:
+      "Transparent policies on consultation fees, medication refunds, cancellations, and payment support.",
+  },
 });
 
 export default function RefundPage() {

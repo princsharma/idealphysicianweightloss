@@ -10,15 +10,19 @@ import {
   MedicalDisclaimerTelehealth,
 } from "@/components/sections/medical-disclaimer";
 import { Footer, Header } from "@/components/layout";
-import { createPageMetadata } from "@/lib/seo";
+import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 
 import "@/styles/medical-disclaimer-page.css";
 
-export const metadata = createPageMetadata({
+export const metadata = createMetadata({
   title: "Medical Disclaimer",
   description: `Read the medical disclaimer for ${siteConfig.name} telehealth weight management services, including GLP-1 evaluations, telehealth limitations, and emergency guidance.`,
-  path: "/medical-disclaimer",
+  openGraph: {
+    title: `Medical Disclaimer | ${siteConfig.name}`,
+    description:
+      "Important medical limitations, telehealth scope, FDA medication information, and emergency care guidance.",
+  },
 });
 
 export default function MedicalDisclaimerPage() {

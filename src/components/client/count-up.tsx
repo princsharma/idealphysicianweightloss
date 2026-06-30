@@ -59,11 +59,14 @@ export function CountUp({
   const parsed = useMemo(() => parseStatValue(value), [value]);
   const finalDisplay = formatStatValue(parsed.end, parsed);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const [display, setDisplay] = useState(() => formatStatValue(0, parsed));
+  const [display, setDisplay] = useState(prefersReducedMotion ? finalDisplay : formatStatValue(0, parsed));
   const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+      setDisplay(finalDisplay);
+      return;
+    }
 
     const el = ref.current;
     if (!el) return;
@@ -98,13 +101,11 @@ export function CountUp({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [duration, finalDisplay, parsed, prefersReducedMotion, value]);
-
-  const shown = prefersReducedMotion ? finalDisplay : display;
+  }, [duration, finalDisplay, parsed.end, parsed.decimals, parsed.unit, prefersReducedMotion, value]);
 
   return (
     <span ref={ref} className={className}>
-      {shown}
+      {display}
       {suffix ? (
         <span className={cn("text-[0.45em] font-medium text-ink-muted", suffixClassName)}>{suffix}</span>
       ) : null}
