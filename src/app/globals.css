@@ -281,13 +281,11 @@
   .reveal-scale {
     transition:
       opacity var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
-      transform var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
-      filter var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+      transform var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
   }
 
   .reveal-slide.is-pending {
     opacity: 0;
-    filter: blur(10px);
   }
 
   .reveal-slide--up.is-pending { transform: translate3d(0, var(--reveal-distance, 36px), 0); }
@@ -298,7 +296,6 @@
   .reveal-slide.is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    filter: blur(0);
   }
 
   .reveal-fade.is-pending { opacity: 0; }
@@ -351,7 +348,6 @@
       transition: none;
       opacity: 1;
       transform: none;
-      filter: none;
     }
   }
 }

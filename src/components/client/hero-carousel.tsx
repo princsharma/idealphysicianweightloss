@@ -3,47 +3,50 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef } from "react";
 
-const GALLERY = [
-  {
-    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=640&h=480&fit=crop&q=75",
-    alt: "Doctor on a telehealth consultation",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=640&h=480&fit=crop&q=75",
-    alt: "Patient enjoying a healthy, active life",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=640&h=480&fit=crop&q=75",
-    alt: "Licensed physician at her desk",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&h=480&fit=crop&q=75",
-    alt: "Completing the application on a phone",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=480&fit=crop&q=75",
-    alt: "Happy certified patient",
-  },
-] as const;
+import { HERO_GALLERY, HERO_IMAGE_SIZES } from "@/lib/constants/hero-gallery";
 
-export function HeroCarousel() {
-  const trackRef = useRef<HTMLDivElement>(null);
+const EXTRA_SLIDES = HERO_GALLERY.slice(1);
+
+export function HeroCarouselExtras() {
+  return (
+    <>
+      {EXTRA_SLIDES.map((image) => (
+        <figure key={image.src}>
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={385}
+            height={305}
+            loading="lazy"
+            quality={70}
+            sizes={HERO_IMAGE_SIZES}
+            className="h-full w-full object-cover"
+          />
+        </figure>
+      ))}
+    </>
+  );
+}
+
+export function HeroCarouselNav() {
   const indexRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const getTrack = useCallback(() => document.getElementById("hero-carousel-track"), []);
+
   const stepSize = useCallback(() => {
-    const track = trackRef.current;
+    const track = getTrack();
     if (!track?.children[0]) return 0;
     const gap = parseFloat(getComputedStyle(track).gap) || 20;
     return track.children[0].getBoundingClientRect().width + gap;
-  }, []);
+  }, [getTrack]);
 
   const maxShift = useCallback(() => {
-    const track = trackRef.current;
+    const track = getTrack();
     const parent = track?.parentElement;
     if (!track || !parent) return 0;
     return Math.max(0, track.scrollWidth - parent.clientWidth);
-  }, []);
+  }, [getTrack]);
 
   const lastIndex = useCallback(() => {
     const step = stepSize();
@@ -53,7 +56,7 @@ export function HeroCarousel() {
 
   const goTo = useCallback(
     (next: number) => {
-      const track = trackRef.current;
+      const track = getTrack();
       if (!track) return;
       const last = lastIndex();
       let i = next;
@@ -63,7 +66,7 @@ export function HeroCarousel() {
       const offset = Math.min(i * stepSize(), maxShift());
       track.style.transform = `translate3d(${-offset}px, 0, 0)`;
     },
-    [lastIndex, maxShift, stepSize],
+    [getTrack, lastIndex, maxShift, stepSize],
   );
 
   const startAuto = useCallback(() => {
@@ -90,55 +93,38 @@ export function HeroCarousel() {
   }, [goTo, startAuto, stopAuto]);
 
   return (
-    <div className="mary-hero__carousel" onMouseEnter={stopAuto} onMouseLeave={startAuto}>
-      <div className="mary-carousel">
-        <div className="mary-carousel__track" ref={trackRef}>
-          {GALLERY.map((image, index) => (
-            <figure key={image.src}>
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={385}
-                height={305}
-                priority={index === 0}
-                fetchPriority={index === 0 ? "high" : "auto"}
-                loading={index === 0 ? "eager" : "lazy"}
-                quality={index === 0 ? 80 : 70}
-                sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 385px"
-                className="h-full w-full object-cover"
-              />
-            </figure>
-          ))}
-        </div>
-      </div>
-      <div className="mary-carousel__nav">
-        <button
-          type="button"
-          className="mary-carousel__btn"
-          aria-label="Next slide"
-          onClick={() => {
-            goTo(indexRef.current + 1);
-            startAuto();
-          }}
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-            <polyline points="9 6 15 12 9 18" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          className="mary-carousel__btn"
-          aria-label="Previous slide"
-          onClick={() => {
-            goTo(indexRef.current - 1);
-            startAuto();
-          }}
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-            <polyline points="15 6 9 12 15 18" />
-          </svg>
-        </button>
-      </div>
+    <div className="mary-carousel__nav" onMouseEnter={stopAuto} onMouseLeave={startAuto}>
+      <button
+        type="button"
+        className="mary-carousel__btn"
+        aria-label="Next slide"
+        onClick={() => {
+          goTo(indexRef.current + 1);
+          startAuto();
+        }}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+          <polyline points="9 6 15 12 9 18" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        className="mary-carousel__btn"
+        aria-label="Previous slide"
+        onClick={() => {
+          goTo(indexRef.current - 1);
+          startAuto();
+        }}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+          <polyline points="15 6 9 12 15 18" />
+        </svg>
+      </button>
     </div>
   );
+}
+
+/** Legacy export — carousel is split into HeroCarouselExtras + HeroCarouselNav */
+export function HeroCarousel() {
+  return null;
 }

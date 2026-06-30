@@ -1,5 +1,9 @@
-import { HeroCarousel } from "@/components/client/hero-carousel";
+import Image from "next/image";
+
+import { HeroCarouselDeferred } from "@/components/client/hero-carousel-deferred";
+import { HeroCarouselExtras, HeroCarouselNav } from "@/components/client/hero-carousel";
 import { siteConfig } from "@/config/site";
+import { HERO_GALLERY, HERO_IMAGE_SIZES } from "@/lib/constants/hero-gallery";
 import { homeContent } from "@/lib/constants/home-content";
 
 const bookingLinkProps = {
@@ -7,6 +11,8 @@ const bookingLinkProps = {
   target: "_blank",
   rel: "noopener noreferrer",
 } as const;
+
+const lcpImage = HERO_GALLERY[0];
 
 export function HeroSection() {
   const { hero } = homeContent;
@@ -41,11 +47,12 @@ export function HeroSection() {
               </text>
             </svg>
             <span className="mary-spin__core">
-              <img
+              <Image
                 src={siteConfig.logo}
                 alt=""
                 width={48}
                 height={48}
+                priority
                 className="block h-8 w-auto max-w-[3.5rem] object-contain"
               />
             </span>
@@ -59,7 +66,32 @@ export function HeroSection() {
             <span className="mary-hero__title-line">{hero.titleLine1}</span>
             <span className="mary-hero__title-line mary-hero__title-line--accent">{hero.titleLine2}</span>
           </h1>
-          <HeroCarousel />
+
+          <div className="mary-hero__carousel">
+            <div className="mary-carousel">
+              <div className="mary-carousel__track" id="hero-carousel-track">
+                <figure>
+                  <Image
+                    src={lcpImage.src}
+                    alt={lcpImage.alt}
+                    width={385}
+                    height={305}
+                    priority
+                    fetchPriority="high"
+                    quality={75}
+                    sizes={HERO_IMAGE_SIZES}
+                    className="h-full w-full object-cover"
+                  />
+                </figure>
+                <HeroCarouselDeferred>
+                  <HeroCarouselExtras />
+                </HeroCarouselDeferred>
+              </div>
+            </div>
+            <HeroCarouselDeferred>
+              <HeroCarouselNav />
+            </HeroCarouselDeferred>
+          </div>
         </div>
       </div>
     </section>

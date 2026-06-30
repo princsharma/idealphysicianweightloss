@@ -9,19 +9,22 @@ const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
+  adjustFontFallback: true,
 });
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
   display: "swap",
+  adjustFontFallback: true,
 });
 
 const baloo2 = Baloo_2({
   variable: "--font-baloo",
   subsets: ["latin"],
   display: "swap",
-  weight: ["600", "700", "800"],
+  weight: ["700"],
+  adjustFontFallback: true,
 });
 
 export const metadata = defaultMetadata;
@@ -36,10 +39,6 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${dmSans.variable} ${baloo2.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-      </head>
       <body className="min-h-full bg-background font-sans text-foreground">
         <SkipLink />
         {children}
