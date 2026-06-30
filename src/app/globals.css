@@ -275,4 +275,83 @@
     pointer-events: none;
     will-change: transform;
   }
+
+  .reveal-slide,
+  .reveal-fade,
+  .reveal-scale {
+    transition:
+      opacity var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+      transform var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+      filter var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+  }
+
+  .reveal-slide.is-pending {
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  .reveal-slide--up.is-pending { transform: translate3d(0, var(--reveal-distance, 36px), 0); }
+  .reveal-slide--down.is-pending { transform: translate3d(0, calc(var(--reveal-distance, 36px) * -1), 0); }
+  .reveal-slide--left.is-pending { transform: translate3d(var(--reveal-distance, 36px), 0, 0); }
+  .reveal-slide--right.is-pending { transform: translate3d(calc(var(--reveal-distance, 36px) * -1), 0, 0); }
+
+  .reveal-slide.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+
+  .reveal-fade.is-pending { opacity: 0; }
+  .reveal-fade.is-visible { opacity: 1; }
+
+  .reveal-scale.is-pending {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  .reveal-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .reveal-line {
+    transform: scaleX(0);
+    opacity: 0;
+    transition:
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+  }
+
+  .reveal-line.is-pending {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  .reveal-line.is-visible {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .reveal-float {
+    animation: reveal-float var(--float-duration, 5s) ease-in-out infinite;
+  }
+
+  @keyframes reveal-float {
+    0%, 100% { transform: translate3d(0, -8px, 0); }
+    50% { transform: translate3d(0, 8px, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-slide,
+    .reveal-fade,
+    .reveal-scale,
+    .reveal-line,
+    .reveal-float {
+      animation: none;
+      transition: none;
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
 }

@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import type { ReactNode, MouseEvent } from "react";
+import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -16,32 +15,37 @@ export function MagneticButton({
   className,
   strength = 0.25,
 }: MagneticButtonProps) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 300, damping: 20 });
-  const springY = useSpring(y, { stiffness: 300, damping: 20 });
+  const ref = useRef<HTMLDivElement>(null);
+  const enabledRef = useRef(false);
+
+  useEffect(() => {
+    enabledRef.current = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  }, []);
 
   function handleMouseMove(event: MouseEvent<HTMLDivElement>) {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const offsetX = event.clientX - rect.left - rect.width / 2;
-    const offsetY = event.clientY - rect.top - rect.height / 2;
-    x.set(offsetX * strength);
-    y.set(offsetY * strength);
+    const el = ref.current;
+    if (!el || !enabledRef.current) return;
+
+    const rect = el.getBoundingClientRect();
+    const x = (event.clientX - rect.left - rect.width / 2) * strength;
+    const y = (event.clientY - rect.top - rect.height / 2) * strength;
+    el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
 
   function handleMouseLeave() {
-    x.set(0);
-    y.set(0);
+    const el = ref.current;
+    if (!el) return;
+    el.style.transform = "";
   }
 
   return (
-    <motion.div
-      className={cn("inline-block", className)}
-      style={{ x: springX, y: springY }}
+    <div
+      ref={ref}
+      className={cn("inline-block will-change-transform", className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

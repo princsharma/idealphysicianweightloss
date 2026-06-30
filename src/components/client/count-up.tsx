@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
+import { usePrefersReducedMotion } from "@/lib/hooks/use-prefers-reduced-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -58,7 +58,7 @@ export function CountUp({
   const ref = useRef<HTMLSpanElement>(null);
   const parsed = useMemo(() => parseStatValue(value), [value]);
   const finalDisplay = formatStatValue(parsed.end, parsed);
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = usePrefersReducedMotion();
   const [display, setDisplay] = useState(prefersReducedMotion ? finalDisplay : formatStatValue(0, parsed));
   const hasAnimatedRef = useRef(false);
 

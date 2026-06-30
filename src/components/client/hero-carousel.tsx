@@ -1,34 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 const GALLERY = [
   {
-    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=720&h=560&fit=crop&q=80",
+    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=640&h=480&fit=crop&q=75",
     alt: "Doctor on a telehealth consultation",
   },
   {
-    src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=720&h=560&fit=crop&q=80",
+    src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=640&h=480&fit=crop&q=75",
     alt: "Patient enjoying a healthy, active life",
   },
   {
-    src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=720&h=560&fit=crop&q=80",
+    src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=640&h=480&fit=crop&q=75",
     alt: "Licensed physician at her desk",
   },
   {
-    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=720&h=560&fit=crop&q=80",
+    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&h=480&fit=crop&q=75",
     alt: "Completing the application on a phone",
   },
   {
-    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=720&h=560&fit=crop&q=80",
+    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=480&fit=crop&q=75",
     alt: "Happy certified patient",
   },
 ] as const;
 
 export function HeroCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const wrapRef = useRef<HTMLDivElement>(null);
   const indexRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -62,7 +61,7 @@ export function HeroCarousel() {
       if (i < 0) i = last;
       indexRef.current = i;
       const offset = Math.min(i * stepSize(), maxShift());
-      track.style.transform = `translateX(${-offset}px)`;
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
     },
     [lastIndex, maxShift, stepSize],
   );
@@ -83,7 +82,7 @@ export function HeroCarousel() {
   useEffect(() => {
     startAuto();
     const onResize = () => goTo(indexRef.current);
-    window.addEventListener("resize", onResize);
+    window.addEventListener("resize", onResize, { passive: true });
     return () => {
       stopAuto();
       window.removeEventListener("resize", onResize);
@@ -91,7 +90,7 @@ export function HeroCarousel() {
   }, [goTo, startAuto, stopAuto]);
 
   return (
-    <div className="mary-hero__carousel" ref={wrapRef} onMouseEnter={stopAuto} onMouseLeave={startAuto}>
+    <div className="mary-hero__carousel" onMouseEnter={stopAuto} onMouseLeave={startAuto}>
       <div className="mary-carousel">
         <div className="mary-carousel__track" ref={trackRef}>
           {GALLERY.map((image, index) => (
@@ -102,6 +101,10 @@ export function HeroCarousel() {
                 width={385}
                 height={305}
                 priority={index === 0}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                loading={index === 0 ? "eager" : "lazy"}
+                quality={index === 0 ? 80 : 70}
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 385px"
                 className="h-full w-full object-cover"
               />
             </figure>

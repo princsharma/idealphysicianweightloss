@@ -1,11 +1,11 @@
 "use client";
 
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Reveal } from "@/components/client/reveal";
+import { usePrefersReducedMotion } from "@/lib/hooks/use-prefers-reduced-motion";
 import { getMedicationHref } from "@/lib/constants/medications";
 import { cn } from "@/lib/utils";
 
@@ -23,13 +23,11 @@ interface TreatmentsScrollProps {
   products: readonly Product[];
 }
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
 export function TreatmentsScroll({ products }: TreatmentsScrollProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
@@ -147,21 +145,13 @@ export function TreatmentsScroll({ products }: TreatmentsScrollProps) {
               );
 
               return (
-                <div
-                  key={product.id}
-                  className="w-[min(78vw,400px)] shrink-0 snap-start"
-                >
+                <div key={product.id} className="w-[min(78vw,400px)] shrink-0 snap-start">
                   {prefersReducedMotion ? (
                     card
                   ) : (
-                    <motion.div
-                      initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-                      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      viewport={{ once: true, amount: 0.3, margin: "0px 0px -5% 0px" }}
-                      transition={{ duration: 0.75, delay: index * 0.08, ease: EASE }}
-                    >
+                    <Reveal direction="up" delay={index * 0.08} amount={0.3}>
                       {card}
-                    </motion.div>
+                    </Reveal>
                   )}
                 </div>
               );

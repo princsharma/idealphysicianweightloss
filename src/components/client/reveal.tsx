@@ -1,67 +1,24 @@
 "use client";
 
 import {
-  motion,
-  useReducedMotion,
-  type Variants,
-} from "framer-motion";
-import type { ReactNode } from "react";
+  createContext,
+  useCallback,
+  useContext,
+  useRef,
+  type CSSProperties,
+  type ElementType,
+  type ReactNode,
+} from "react";
 
+import { useInView } from "@/lib/hooks/use-in-view";
+import { usePrefersReducedMotion } from "@/lib/hooks/use-prefers-reduced-motion";
 import { cn } from "@/lib/utils";
 
 type AnimationVariant = "reveal" | "fade" | "scale" | "blur";
 type RevealDirection = "up" | "down" | "left" | "right";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-function getDirectionOffset(direction: RevealDirection, distance: number) {
-  switch (direction) {
-  case "up":
-    return { x: 0, y: distance };
-  case "down":
-    return { x: 0, y: -distance };
-  case "left":
-    return { x: distance, y: 0 };
-  case "right":
-    return { x: -distance, y: 0 };
-  }
-}
-
-function createRevealVariants(
-  direction: RevealDirection,
-  distance: number,
-  withBlur: boolean,
-): Variants {
-  const offset = getDirectionOffset(direction, distance);
-
-  return {
-    hidden: {
-      opacity: 0,
-      ...offset,
-      ...(withBlur ? { filter: "blur(10px)" } : {}),
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      ...(withBlur ? { filter: "blur(0px)" } : {}),
-    },
-  };
-}
-
-const presetVariants: Record<Exclude<AnimationVariant, "blur">, Variants> = {
-  reveal: createRevealVariants("up", 36, true),
-  fade: {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  },
-  scale: {
-    hidden: { opacity: 0, scale: 0.94 },
-    visible: { opacity: 1, scale: 1 },
-  },
-};
-
-interface RevealProps {
+interface RevealBaseProps {
+  as?: ElementType;
   children: ReactNode;
   className?: string;
   delay?: number;
@@ -73,7 +30,14 @@ interface RevealProps {
   amount?: number;
 }
 
-export function Reveal({
+function getRevealClass(variant: AnimationVariant, direction: RevealDirection) {
+  if (variant === "fade") return "reveal-fade";
+  if (variant === "scale") return "reveal-scale";
+  return `reveal-slide reveal-slide--${direction}`;
+}
+
+function RevealBase({
+  as: Tag = "div",
   children,
   className,
   delay = 0,
@@ -83,33 +47,47 @@ export function Reveal({
   distance = 36,
   once = true,
   amount = 0.2,
-}: RevealProps) {
-  const prefersReducedMotion = useReducedMotion();
+}: RevealBaseProps) {
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const { ref, inView, pending } = useInView<HTMLElement>({ once, amount });
 
   if (prefersReducedMotion) {
-    return <div className={cn(className)}>{children}</div>;
+    return <Tag className={cn(className)}>{children}</Tag>;
   }
 
-  const variants =
-    variant === "blur"
-      ? createRevealVariants(direction, distance, true)
-      : variant === "reveal"
-        ? createRevealVariants(direction, distance, true)
-        : presetVariants[variant];
-
   return (
-    <motion.div
-      className={cn(className)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount, margin: "0px 0px -8% 0px" }}
-      variants={variants}
-      transition={{ duration, delay, ease: EASE }}
+    <Tag
+      ref={ref}
+      className={cn(
+        getRevealClass(variant, direction),
+        pending && !inView && "is-pending",
+        inView && "is-visible",
+        className,
+      )}
+      style={
+        {
+          "--reveal-delay": `${delay}s`,
+          "--reveal-duration": `${duration}s`,
+          "--reveal-distance": `${distance}px`,
+        } as CSSProperties
+      }
     >
       {children}
-    </motion.div>
+    </Tag>
   );
 }
+
+interface RevealProps extends Omit<RevealBaseProps, "as"> {}
+
+export function Reveal(props: RevealProps) {
+  return <RevealBase {...props} />;
+}
+
+interface StaggerContextValue {
+  nextDelay: () => number;
+}
+
+const StaggerContext = createContext<StaggerContextValue | null>(null);
 
 interface StaggerProps {
   children: ReactNode;
@@ -124,29 +102,20 @@ export function Stagger({
   className,
   stagger = 0.1,
   delayChildren = 0.05,
-  amount = 0.15,
 }: StaggerProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const indexRef = useRef(0);
+  indexRef.current = 0;
 
-  if (prefersReducedMotion) {
-    return <div className={cn(className)}>{children}</div>;
-  }
+  const nextDelay = useCallback(() => {
+    const delay = delayChildren + indexRef.current * stagger;
+    indexRef.current += 1;
+    return delay;
+  }, [delayChildren, stagger]);
 
   return (
-    <motion.div
-      className={cn(className)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount, margin: "0px 0px -8% 0px" }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: stagger, delayChildren },
-        },
-      }}
-    >
-      {children}
-    </motion.div>
+    <StaggerContext.Provider value={{ nextDelay }}>
+      <div className={cn(className)}>{children}</div>
+    </StaggerContext.Provider>
   );
 }
 
@@ -163,87 +132,38 @@ export function StaggerChild({
   direction = "up",
   distance = 28,
 }: StaggerChildProps) {
+  const ctx = useContext(StaggerContext);
+  const delay = ctx?.nextDelay() ?? 0;
+
   return (
-    <motion.div
-      className={cn(className)}
-      variants={createRevealVariants(direction, distance, true)}
-      transition={{ duration: 0.7, ease: EASE }}
-    >
+    <RevealBase className={className} direction={direction} distance={distance} delay={delay}>
       {children}
-    </motion.div>
+    </RevealBase>
   );
 }
 
-interface RevealLiProps {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-  duration?: number;
-  direction?: RevealDirection;
-  distance?: number;
-  once?: boolean;
-  amount?: number;
-}
+interface RevealLiProps extends Omit<RevealBaseProps, "as"> {}
 
-export function RevealLi({
-  children,
-  className,
-  delay = 0,
-  duration = 0.75,
-  direction = "up",
-  distance = 36,
-  once = true,
-  amount = 0.2,
-}: RevealLiProps) {
-  const prefersReducedMotion = useReducedMotion();
-
-  if (prefersReducedMotion) {
-    return <li className={cn(className)}>{children}</li>;
-  }
-
-  const variants = createRevealVariants(direction, distance, true);
-
-  return (
-    <motion.li
-      className={cn(className)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount, margin: "0px 0px -8% 0px" }}
-      variants={variants}
-      transition={{ duration, delay, ease: EASE }}
-    >
-      {children}
-    </motion.li>
-  );
+export function RevealLi(props: RevealLiProps) {
+  return <RevealBase {...props} as="li" />;
 }
 
 interface FloatProps {
   children: ReactNode;
   className?: string;
   duration?: number;
-  distance?: number;
 }
 
-export function Float({
-  children,
-  className,
-  duration = 5,
-  distance = 8,
-}: FloatProps) {
-  const prefersReducedMotion = useReducedMotion();
-
-  if (prefersReducedMotion) {
-    return <div className={cn(className)}>{children}</div>;
-  }
+export function Float({ children, className, duration = 5 }: FloatProps) {
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <motion.div
-      className={cn(className)}
-      animate={{ y: [-distance, distance, -distance] }}
-      transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
+    <div
+      className={cn(!prefersReducedMotion && "reveal-float", className)}
+      style={prefersReducedMotion ? undefined : ({ "--float-duration": `${duration}s` } as CSSProperties)}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -253,19 +173,23 @@ interface RevealLineProps {
 }
 
 export function RevealLine({ className, delay = 0 }: RevealLineProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const { ref, inView, pending } = useInView<HTMLDivElement>({ once: true, amount: 0.5 });
 
   if (prefersReducedMotion) {
     return <div className={cn("h-px bg-white/10", className)} aria-hidden />;
   }
 
   return (
-    <motion.div
-      className={cn("h-px origin-left bg-white/10", className)}
-      initial={{ scaleX: 0, opacity: 0 }}
-      whileInView={{ scaleX: 1, opacity: 1 }}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ duration: 0.9, delay, ease: EASE }}
+    <div
+      ref={ref}
+      className={cn(
+        "reveal-line h-px origin-left bg-white/10",
+        pending && !inView && "is-pending",
+        inView && "is-visible",
+        className,
+      )}
+      style={{ "--reveal-delay": `${delay}s` } as CSSProperties}
       aria-hidden
     />
   );
