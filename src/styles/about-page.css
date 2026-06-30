@@ -147,7 +147,7 @@
 /* ── Hero ── */
 
 .about-ref-hero {
-  padding-top: calc(var(--header-h) + 2rem);
+  padding-top: var(--hero-pad-top);
   padding-bottom: 2.5rem;
   background:
     radial-gradient(ellipse 90% 60% at 50% 0%, rgba(152, 197, 78, 0.14) 0%, transparent 55%),

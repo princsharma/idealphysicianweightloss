@@ -4,31 +4,39 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 import { Reveal } from "@/components/client/reveal";
+import { BentoCard, BentoGrid } from "@/components/ui/bento-card";
 import { DisplayHeading, Eyebrow, SectionContainer } from "@/components/ui/scroll-section";
-import { alabamaContent } from "@/lib/constants/states/alabama-content";
+import type { StatePageContent } from "@/lib/constants/states/state-page-types";
 import { cn } from "@/lib/utils";
 
-export function AlabamaFaqSection() {
-  const { faq } = alabamaContent;
+type StateFaqSectionProps = {
+  content: StatePageContent;
+};
+
+export function StateFaqSection({ content }: StateFaqSectionProps) {
+  const { faq, local } = content;
   const [openId, setOpenId] = useState<string | null>(faq.items[0]?.id ?? null);
 
   return (
-    <section id="faq" className="scroll-mt-32 bg-paper py-20 sm:py-28">
+    <section id="faq" className="state-bento-section scroll-mt-32 bg-paper py-20 sm:py-28">
       <SectionContainer>
-        <div className="grid gap-12 lg:grid-cols-12">
+        <BentoGrid className="items-start">
           <Reveal className="lg:col-span-4 lg:sticky lg:top-36 lg:self-start" direction="left" distance={24}>
-            <Eyebrow className="text-accent">{faq.eyebrow}</Eyebrow>
-            <DisplayHeading className="text-ink">
-              {faq.title}{" "}
-              <span className="text-gradient">{faq.titleHighlight}</span>
-            </DisplayHeading>
-            <p className="mt-5 text-sm text-ink-muted">
-              Straight answers for Alabama patients before you book.
-            </p>
+            <BentoCard variant="dark" className="h-full">
+              <Eyebrow>{faq.eyebrow}</Eyebrow>
+              <DisplayHeading className="mt-4 text-white">
+                {faq.title}{" "}
+                <span className="text-gradient">{faq.titleHighlight}</span>
+              </DisplayHeading>
+              <p className="mt-5 text-sm leading-relaxed text-white/55">{faq.subtitle}</p>
+              <p className="mt-8 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-accent-bright">
+                {local.stateAbbr} · {local.countiesLabel}
+              </p>
+            </BentoCard>
           </Reveal>
 
           <div className="lg:col-span-8">
-            <div className="divide-y divide-ink/10 rounded-3xl border border-border-strong bg-white shadow-soft">
+            <BentoCard variant="light" hover={false} className="!p-0 divide-y divide-ink/10">
               {faq.items.map((item, index) => {
                 const isOpen = openId === item.id;
                 return (
@@ -63,9 +71,9 @@ export function AlabamaFaqSection() {
                   </Reveal>
                 );
               })}
-            </div>
+            </BentoCard>
           </div>
-        </div>
+        </BentoGrid>
       </SectionContainer>
     </section>
   );

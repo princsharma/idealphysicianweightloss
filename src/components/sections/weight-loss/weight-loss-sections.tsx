@@ -29,7 +29,7 @@ export function WeightLossHero() {
     <ScrollSection
       theme="dark"
       snap={false}
-      className="hero-forest noise relative min-h-[min(85vh,820px)] justify-center pt-28 pb-20 sm:pt-32"
+      className="hero-forest noise relative min-h-[min(85vh,820px)] justify-center hero-section-top pb-20"
     >
       <div className="orb -left-32 top-1/4 size-96 bg-accent/20" aria-hidden />
       <div className="orb right-0 top-0 size-[28rem] bg-lime/10" aria-hidden />

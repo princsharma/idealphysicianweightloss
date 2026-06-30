@@ -478,9 +478,9 @@
 
 .mary-header .mary-logo img {
   display: block;
-  height: 44px;
+  height: 60px;
   width: auto;
-  max-width: min(220px, 36vw);
+  max-width: min(300px, 40vw);
   object-fit: contain;
 }
 
@@ -977,12 +977,12 @@
   }
 
   .mary-header .mary-logo {
-    padding: 6px 12px;
+    padding: 7px 14px;
   }
 
   .mary-header .mary-logo img {
-    height: 40px;
-    max-width: min(200px, 48vw);
+    height: 52px;
+    max-width: min(280px, 52vw);
   }
 
   .mary-burger {
@@ -996,7 +996,7 @@
   }
 
   :root {
-    --header-h: 84px;
+    --header-h: 104px;
   }
 
   .mary-hero__wrap {
@@ -1052,8 +1052,8 @@
   }
 
   .mary-header .mary-logo img {
-    height: 44px;
-    max-width: min(220px, 58vw);
+    height: 56px;
+    max-width: min(290px, 64vw);
   }
 
   .mary-burger {
@@ -1072,7 +1072,7 @@
   }
 
   :root {
-    --header-h: 92px;
+    --header-h: 112px;
   }
 
   .mary-hero__wrap {

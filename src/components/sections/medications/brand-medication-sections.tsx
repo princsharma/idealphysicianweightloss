@@ -60,7 +60,7 @@ export function BrandMedicationPage({ content }: { content: BrandMedicationPageC
 
   return (
     <div className={cn("brand-med-page", `brand-med-page--${accent}`)}>
-      <ScrollSection theme="light" snap={false} className="overflow-visible med-hero py-20 sm:py-28">
+      <ScrollSection theme="light" snap={false} className="overflow-visible med-hero hero-section-top pb-20 sm:pb-28">
         <SectionContainer>
           <div className="med-hero__grid">
             <Reveal className="med-hero__visual" variant="scale" duration={0.85}>

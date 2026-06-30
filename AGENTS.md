@@ -33,4 +33,4 @@ Next.js App Router · Tailwind CSS v4 · shadcn-style UI in `src/components/ui` 
 
 ## Routes (legal & info)
 
-`/about` · `/privacy` · `/terms` · `/medical-disclaimer` · `/hipaa` · `/accessibility` · `/contact` · `/alabama`
+`/about` · `/privacy` · `/terms` · `/medical-disclaimer` · `/hipaa` · `/accessibility` · `/contact` · `/weight-loss/alabama`

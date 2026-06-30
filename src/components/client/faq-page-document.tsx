@@ -162,7 +162,7 @@ export function FaqPageDocument() {
       <ScrollSection
         theme="dark"
         snap={false}
-        className="hero-forest noise relative min-h-[min(58vh,520px)] justify-center pt-28 pb-16 sm:pt-32"
+        className="hero-forest noise relative min-h-[min(58vh,520px)] justify-center hero-section-top pb-16"
       >
         <SectionContainer className="relative">
           <Reveal direction="up" distance={32} className="mx-auto max-w-3xl text-center">

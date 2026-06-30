@@ -42,11 +42,11 @@ export function HeroSection() {
             </svg>
             <span className="mary-spin__core">
               <img
-                src="/logo.png"
+                src={siteConfig.logo}
                 alt=""
                 width={48}
                 height={48}
-                className="block h-8 w-12 object-contain"
+                className="block h-8 w-auto max-w-[3.5rem] object-contain"
               />
             </span>
           </a>

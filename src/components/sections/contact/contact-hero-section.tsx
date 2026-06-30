@@ -6,7 +6,7 @@ export function ContactHeroSection() {
   const { hero } = contactContent;
 
   return (
-    <ScrollSection theme="dark" snap={false} className="hero-forest noise relative min-h-[min(72vh,720px)] justify-center pt-28 pb-16 sm:pt-32 sm:pb-20">
+    <ScrollSection theme="dark" snap={false} className="hero-forest noise relative min-h-[min(72vh,720px)] justify-center hero-section-top pb-16 sm:pb-20">
       <div className="orb -left-24 top-1/4 size-72 bg-accent/20" aria-hidden />
       <div className="orb right-0 top-0 size-96 bg-lime/10" aria-hidden />
 

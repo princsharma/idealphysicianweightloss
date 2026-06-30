@@ -28,7 +28,7 @@ export function RefundHero() {
     <ScrollSection
       theme="dark"
       snap={false}
-      className="hero-forest noise relative min-h-[min(58vh,560px)] justify-center pt-28 pb-16 sm:pt-32"
+      className="hero-forest noise relative min-h-[min(58vh,560px)] justify-center hero-section-top pb-16"
     >
       <div className="orb -left-24 top-1/4 size-72 bg-accent/20" aria-hidden />
       <SectionContainer className="relative">

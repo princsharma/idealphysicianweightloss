@@ -9,9 +9,11 @@ type LogoProps = {
   priority?: boolean;
 };
 
+const logoPillClasses = "rounded-full bg-white px-3 py-1.5 sm:px-3.5 sm:py-2";
+
 const sizeClasses = {
-  header: "h-11 w-auto",
-  footer: "h-12 w-auto",
+  header: "h-14 w-auto sm:h-[3.75rem]",
+  footer: "h-14 w-auto sm:h-[3.75rem]",
 } as const;
 
 export function Logo({ className, size = "header", priority = false }: LogoProps) {
@@ -20,16 +22,16 @@ export function Logo({ className, size = "header", priority = false }: LogoProps
       href="/"
       className={cn(
         "mary-logo inline-flex w-fit shrink-0 items-center",
-        size === "header" && "rounded-full bg-white px-2 py-1",
+        logoPillClasses,
         className,
       )}
       aria-label={siteConfig.name}
     >
       <img
-        src="/logo.png"
+        src={siteConfig.logo}
         alt={siteConfig.name}
-        width={200}
-        height={52}
+        width={300}
+        height={72}
         decoding="async"
         fetchPriority={priority ? "high" : "auto"}
         className={cn("block object-contain", sizeClasses[size])}

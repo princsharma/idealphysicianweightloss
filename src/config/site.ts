@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "Ideal Physician Weight Loss",
+  logo: "/logo.webp",
   description:
     "Physician-guided medical weight loss programs tailored to your health goals.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",

@@ -40,7 +40,7 @@ export function MedicationHero({ content }: { content: MedicationLandingContent 
     <ScrollSection
       theme="dark"
       snap={false}
-      className="hero-forest noise relative min-h-[min(82vh,780px)] justify-center pt-28 pb-20 sm:pt-32"
+      className="hero-forest noise relative min-h-[min(82vh,780px)] justify-center hero-section-top pb-20"
     >
       <div className={cn("orb -left-32 top-1/4 size-96", accentOrb[accent])} aria-hidden />
       <div className="orb right-0 top-0 size-[28rem] bg-lime/10" aria-hidden />

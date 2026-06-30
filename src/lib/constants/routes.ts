@@ -4,7 +4,7 @@ export const routes = {
   services: "/services",
   contact: "/contact",
   blog: "/blog",
-  alabama: "/alabama",
+  alabama: "/weight-loss/alabama",
 } as const;
 
 export type RouteKey = keyof typeof routes;

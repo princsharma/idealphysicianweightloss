@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
         destination: "/weight-loss/:slug",
         permanent: true,
       },
+      { source: "/alabama", destination: "/weight-loss/alabama", permanent: true },
     ];
   },
 };

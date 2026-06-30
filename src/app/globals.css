@@ -52,7 +52,8 @@
 
   /* motion & layout */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --header-h: 88px;
+  --header-h: 112px;
+  --hero-pad-top: calc(var(--header-h) + 2.75rem);
 
   /* radii */
   --radius: 14px;
@@ -212,6 +213,10 @@
 
   .hero-forest {
     background: linear-gradient(160deg, var(--forest-deep) 0%, var(--forest) 45%, var(--forest-ink) 100%);
+  }
+
+  .hero-section-top {
+    padding-top: var(--hero-pad-top);
   }
 
   .gradient-cta {
