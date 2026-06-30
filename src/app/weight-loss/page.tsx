@@ -13,19 +13,15 @@ import {
   WeightLossWhyMedical,
 } from "@/components/sections/weight-loss";
 import { Footer, Header } from "@/components/layout";
-import { createMetadata } from "@/config/metadata";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
 import "@/styles/weight-loss-page.css";
 
-export const metadata = createMetadata({
+export const metadata = createPageMetadata({
   title: "Medical Weight Loss Program",
   description: `Physician-guided GLP-1 weight loss with semaglutide & tirzepatide — same-day telehealth, FDA-approved medications, and plans from $299/month at ${siteConfig.name}.`,
-  openGraph: {
-    title: `Medical Weight Loss | ${siteConfig.name}`,
-    description:
-      "Your flagship path to sustainable weight loss — licensed doctors, personalized GLP-1 therapy, and discreet home delivery.",
-  },
+  path: "/weight-loss",
 });
 
 export default function WeightLossPage() {

@@ -11,19 +11,15 @@ import {
   HowItWorksTimeline,
 } from "@/components/sections/how-it-works";
 import { Footer, Header } from "@/components/layout";
-import { createMetadata } from "@/config/metadata";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
 import "@/styles/hub-page.css";
 
-export const metadata = createMetadata({
+export const metadata = createPageMetadata({
   title: "How It Works",
   description: `Your complete patient journey at ${siteConfig.name} — eligibility, physician consultation, prescription, delivery, and ongoing support.`,
-  openGraph: {
-    title: `How It Works | ${siteConfig.name}`,
-    description:
-      "Step-by-step guide to physician-guided GLP-1 weight loss — from first quiz to home delivery and follow-up care.",
-  },
+  path: "/weight-loss/how-it-works",
 });
 
 export default function HowItWorksPage() {

@@ -4,19 +4,15 @@ import {
   PrivacyPolicyDocument,
 } from "@/components/client/privacy-policy-document";
 import { Footer, Header } from "@/components/layout";
-import { createMetadata } from "@/config/metadata";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
 import "@/styles/privacy-page.css";
 
-export const metadata = createMetadata({
+export const metadata = createPageMetadata({
   title: "Privacy Policy",
   description: `Read how ${siteConfig.name} collects, uses, and protects your personal and health information across our telehealth weight loss services.`,
-  openGraph: {
-    title: `Privacy Policy | ${siteConfig.name}`,
-    description:
-      "Our commitment to protecting your privacy — data collection, usage, security, and your rights explained.",
-  },
+  path: "/privacy",
 });
 
 export default function PrivacyPage() {

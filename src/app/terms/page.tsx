@@ -1,18 +1,14 @@
 import { TermsContactBand, TermsDocument, TermsHero } from "@/components/client/terms-document";
 import { Footer, Header } from "@/components/layout";
-import { createMetadata } from "@/config/metadata";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
 import "@/styles/privacy-page.css";
 
-export const metadata = createMetadata({
+export const metadata = createPageMetadata({
   title: "Terms & Conditions",
   description: `Read the Terms & Conditions governing your use of ${siteConfig.name} telehealth consultation services, website, and related features.`,
-  openGraph: {
-    title: `Terms & Conditions | ${siteConfig.name}`,
-    description:
-      "Service use terms including eligibility, telehealth consent, payments, user conduct, and contact information.",
-  },
+  path: "/terms",
 });
 
 export default function TermsPage() {

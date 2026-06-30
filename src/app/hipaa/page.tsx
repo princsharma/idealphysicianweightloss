@@ -9,19 +9,15 @@ import {
   HipaaResponsibilities,
 } from "@/components/sections/hipaa";
 import { Footer, Header } from "@/components/layout";
-import { createMetadata } from "@/config/metadata";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
 import "@/styles/hipaa-page.css";
 
-export const metadata = createMetadata({
+export const metadata = createPageMetadata({
   title: "HIPAA Notice of Privacy Practices",
   description: `Read how ${siteConfig.name} protects your protected health information (PHI), your HIPAA rights, permitted uses and disclosures, and how to file a complaint.`,
-  openGraph: {
-    title: `HIPAA Notice | ${siteConfig.name}`,
-    description:
-      "Our HIPAA Notice of Privacy Practices — how we use and safeguard your health information and your rights under federal law.",
-  },
+  path: "/hipaa",
 });
 
 export default function HipaaPage() {

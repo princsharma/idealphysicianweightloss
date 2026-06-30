@@ -9,19 +9,15 @@ import {
   AccessibilityTechnologies,
 } from "@/components/sections/accessibility";
 import { Footer, Header } from "@/components/layout";
-import { createMetadata } from "@/config/metadata";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
 import "@/styles/accessibility-page.css";
 
-export const metadata = createMetadata({
+export const metadata = createPageMetadata({
   title: "Accessibility Statement",
   description: `${siteConfig.name} accessibility commitment — WCAG 2.1 AA standards, keyboard navigation, screen reader support, and how to report barriers.`,
-  openGraph: {
-    title: `Accessibility | ${siteConfig.name}`,
-    description:
-      "Our accessibility statement covering supported technologies, navigation, ongoing improvements, and feedback.",
-  },
+  path: "/accessibility",
 });
 
 export default function AccessibilityPage() {

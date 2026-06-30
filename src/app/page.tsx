@@ -2,7 +2,12 @@ import dynamic from "next/dynamic";
 
 import { HeroSection } from "@/components/sections/home/hero-section";
 import { Header } from "@/components/layout";
+import { siteConfig } from "@/config/site";
 import { HERO_LCP } from "@/lib/constants/hero-gallery";
+import { createPageMetadata } from "@/lib/seo";
+import { buildFaqSchema, buildServiceSchema } from "@/lib/schema";
+import { homeContent } from "@/lib/constants/home-content";
+import { JsonLd } from "@/components/shared/json-ld";
 
 const HeroStartSection = dynamic(() =>
   import("@/components/sections/home/hero-start-section").then((m) => ({ default: m.HeroStartSection })),
@@ -32,9 +37,33 @@ const Footer = dynamic(() =>
   import("@/components/layout/footer").then((m) => ({ default: m.Footer })),
 );
 
+export const metadata = createPageMetadata({
+  title: siteConfig.name,
+  description: siteConfig.description,
+  path: "/",
+  keywords: [
+    "medical weight loss",
+    "GLP-1 weight loss",
+    "online weight loss doctor",
+    "semaglutide telehealth",
+    "tirzepatide prescription online",
+    "physician weight loss program",
+  ],
+});
+
 export default function HomePage() {
+  const faqSchema = buildFaqSchema(
+    homeContent.faq.items.map((item) => ({ question: item.question, answer: item.answer })),
+  );
+  const serviceSchema = buildServiceSchema({
+    name: "Physician-Guided Weight Loss Program",
+    description: siteConfig.description,
+    path: "/",
+  });
+
   return (
     <>
+      <JsonLd data={[faqSchema, serviceSchema]} />
       <link
         rel="preload"
         as="image"

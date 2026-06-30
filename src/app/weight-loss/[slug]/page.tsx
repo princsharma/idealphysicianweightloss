@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { BrandMedicationPage } from "@/components/sections/medications/brand-medication-sections";
 import { StateLandingPage } from "@/components/sections/state";
 import { Footer, Header } from "@/components/layout";
-import { createMetadata } from "@/config/metadata";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 import {
   getBrandMedicationPageContent,
@@ -30,32 +30,33 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (isStateSlug(slug)) {
     const content = getStateContent(slug);
-    return createMetadata({
+    return createPageMetadata({
       title: `${content.stateName} Weight Loss Program`,
       description: `Physician-guided online weight loss for ${content.local.residentsLabel}. GLP-1 treatments, licensed providers, and HIPAA-secure telehealth from ${siteConfig.name}.`,
-      openGraph: {
-        title: `${content.stateName} Weight Loss Program | ${siteConfig.name}`,
-        description: `Connect with licensed ${content.stateName} providers for a personalized GLP-1 weight loss evaluation. Serving communities statewide.`,
-      },
+      path: `/weight-loss/${slug}`,
+      keywords: [
+        `${content.stateName} weight loss`,
+        "GLP-1 telehealth",
+        "online weight loss doctor",
+        content.stateName,
+      ],
     });
   }
 
   if (!isMedicationSlug(slug)) {
-    return createMetadata({ title: "Page not found" });
+    return createPageMetadata({ title: "Page not found", description: "Page not found.", path: `/weight-loss/${slug}`, noIndex: true });
   }
 
   const product = getMedicationProduct(slug);
   if (!product) {
-    return createMetadata({ title: "Medication not found" });
+    return createPageMetadata({ title: "Medication not found", description: "Medication not found.", path: `/weight-loss/${slug}`, noIndex: true });
   }
 
-  return createMetadata({
+  return createPageMetadata({
     title: `${product.name} for Weight Loss`,
     description: `${product.description} Learn about ${product.subtitle}, eligibility, and physician-guided treatment at ${siteConfig.name}.`,
-    openGraph: {
-      title: `${product.name} | ${siteConfig.name}`,
-      description: product.description,
-    },
+    path: `/weight-loss/${slug}`,
+    keywords: [product.name, product.subtitle, "GLP-1", "weight loss medication"],
   });
 }
 

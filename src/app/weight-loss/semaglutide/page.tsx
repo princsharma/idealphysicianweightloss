@@ -1,20 +1,16 @@
 import { MedicationLandingPage } from "@/components/sections/medications";
 import { Footer, Header } from "@/components/layout";
-import { createMetadata } from "@/config/metadata";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 import { semaglutideContent } from "@/lib/constants/semaglutide-content";
 
 import "@/styles/hub-page.css";
 import "@/styles/weight-loss-page.css";
 
-export const metadata = createMetadata({
+export const metadata = createPageMetadata({
   title: "Semaglutide for Weight Loss",
   description: `Physician-prescribed semaglutide (Wegovy®, Ozempic®) for weight management — how it works, eligibility, results, safety, and treatment at ${siteConfig.name}.`,
-  openGraph: {
-    title: `Semaglutide | ${siteConfig.name}`,
-    description:
-      "Premium semaglutide landing page — GLP-1 therapy, clinical benefits, treatment process, and licensed physician care.",
-  },
+  path: "/weight-loss/semaglutide",
 });
 
 export default function SemaglutidePage() {

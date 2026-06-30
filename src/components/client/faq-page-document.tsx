@@ -10,7 +10,7 @@ import {
   Shield,
   UserCheck,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
 import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
@@ -26,7 +26,6 @@ import {
   faqPageContent,
   getAllFaqItems,
   getPopularFaqItems,
-  type FaqCategory,
 } from "@/lib/constants/faq-page-content";
 import { cn } from "@/lib/utils";
 
@@ -123,35 +122,14 @@ export function FaqPageDocument() {
 
   const popularItems = getPopularFaqItems();
 
-  const filteredCategories = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return categories;
-
-    return categories
-      .map((cat) => ({
-        ...cat,
-        items: cat.items.filter(
-          (item) =>
-            item.question.toLowerCase().includes(q) || item.answer.toLowerCase().includes(q),
-        ),
-      }))
-      .filter((cat) => cat.items.length > 0) as FaqCategory[];
-  }, [query, categories]);
-
-  const searchResults = useMemo(() => {
+  const searchResults = (() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
     return getAllFaqItems().filter(
       (item) =>
         item.question.toLowerCase().includes(q) || item.answer.toLowerCase().includes(q),
     );
-  }, [query]);
-
-  useEffect(() => {
-    if (filteredCategories.length > 0 && !filteredCategories.find((c) => c.id === activeCategory)) {
-      setActiveCategory(filteredCategories[0].id);
-    }
-  }, [filteredCategories, activeCategory]);
+  })();
 
   function setCategoryOpen(categoryId: string, itemId: string | null) {
     setOpenIds((prev) => ({ ...prev, [categoryId]: itemId }));
