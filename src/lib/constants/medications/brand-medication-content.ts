@@ -74,8 +74,10 @@ type PageOverrides = {
   mechanism?: Partial<BrandMedicationPageContent["mechanism"]>;
   usage?: Partial<BrandMedicationPageContent["usage"]>;
   injection?: Partial<BrandMedicationPageContent["injection"]>;
+  process?: Partial<BrandMedicationPageContent["process"]>;
   testimonials?: Partial<BrandMedicationPageContent["testimonials"]>;
   preFaqCta?: Partial<BrandMedicationPageContent["preFaqCta"]>;
+  faq?: Partial<BrandMedicationPageContent["faq"]>;
 };
 
 function plainName(name: string) {
@@ -204,6 +206,7 @@ function buildBaseContent(
         "We follow a simple 3-step process to connect you with a licensed healthcare provider for evaluation and clinician-guided care from home.",
       steps: processSteps,
       cta: "Start Medical Evaluation",
+      ...overrides.process,
     },
     safety: { ...defaultSafety, ...overrides.safety },
     mechanism: { ...defaultMechanism, ...overrides.mechanism },
@@ -234,6 +237,7 @@ function buildBaseContent(
       titleHighlight: "questions",
       description: `${brand} helps you get started with GLP-1 treatment online. Answers to common questions so you can move forward informed and confident.`,
       items: sharedFaq,
+      ...overrides.faq,
     },
     finalCta: {
       title: `A healthier you is one decision away. Start your journey with ${name}.`,
@@ -318,7 +322,7 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
     injection: {
       title: "Where to inject Ozempic®?",
       paragraphs: [
-        "The most common places to inject are your belly, outer thigh, or upper arm. The needle is very small and goes just under the skin—not into muscle.",
+        "The most common places to inject are your belly, outer thigh, or upper arm. The needle is very small and goes just under the skin, not into the muscle.",
         "Rotate injection sites each week to avoid irritation. If you have questions, your doctor or nurse is there to help.",
       ],
       image: { src: brandMedicationImages.injectionSites, alt: "Where to inject Ozempic" },
@@ -360,6 +364,22 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       image: { src: "/ozempic.webp", alt: "Ozempic injection pen" },
       cta: "Book your free consultation",
     },
+    faq: {
+      items: [
+        {
+          id: "ozempic-faq-1",
+          question: "How quickly will I receive my prescription?",
+          answer:
+            "If approved, your prescription is typically processed after your consultation. Medication is fulfilled through a licensed pharmacy and delivered to your home within 3 to 5 business days.",
+        },
+        {
+          id: "ozempic-faq-2",
+          question: "Can I cancel my membership at any time?",
+          answer:
+            "Yes. You can cancel your monthly membership anytime before your next billing date. There are no long-term commitments or cancellation fees.",
+        },
+      ],
+    },
   },
   wegovy: {
     hero: {
@@ -379,6 +399,28 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       cta: "Schedule consultation",
     },
     usage: { video: semaglutideVideos.howToUse },
+    faq: {
+      items: [
+        {
+          id: "wegovy-faq-1",
+          question: "How quickly will I receive my prescription?",
+          answer:
+            "If approved, your prescription is typically processed after your consultation. Medication delivery usually takes 3 to 5 business days through a licensed pharmacy. Delivery timelines may vary based on pharmacy processing and location.",
+        },
+        {
+          id: "wegovy-faq-2",
+          question: "Are the consultations really with real doctors?",
+          answer:
+            "Yes. Consultations are conducted by licensed physicians who evaluate your health history, goals, and treatment options to determine the right approach for you.",
+        },
+        {
+          id: "wegovy-faq-3",
+          question: "Can I cancel my membership at any time?",
+          answer:
+            "Yes. Monthly memberships can be canceled at any time before your next billing date. There are no long-term commitments or cancellation penalties.",
+        },
+      ],
+    },
   },
   mounjaro: {
     hero: {
@@ -398,6 +440,58 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       cta: "Schedule consultation",
     },
     usage: { video: tirzepatideVideos.howToUse },
+    faq: {
+      items: [
+        {
+          id: "mounjaro-faq-1",
+          question: "Do I need insurance to get started with Mounjaro®?",
+          answer:
+            "No. Insurance is not required to start. Your eligibility and treatment options are reviewed by a licensed physician.",
+        },
+        {
+          id: "mounjaro-faq-2",
+          question: "Am I a candidate for Mounjaro® (tirzepatide)?",
+          answer:
+            "Eligibility depends on factors like BMI, medical history, health goals, and your physician's evaluation.",
+        },
+        {
+          id: "mounjaro-faq-3",
+          question: "How quickly will I receive my Mounjaro® prescription?",
+          answer:
+            "If approved, your prescription is processed after your consultation. Medication is fulfilled through a licensed pharmacy and delivered within 3 to 5 business days.",
+        },
+        {
+          id: "mounjaro-faq-4",
+          question: "What is the difference between Mounjaro® and Zepbound®?",
+          answer:
+            "Both contain tirzepatide. Mounjaro® is primarily approved for type 2 diabetes management, while Zepbound® is approved for chronic weight management.",
+        },
+        {
+          id: "mounjaro-faq-5",
+          question: "Are the consultations really with real doctors?",
+          answer:
+            "Yes. Consultations are conducted by licensed physicians who review your health profile and treatment options.",
+        },
+        {
+          id: "mounjaro-faq-6",
+          question: "Can I cancel my membership at any time?",
+          answer:
+            "Yes. Monthly memberships can be canceled anytime before your next billing date with no long-term commitment.",
+        },
+        {
+          id: "mounjaro-faq-7",
+          question: "Do you prescribe compounded tirzepatide?",
+          answer:
+            "Compounded tirzepatide may be available when clinically appropriate and prescribed by a licensed provider.",
+        },
+        {
+          id: "mounjaro-faq-8",
+          question: "What states do you operate in?",
+          answer:
+            "Availability varies by state. Our team can confirm whether services are available in your location.",
+        },
+      ],
+    },
   },
   zepbound: {
     hero: {
@@ -417,6 +511,70 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       cta: "Schedule consultation",
     },
     usage: { video: tirzepatideVideos.howToUse },
+    faq: {
+      items: [
+        {
+          id: "zepbound-faq-1",
+          question: "What is Zepbound® used for?",
+          answer:
+            "Zepbound® is a prescription medication used for chronic weight management in eligible adults alongside lifestyle changes.",
+        },
+        {
+          id: "zepbound-faq-2",
+          question: "How does Zepbound® help with weight management?",
+          answer:
+            "Zepbound® works by activating GLP-1 and GIP hormone pathways that help regulate appetite, food intake, and metabolism.",
+        },
+        {
+          id: "zepbound-faq-3",
+          question: "How often is Zepbound® taken?",
+          answer:
+            "Zepbound® is administered once weekly as a subcutaneous injection, as prescribed by your healthcare provider.",
+        },
+        {
+          id: "zepbound-faq-4",
+          question: "How much weight can I lose with Zepbound®?",
+          answer:
+            "Weight loss results vary by individual. Clinical outcomes depend on factors such as dosage, health status, and lifestyle habits.",
+        },
+        {
+          id: "zepbound-faq-5",
+          question: "What happens during a Zepbound® consultation?",
+          answer:
+            "A licensed physician reviews your health history, goals, and eligibility to determine if Zepbound® may be suitable for you.",
+        },
+        {
+          id: "zepbound-faq-6",
+          question: "What dose of Zepbound® will I start with?",
+          answer:
+            "Your provider determines the appropriate starting dose based on your medical profile and treatment response.",
+        },
+        {
+          id: "zepbound-faq-7",
+          question: "How long do people typically stay on Zepbound®?",
+          answer:
+            "Treatment duration is personalized and depends on your progress, health goals, and physician recommendations.",
+        },
+        {
+          id: "zepbound-faq-8",
+          question: "What side effects may occur with Zepbound®?",
+          answer:
+            "Some people may experience nausea, digestive discomfort, decreased appetite, or other effects that are monitored during treatment.",
+        },
+        {
+          id: "zepbound-faq-9",
+          question: "Can Zepbound® be used with other weight loss methods?",
+          answer:
+            "Yes. Zepbound® is commonly used alongside nutrition and lifestyle changes as part of a comprehensive weight management plan.",
+        },
+        {
+          id: "zepbound-faq-10",
+          question: "Is Zepbound® available for home delivery?",
+          answer:
+            "If prescribed, medication can be fulfilled through a licensed pharmacy and delivered based on pharmacy availability and location.",
+        },
+      ],
+    },
   },
   rybelsus: {
     hero: {
@@ -424,6 +582,28 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       titleHighlight: "Physician-Guided Evaluation",
       description:
         "Non-injectable oral semaglutide may support off-label weight management when clinically appropriate. Connect with a licensed physician for evaluation.",
+    },
+    process: {
+      title: `How ${brand} supports your journey`,
+      description:
+        "Our streamlined 3-step approach helps you access expert medical guidance, personalized treatment options, and ongoing support from licensed healthcare providers at home.",
+      steps: [
+        {
+          step: "Step 1",
+          title: "Start With a Free Consultation",
+          text: "A care team member learns about your health goals, treatment expectations, and preferences while helping you explore available medication options based on your provider's guidance.",
+        },
+        {
+          step: "Step 2",
+          title: "Meet With a Licensed Provider",
+          text: "Connect with a licensed clinician through a secure video or audio visit to review your health history, BMI, medical factors, and weight management goals.",
+        },
+        {
+          step: "Step 3",
+          title: "Get Your Prescription When Approved",
+          text: "If appropriate, your provider creates a personalized treatment plan and provides prescription guidance. Medication can be obtained through a licensed pharmacy or convenient home delivery.",
+        },
+      ],
     },
     usage: {
       title: "How to use Rybelsus® safely",
@@ -433,7 +613,7 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
     injection: {
       title: "Oral dosing guidance",
       paragraphs: [
-        "Rybelsus is taken as a daily oral tablet—not an injection. Your provider will guide you on timing, dosing, and what to do if you miss a dose.",
+        "Rybelsus is taken as a daily oral tablet, not an injection. Your provider will guide you on timing, dosing, and what to do if you miss a dose.",
         "Always follow the prescribing information and contact your care team with questions about administration or side effects.",
       ],
       image: { src: "/rybluss.webp", alt: "Rybelsus oral semaglutide" },
@@ -448,6 +628,62 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       video: semaglutideVideos.howItWorks,
       cta: "Schedule consultation",
     },
+    faq: {
+      items: [
+        {
+          id: "rybelsus-faq-1",
+          question: "What is Rybelsus®?",
+          answer:
+            "Rybelsus® is an oral prescription medication containing semaglutide, used to help improve blood sugar control in adults with type 2 diabetes.",
+        },
+        {
+          id: "rybelsus-faq-2",
+          question: "How does Rybelsus® work?",
+          answer:
+            "Rybelsus® mimics a natural hormone called GLP-1 that helps regulate blood glucose levels and supports appetite control.",
+        },
+        {
+          id: "rybelsus-faq-3",
+          question: "Is Rybelsus® a pill or an injection?",
+          answer: "Unlike many GLP-1 medications, Rybelsus® is taken as a once-daily oral tablet.",
+        },
+        {
+          id: "rybelsus-faq-4",
+          question: "Who may be prescribed Rybelsus®?",
+          answer:
+            "A healthcare provider determines eligibility based on your medical history, diabetes management needs, and overall health profile.",
+        },
+        {
+          id: "rybelsus-faq-5",
+          question: "How should Rybelsus® be taken?",
+          answer:
+            "Rybelsus® should be taken exactly as prescribed by your provider, including instructions regarding timing and food intake.",
+        },
+        {
+          id: "rybelsus-faq-6",
+          question: "Can Rybelsus® help with weight management?",
+          answer:
+            "Some people may experience weight changes while taking Rybelsus®, though it is primarily prescribed for type 2 diabetes management.",
+        },
+        {
+          id: "rybelsus-faq-7",
+          question: "How long does it take to see results with Rybelsus®?",
+          answer:
+            "Response times vary. Your provider monitors your progress and adjusts treatment based on your individual needs.",
+        },
+        {
+          id: "rybelsus-faq-8",
+          question: "Can I switch from another GLP-1 medication to Rybelsus®?",
+          answer: "Medication changes should only be made with guidance from a licensed healthcare provider.",
+        },
+        {
+          id: "rybelsus-faq-9",
+          question: "Does Rybelsus® require a prescription?",
+          answer:
+            "Yes. Rybelsus® is a prescription medication that requires evaluation and approval from a qualified healthcare provider.",
+        },
+      ],
+    },
   },
   "victoza-saxenda": {
     hero: {
@@ -455,6 +691,28 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       titleHighlight: "Liraglutide GLP-1 Care",
       description:
         "Victoza and Saxenda are liraglutide-based prescription GLP-1 medications. Your physician determines which formulation is clinically appropriate.",
+    },
+    process: {
+      title: `How ${brand} supports your care journey`,
+      description:
+        "Our simple 3-step approach helps you access personalized medical guidance, connect with a licensed provider, and receive treatment support from the comfort of your home.",
+      steps: [
+        {
+          step: "Step 1",
+          title: "Begin With a Free Consultation",
+          text: "A care team member speaks with you about your health goals, preferences, and treatment interests while helping you understand available medication options based on provider recommendations.",
+        },
+        {
+          step: "Step 2",
+          title: "Meet With a Qualified Healthcare Provider",
+          text: "A licensed clinician reviews key health details, including medical history, BMI, and wellness goals, through a secure video or audio consultation.",
+        },
+        {
+          step: "Step 3",
+          title: "Receive Treatment Guidance & Prescription Approval",
+          text: "If appropriate, your provider develops a personalized plan and provides prescription guidance. Medication can be obtained through a licensed pharmacy or arranged for home delivery.",
+        },
+      ],
     },
     mechanism: {
       title: "How does liraglutide",
@@ -471,6 +729,66 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       description:
         "Liraglutide is typically administered once daily. Follow your doctor's instructions, rotate injection sites, and report side effects promptly.",
       video: liraglutideVideos.howToUse,
+    },
+    faq: {
+      title: "Liraglutide",
+      titleHighlight: "FAQ",
+      items: [
+        {
+          id: "liraglutide-faq-1",
+          question: "What is liraglutide?",
+          answer:
+            "Liraglutide is a GLP-1 receptor agonist medication that helps regulate appetite and blood sugar levels.",
+        },
+        {
+          id: "liraglutide-faq-2",
+          question: "How does liraglutide work for weight management?",
+          answer:
+            "Liraglutide works by mimicking a natural hormone that helps control hunger, increase feelings of fullness, and support weight management.",
+        },
+        {
+          id: "liraglutide-faq-3",
+          question: "Is liraglutide an injection?",
+          answer:
+            "Yes. Liraglutide is administered as a once-daily injection under the skin, as prescribed by a healthcare provider.",
+        },
+        {
+          id: "liraglutide-faq-4",
+          question: "Who may be a candidate for liraglutide?",
+          answer:
+            "A licensed provider evaluates factors such as BMI, medical history, health goals, and overall suitability before recommending treatment.",
+        },
+        {
+          id: "liraglutide-faq-5",
+          question: "How quickly can I start liraglutide treatment?",
+          answer:
+            "After completing a medical evaluation and receiving provider approval, your treatment plan can be started based on your prescription and pharmacy fulfillment.",
+        },
+        {
+          id: "liraglutide-faq-6",
+          question: "What are the common side effects of Saxenda?",
+          answer:
+            "Some people may experience nausea, digestive discomfort, decreased appetite, or other mild effects when starting treatment.",
+        },
+        {
+          id: "liraglutide-faq-7",
+          question: "How long do people take Victoza?",
+          answer:
+            "Treatment duration depends on your progress, goals, and recommendations from your healthcare provider.",
+        },
+        {
+          id: "liraglutide-faq-8",
+          question: "Can Saxenda be combined with lifestyle changes?",
+          answer:
+            "Yes. Saxenda is typically used along with healthy nutrition, physical activity, and lifestyle strategies for better outcomes.",
+        },
+        {
+          id: "liraglutide-faq-9",
+          question: "Do I need a prescription for Victoza?",
+          answer:
+            "Yes. Victoza requires evaluation and approval from a licensed healthcare provider before use.",
+        },
+      ],
     },
   },
 };

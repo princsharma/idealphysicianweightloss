@@ -13,7 +13,7 @@ export function ProcessSection() {
   const { howItWorks } = homeContent;
 
   return (
-    <ScrollSection id="process" theme="dark" snap={false} className="noise justify-center py-20">
+    <ScrollSection id="how-it-works" theme="dark" snap={false} className="noise justify-center py-20">
       <SectionContainer className="flex flex-1 flex-col justify-center">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           <Reveal className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start" direction="left" distance={32}>
@@ -23,7 +23,7 @@ export function ProcessSection() {
               <span className="text-gradient">{howItWorks.titleHighlight}</span>
             </DisplayHeading>
             <p className="mt-6 text-white/50">
-            No in-person visits required. Our streamlined process connects you with a licensed provider for GLP-1 evaluation and ongoing care.
+              {howItWorks.description}
             </p>
             <RevealLine className="mt-10 bg-accent/30" delay={0.2} />
           </Reveal>

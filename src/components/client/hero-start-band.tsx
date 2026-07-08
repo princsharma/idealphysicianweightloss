@@ -48,7 +48,7 @@ export function HeroStartBand() {
   return (
     <div className="mary-startband__card">
       <div className="mary-startband__copy">
-        <b>Start your evaluation</b>
+        <b>Start My Evaluation</b>
         <span>{startBar.steps}</span>
       </div>
 
@@ -128,12 +128,12 @@ export function HeroStartBand() {
         </div>
       </div>
 
-      <div className="mary-startband__micro">
+        <div className="mary-startband__micro">
         <span>HIPAA secure</span>
         <i>·</i>
-        <span>Money-back guarantee</span>
+        <span>FDA-approved options</span>
         <i>·</i>
-        <span>2-min signup</span>
+        <span>48 states covered</span>
       </div>
     </div>
   );

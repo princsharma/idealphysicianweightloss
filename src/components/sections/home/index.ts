@@ -1,3 +1,9 @@
+export {
+  HomeBenefits,
+  HomeEligibility,
+  HomeExperience,
+  HomePricing,
+} from "@/components/sections/home/home-sections";
 export { HeroSection } from "@/components/sections/home/hero-section";
 export { HeroStartSection } from "@/components/sections/home/hero-start-section";
 export { StatsSection } from "@/components/sections/home/stats-section";

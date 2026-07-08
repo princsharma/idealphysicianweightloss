@@ -34,7 +34,7 @@ export function FinalCtaSection() {
                 <ArrowUpRight className="size-4" />
               </LinkButton>
             </MagneticButton>
-            <LinkButton href={siteConfig.bookingUrl} variant="outline-dark" size="lg" className="rounded-full">
+            <LinkButton href="#how-it-works" variant="outline-dark" size="lg" className="rounded-full">
               {finalCta.secondaryCta}
             </LinkButton>
           </div>

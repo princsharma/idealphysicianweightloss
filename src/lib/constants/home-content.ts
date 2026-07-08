@@ -1,110 +1,241 @@
 import { siteConfig } from "@/config/site";
 
+const brand = siteConfig.name;
+
 export const homeContent = {
   hero: {
-    titleLine1: "Lose Weight",
-    titleLine2: "Clinically",
+    titleLine1: "Medical weight loss",
+    titleLine2: "that actually works",
+    title: "Medical weight loss",
+    titleHighlight: "that actually works",
     description:
-      "Access FDA-approved GLP-1 medications with licensed provider consultations and ongoing support for sustainable weight management.",
-    helpLabel: "Need Any Help?",
-    startBar: {
-      placeholder: "Select your state to begin…",
-      cta: "Start your evaluation",
-      steps: "Select your state — takes 2–3 minutes",
-    },
+      "Licensed doctors, same-day evaluations, and HIPAA-secure telehealth. You receive personalized GLP-1 programs with FDA-approved medications shipped to your door.",
     trustSignals: [
       { label: "HIPAA secure", icon: "shield" as const },
-      { label: "Money-back guarantee", icon: "badge-check" as const },
-      { label: "2-min signup", icon: "user-check" as const },
+      { label: "FDA-approved options", icon: "badge-check" as const },
+      { label: "48 states covered", icon: "globe" as const },
+      { label: "Doctor Evaluation at $75", icon: "receipt" as const },
     ],
-    gallery: [
-      {
-        src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80",
-        alt: "Physician in a telehealth consultation",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&q=80",
-        alt: "Doctor reviewing patient health data",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=80",
-        alt: "Patient training with a wellness coach",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80",
-        alt: "Smiling patient on a health journey",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1666214280557-f1b1562ebfca?w=500&q=80",
-        alt: "Healthy lifestyle and nutrition",
-      },
-    ],
+    primaryCta: "Start My Evaluation",
+    secondaryCta: "See How it Works",
+    secondaryHref: "#how-it-works",
+    image: {
+      src: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200&q=80",
+      alt: "FDA-approved GLP-1 weight loss medications",
+    },
+    startBar: {
+      placeholder: "Select your state to begin…",
+      cta: "Start My Evaluation",
+      steps: "Select your state — takes 2–3 minutes",
+    },
   },
   trustBar: [
-    { label: "Doctor-Led Care", icon: "stethoscope" as const },
-    { label: "Personalized Plans", icon: "user-check" as const },
-    { label: "No Hidden Fees", icon: "shield" as const },
-    { label: "FDA-Approved Options", icon: "badge-check" as const },
-    { label: "Ships to Your Door", icon: "truck" as const },
+    { label: "HIPAA secure", icon: "shield" as const },
+    { label: "FDA-approved options", icon: "badge-check" as const },
+    { label: "48 states covered", icon: "globe" as const },
+    { label: "Doctor Evaluation at $75", icon: "receipt" as const },
   ],
+  statsSection: {
+    title: "A complete",
+    titleHighlight: "weight loss system",
+    description: `${brand} offers personalized GLP-1 weight-loss programs based on your unique health profile. Our state-certified doctors assess your needs and prescribe FDA-approved medications when clinically appropriate. All through secure, same-day telehealth.`,
+  },
   stats: [
-    { display: "Up to 15–20%", label: "avg. body weight loss*", detail: "Backed by clinical studies." },
-    { display: "Ongoing care", label: "team support", detail: "Support throughout treatment." },
-    { display: "6 Rx", label: "medications available", detail: "Options tailored to you." },
-    { value: "100%", suffix: "Licensed", label: "healthcare providers", detail: "Expert guidance you can trust." },
+    {
+      display: "01",
+      label: "Personalized medical evaluation",
+      detail: "Licensed physicians review your health history, goals, and lifestyle before any treatment is recommended.",
+    },
+    {
+      display: "02",
+      label: "Evidence-based GLP-1 therapy",
+      detail: "Access to semaglutide, tirzepatide, and liraglutide options, including Wegovy®, Ozempic®, Zepbound®, and Mounjaro® when medically appropriate.",
+    },
+    {
+      display: "03",
+      label: "Ongoing physician oversight",
+      detail: "Regular check-ins, dosage adjustments, and dedicated support. We do not offer a one-time prescription.",
+    },
+    {
+      display: "04",
+      label: "Pharmacy fulfillment to your door",
+      detail: "If prescribed, your medication is dispensed by a licensed U.S. pharmacy and shipped discreetly in 3 to 5 business days.",
+    },
   ],
   statsDisclaimer:
-    "*Based on clinical studies. Individual results may vary. GLP-1 medications are prescribed only when deemed appropriate by a licensed healthcare provider and are not suitable for everyone.",
-  howItWorks: {
-    title: "From Evaluation to Prescription",
-    titleHighlight: "In 4 Simple Steps",
-    steps: [
+    "Medications are prescribed only when deemed appropriate by a licensed healthcare provider and are not suitable for everyone. Individual results may vary.",
+  medicalFirst: {
+    title: "Why medical weight loss",
+    titleHighlight: "outperforms diets alone",
+    description:
+      "Unlike fad diets and unregulated supplements, our approach is built on clinical evidence and physician oversight at every step. GLP-1 medications work with your body's natural hunger signals, not against them.",
+    features: [
       {
-        id: "step-1",
-        title: "Take a 5-Minute Quiz",
+        id: "biology",
+        title: "Targets biology, not willpower",
         description:
-          "Answer a few questions about your health, goals, and lifestyle to begin your evaluation.",
-        icon: "clipboard-list" as const,
+          "GLP-1 therapies help regulate appetite and cravings, making sustainable change more achievable than calorie restriction alone.",
+        icon: "activity" as const,
       },
       {
-        id: "step-2",
-        title: "Meet Your Physician",
+        id: "outcomes",
+        title: "Clinically proven outcomes",
         description:
-          "A board-certified physician reviews your information and determines if treatment is appropriate.",
-        icon: "video" as const,
+          "FDA-approved semaglutide, liraglutide, and tirzepatide medications have demonstrated significant weight reduction in clinical trials for adults with obesity or overweight.",
+        icon: "badge-check" as const,
       },
       {
-        id: "step-3",
-        title: "Receive Your Medication",
+        id: "safety",
+        title: "Physician-supervised safety",
         description:
-          "If prescribed, your medication is shipped from a licensed pharmacy with dosing instructions.",
-        icon: "package" as const,
+          "Every patient meets with a licensed physician. Prescriptions are issued only when medically appropriate, with ongoing monitoring.",
+        icon: "stethoscope" as const,
       },
       {
-        id: "step-4",
-        title: "Track Your Progress",
+        id: "holistic",
+        title: "Holistic, personalized plans",
         description:
-          "Receive ongoing check-ins, treatment adjustments when appropriate, and clinical support.",
-        icon: "trending-up" as const,
+          "We combine GLP-1 therapy with nutrition guidance, lifestyle support, and expert follow-ups tailored to your health needs.",
+        icon: "users" as const,
       },
     ],
-    disclaimer: "Prescription approval is subject to the doctor's approval.",
+    comparison: {
+      title: "Medical weight loss vs. diets alone",
+      rows: [
+        { label: "FDA-approved medications", us: true, them: false },
+        { label: "Licensed physician supervision", us: true, them: false },
+        { label: "Evidence-based treatment protocols", us: true, them: false },
+        { label: "Ongoing medical support", us: true, them: false },
+        { label: "Discreet pharmacy delivery", us: true, them: false },
+        { label: "Plans from", us: "$299/mo", them: "$500+" },
+      ],
+    },
+  },
+  overview: {
+    eyebrow: "The program",
+    title: "A complete",
+    titleHighlight: "weight loss system",
+    description: `${brand} offers personalized GLP-1 weight-loss programs based on your unique health profile. Our state-certified doctors assess your needs and prescribe FDA-approved medications when clinically appropriate. All through secure, same-day telehealth.`,
+    pillars: [
+      {
+        title: "Personalized medical evaluation",
+        text: "Licensed physicians review your health history, goals, and lifestyle before any treatment is recommended.",
+      },
+      {
+        title: "Evidence-based GLP-1 therapy",
+        text: "Access to semaglutide, tirzepatide, and liraglutide options, including Wegovy®, Ozempic®, Zepbound®, and Mounjaro® when medically appropriate.",
+      },
+      {
+        title: "Ongoing physician oversight",
+        text: "Regular check-ins, dosage adjustments, and dedicated support. We do not offer a one-time prescription.",
+      },
+      {
+        title: "Pharmacy fulfillment to your door",
+        text: "If prescribed, your medication is dispensed by a licensed U.S. pharmacy and shipped discreetly in 3 to 5 business days.",
+      },
+    ],
+  },
+  whyMedical: {
+    eyebrow: "Why it works",
+    title: "Why medical weight loss",
+    titleHighlight: "outperforms diets alone",
+    description:
+      "Unlike fad diets and unregulated supplements, our approach is built on clinical evidence and physician oversight at every step. GLP-1 medications work with your body's natural hunger signals, not against them.",
+    reasons: [
+      {
+        title: "Targets biology, not willpower",
+        text: "GLP-1 therapies help regulate appetite and cravings, making sustainable change more achievable than calorie restriction alone.",
+      },
+      {
+        title: "Clinically proven outcomes",
+        text: "FDA-approved semaglutide, liraglutide, and tirzepatide medications have demonstrated significant weight reduction in clinical trials for adults with obesity or overweight.",
+      },
+      {
+        title: "Physician-supervised safety",
+        text: "Every patient meets with a licensed physician. Prescriptions are issued only when medically appropriate, with ongoing monitoring.",
+      },
+      {
+        title: "Holistic, personalized plans",
+        text: "We combine GLP-1 therapy with nutrition guidance, lifestyle support, and expert follow-ups tailored to your health needs.",
+      },
+    ],
+    badges: [
+      { title: "FDA-approved", subtitle: "Weight loss medications" },
+      { title: "Licensed", subtitle: "Physicians" },
+      { title: "Evidence-based", subtitle: "Treatment protocols" },
+    ],
   },
   medications: {
-    title: "Six Clinically Studied",
-    titleHighlight: "GLP-1 Medications",
+    eyebrow: "Medications",
+    title: "GLP-1",
+    titleHighlight: "therapies",
     description:
-      "Your doctor may prescribe one of these medications based on your eligibility for the treatment.",
+      "Our licensed physicians prescribe clinically proven GLP-1 and dual-action medications tailored to your unique needs only after a complete medical evaluation.",
+    semaglutide: {
+      name: "Semaglutide",
+      tagline: "GLP-1 Receptor Agonist: Semaglutide",
+      description:
+        "A GLP-1 medicine that helps regulate blood glucose levels and influences appetite pathways involved in weight management.",
+      brands: [
+        {
+          id: "wegovy",
+          name: "Wegovy®",
+          subtitle: "Semaglutide injection",
+          image: "/wegovy.webp",
+          highlight: "Up to 15% body weight loss (results may vary)",
+        },
+        {
+          id: "ozempic",
+          name: "Ozempic®",
+          subtitle: "Semaglutide injection",
+          image: "/ozempic.webp",
+          highlight: "Primarily prescribed for type 2 diabetes management",
+        },
+      ],
+      benefits: [
+        "Once-weekly administration",
+        "Supports appetite regulation and metabolic function",
+        "Compounded versions may be available when clinically appropriate",
+      ],
+    },
+    tirzepatide: {
+      name: "Tirzepatide",
+      tagline: "Dual GLP-1 & GIP action",
+      description:
+        "Tirzepatide targets two hormone pathways involved in glucose regulation, appetite signaling, and metabolic function, delivering strong clinical results in weight management.",
+      brands: [
+        {
+          id: "zepbound",
+          name: "Zepbound®",
+          subtitle: "Tirzepatide injection",
+          image: "/zepbound.webp",
+          highlight: "Clinical trials show reductions of up to ~20% body weight (results may vary)",
+        },
+        {
+          id: "mounjaro",
+          name: "Mounjaro®",
+          subtitle: "Tirzepatide injection",
+          image: "/mounjaro.webp",
+          highlight: "Primarily used for type 2 diabetes management",
+        },
+      ],
+      benefits: [
+        "Dual hormone receptor activity",
+        "Once-weekly administration",
+        "Supports long-term weight management",
+        "Compounded options may be considered when appropriate",
+      ],
+    },
     products: [
       {
         id: "ozempic",
         name: "Ozempic®",
         subtitle: "Semaglutide Injection",
         image: "/ozempic.webp",
-        description: "Ozempic may be prescribed off-label to support weight management.",
+        description: "Ozempic® contains semaglutide and is primarily prescribed for type 2 diabetes management.",
         benefits: [
           "FDA-approved for type 2 diabetes",
-          "Off-label use for weight loss",
+          "Semaglutide injection",
           "Once-weekly self-injection",
         ],
         color: "from-blue-500/20 to-indigo-500/10",
@@ -114,11 +245,10 @@ export const homeContent = {
         name: "Wegovy®",
         subtitle: "Semaglutide Injection",
         image: "/wegovy.webp",
-        description:
-          "FDA-approved Wegovy supports chronic weight management under medical supervision.",
+        description: "Wegovy® supports chronic weight management under medical supervision. Up to 15% body weight loss (results may vary).",
         benefits: [
           "FDA-approved for chronic weight management",
-          "Supported by clinical studies for weight reduction",
+          "Up to 15% body weight loss (results may vary)",
           "Once-weekly injectable medication",
         ],
         color: "from-teal-500/20 to-cyan-500/10",
@@ -128,10 +258,10 @@ export const homeContent = {
         name: "Mounjaro®",
         subtitle: "Tirzepatide Injection",
         image: "/mounjaro.webp",
-        description: "Mounjaro may support off-label weight management when medically prescribed.",
+        description: "Mounjaro® contains tirzepatide and is primarily used for type 2 diabetes management.",
         benefits: [
           "FDA-approved for type 2 diabetes",
-          "Off-label use for weight loss",
+          "Tirzepatide injection",
           "Once-weekly injectable treatment",
         ],
         color: "from-amber-500/20 to-orange-500/10",
@@ -141,10 +271,10 @@ export const homeContent = {
         name: "Zepbound®",
         subtitle: "Tirzepatide Injection",
         image: "/zepbound.webp",
-        description: "Zepbound is FDA-approved for chronic weight management in adults.",
+        description: "Zepbound® is FDA-approved for chronic weight management. Clinical trials show reductions of up to ~20% body weight (results may vary).",
         benefits: [
           "FDA-approved for chronic weight management",
-          "Clinical studies show sustained weight reduction",
+          "Up to ~20% body weight loss (results may vary)",
           "Once-weekly medically supervised injection",
         ],
         color: "from-violet-500/20 to-purple-500/10",
@@ -177,48 +307,237 @@ export const homeContent = {
       },
     ],
   },
-  medicalFirst: {
-    title: "Medical-First",
-    titleHighlight: "Patient-Centered",
+  howItWorks: {
+    eyebrow: "Process",
+    title: "How it works in",
+    titleHighlight: "simple 4 steps",
     description:
-      "Our care is built on trust, expertise, and personalized support ",
-    features: [
+      "A clear path from the first question to the first results. No waiting rooms, no guesswork.",
+    disclaimer: "Prescription approval is subject to the doctor's approval.",
+    steps: [
+      {
+        id: "quiz",
+        title: "Complete a 5-minute health quiz",
+        description:
+          "Share your medical history, current medications, and weight goals. A care team will connect with you to understand your health goals and medication preferences.",
+        icon: "clipboard-list" as const,
+      },
+      {
+        id: "consult",
+        title: "Consult with a physician",
+        description:
+          "Connect with a board-certified doctor through a secure consultation. Your provider evaluates your health profile and creates a personalized treatment plan.",
+        icon: "video" as const,
+      },
+      {
+        id: "prescribe",
+        title: "Receive prescription & medication delivery",
+        description:
+          "If clinically appropriate, your physician approves the prescription and coordinates fulfillment through a licensed U.S. pharmacy. Your medication is shipped directly to your home within 3–5 business days.",
+        icon: "package" as const,
+      },
+      {
+        id: "track",
+        title: "Track your progress",
+        description:
+          "Access regular check-ins, treatment adjustments, and continued guidance from your care team throughout your weight management journey.",
+        icon: "trending-up" as const,
+      },
+    ],
+  },
+  eligibility: {
+    eyebrow: "Eligibility",
+    title: "Who",
+    titleHighlight: "qualifies",
+    description:
+      "Eligibility is determined individually by a licensed physician after reviewing your health profile. Our quick assessment helps you understand whether physician-guided GLP-1 therapy may be appropriate for you.",
+    qualifies: [
+      "Adults seeking physician-guided weight management",
+      "Patients with obesity, overweight, or related metabolic conditions",
+      "Individuals with BMI and health history reviewed by a licensed clinician",
+      "Patients in states where our licensed physicians provide telehealth care (50 states)",
+      "Those committed to ongoing medical supervision and lifestyle support",
+    ],
+    note: "A licensed healthcare provider makes the final determination. GLP-1 medications are not appropriate for everyone. Complete our eligibility quiz to begin.",
+    cta: "Start My Evaluation",
+  },
+  benefits: {
+    eyebrow: "Benefits",
+    title: "Everything is included in",
+    titleHighlight: "your program",
+    items: [
       {
         id: "consultations",
-        title: "Board-Certified Physicians Only",
-        description: "Every consultation is with a licensed physician. You receive real medical expertise every time.",
+        title: "1:1 doctor consultations",
+        description: "Same-day virtual visits with licensed physicians. No waiting rooms.",
         icon: "stethoscope" as const,
       },
       {
+        id: "medications",
+        title: "Six GLP-1 options",
+        description: "Access to branded and compounded therapies when clinically appropriate.",
+        icon: "pill" as const,
+      },
+      {
+        id: "delivery",
+        title: "Discreet home delivery",
+        description: "Pharmacy-managed shipping with dosing instructions and medication guides.",
+        icon: "truck" as const,
+      },
+      {
         id: "monitoring",
-        title: "100% HIPAA Compliant & Private",
-        description: "Your health information is securely encrypted. We never sell or share your data with third parties.",
+        title: "Ongoing health monitoring",
+        description: "Regular check-ins to adjust your plan and ensure safe, effective progress.",
         icon: "activity" as const,
       },
       {
         id: "support",
-        title: "Optional Medication Delivery",
-        description: "We coordinate with U.S.-licensed pharmacies. Medication home delivery is available, if preferred.",
-        icon: "users" as const,
+        title: "24/7 patient support",
+        description: `The ${brand} team is available around the clock for responsive guidance.`,
+        icon: "headphones" as const,
       },
       {
-        id: "transparent",
-        title: "Continuous Care Team Access",
-        description: "Connect with our care team for ongoing support throughout your treatment.",
+        id: "pricing",
+        title: "Transparent pricing",
+        description: "Plans from $299/month with no hidden fees or long-term contracts.",
         icon: "receipt" as const,
       },
     ],
-    comparison: {
-      title: "Ideal Physician vs. Traditional Methods",
-      rows: [
-        { label: "Physician supervision", us: true, them: false },
-        { label: "FDA-approved medications", us: true, them: false },
-        { label: "Personalized dosing", us: true, them: false },
-        { label: "Ongoing support", us: true, them: false },
-        { label: "Delivered to your door", us: true, them: false },
-        { label: "Average cost per month", us: "$299", them: "$500+" },
-      ],
-    },
+  },
+  experience: {
+    eyebrow: "Your journey",
+    title: "Your GLP-1",
+    titleHighlight: "Experience",
+    description: "What to expect throughout your treatment journey",
+    items: [
+      {
+        title: "Understanding Your Treatment",
+        text: "Learn how your GLP-1 medication works, what changes to expect, and how your plan is designed around your health goals.",
+      },
+      {
+        title: "Building Healthy Habits",
+        text: "Combine your medication plan with nutrition, activity, and lifestyle strategies that support long-term progress.",
+      },
+      {
+        title: "Personalized Progress Tracking",
+        text: "Your care team monitors your response, reviews your results, and helps optimize your treatment over time.",
+      },
+      {
+        title: "Managing Your Experience",
+        text: "Receive guidance on common adjustments, questions, and concerns as your body adapts to therapy.",
+      },
+      {
+        title: "Staying Consistent",
+        text: "Ongoing support helps you stay informed, motivated, and aligned with your health goals.",
+      },
+    ],
+  },
+  pricing: {
+    eyebrow: "Pricing",
+    title: "Simple, transparent",
+    titleHighlight: "plans",
+    description:
+      "No surprise fees. No long-term contracts. Everything you need for physician-guided weight loss.",
+    plans: [
+      {
+        name: "Complete care plan",
+        price: "$299",
+        period: "/month",
+        pricePrefix: "Starting at",
+        description: "Medication and ongoing support.",
+        features: [
+          "Dosage adjustments",
+          "24/7 care team access",
+          "Discreet pharmacy delivery",
+        ],
+        highlighted: true,
+      },
+      {
+        name: "Care Team Consultation only",
+        price: "Free",
+        period: " initial visit",
+        description: "Schedule a no-obligation virtual consultation to discuss your options.",
+        features: [
+          "Same-day telehealth visit",
+          "Personalized health assessment",
+          "Treatment plan recommendation",
+          "No commitment required",
+        ],
+        highlighted: false,
+      },
+    ],
+    disclaimer:
+      "Pricing may vary based on medication selection and insurance. A licensed provider determines the most appropriate treatment for your individual needs.",
+    cta: "Start My Evaluation",
+  },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Frequently Asked Questions",
+    titleHighlight: "(FAQs)",
+    items: [
+      {
+        id: "home-faq-1",
+        question: "How does the GLP-1 weight loss program work?",
+        answer:
+          "The program uses GLP-1 medications that help regulate appetite, support blood sugar control, and assist with weight management under physician supervision.",
+      },
+      {
+        id: "home-faq-2",
+        question: "Who is eligible for the GLP-1 program?",
+        answer:
+          "Eligibility is based on factors like BMI, medical history, health goals, and overall suitability determined by a licensed physician.",
+      },
+      {
+        id: "home-faq-3",
+        question: "How much weight can I lose with GLP-1 treatment?",
+        answer:
+          "Results vary by individual. Many patients experience meaningful weight loss when medication is combined with healthy lifestyle changes.",
+      },
+      {
+        id: "home-faq-4",
+        question: "Is GLP-1 weight loss treatment safe?",
+        answer:
+          "GLP-1 medications are prescribed after a medical evaluation and monitored by healthcare professionals to support safe use.",
+      },
+      {
+        id: "home-faq-5",
+        question: "What are common side effects?",
+        answer:
+          "Some people may experience nausea, digestive changes, decreased appetite, or other mild effects, especially when starting treatment.",
+      },
+      {
+        id: "home-faq-6",
+        question: "Do I need a prescription for GLP-1 medication?",
+        answer:
+          "Yes. GLP-1 medications require evaluation and approval from a licensed healthcare provider.",
+      },
+      {
+        id: "home-faq-7",
+        question: "How does medication delivery work?",
+        answer:
+          "If approved, your prescription is fulfilled through a licensed pharmacy and delivered conveniently to your doorstep.",
+      },
+      {
+        id: "home-faq-8",
+        question: "What does the program include?",
+        answer:
+          "The program may include physician guidance, personalized treatment planning, progress monitoring, and ongoing support.",
+      },
+      {
+        id: "home-faq-9",
+        question: "How much does the GLP-1 weight loss program cost?",
+        answer:
+          "The initial evaluation fee is $75. Medication costs vary based on the treatment plan and services included. Your provider can explain pricing details during the consultation.",
+      },
+    ],
+  },
+  finalCta: {
+    title: "Start Your Weight Loss",
+    titleHighlight: "Journey Today",
+    description:
+      "Join thousands of patients who have transformed their health with physician-guided GLP-1 therapy.",
+    primaryCta: "Start My Evaluation",
+    secondaryCta: "See How it Works",
   },
   testimonials: {
     title: "Real People,",
@@ -249,68 +568,6 @@ export const homeContent = {
         rating: 5,
       },
     ],
-  },
-  faq: {
-    title: "Frequently Asked",
-    titleHighlight: "Questions",
-    items: [
-      {
-        id: "faq-1",
-        question: "Do I need insurance to get started?",
-        answer:
-          "No. You can get started without insurance. Our consultation fee is $75 out-of-pocket, and medication costs vary depending on insurance coverage or discount programs.",
-      },
-      {
-        id: "faq-2",
-        question: "Am I a candidate for GLP-1 medication?",
-        answer:
-          "GLP-1 medications may be considered for adults with a BMI of 27 or higher with at least one weight-related condition, or a BMI of 30 or higher. A licensed physician will determine eligibility based on your full health history.",
-      },
-      {
-        id: "faq-3",
-        question: "How quickly will I receive my prescription?",
-        answer:
-          "Most patients receive a prescription within 24–48 hours after their consultation, if approved. Pharmacy fulfillment times vary, with some offering same-day pickup.",
-      },
-      {
-        id: "faq-4",
-        question: "What's the difference between Ozempic and Wegovy?",
-        answer:
-          "Both contain semaglutide. Wegovy is FDA-approved for weight management, while Ozempic may be prescribed off-label. A licensed physician will determine the most appropriate option based on your health profile.",
-      },
-      {
-        id: "faq-5",
-        question: "Are the consultations really with real doctors?",
-        answer:
-          "Yes. All consultations are conducted by licensed, board-certified physicians who evaluate your health and treatment options.",
-      },
-      {
-        id: "faq-6",
-        question: "Can I cancel my membership at any time?",
-        answer:
-          "Yes. Monthly memberships can be canceled at any time before the next billing date with no penalties. Annual plans are prorated based on usage.",
-      },
-      {
-        id: "faq-7",
-        question: "Do you prescribe compounded semaglutide?",
-        answer:
-          "We may work with licensed compounding pharmacies when appropriate, especially if brand-name medications are unavailable or cost-prohibitive.",
-      },
-      {
-        id: "faq-8",
-        question: "What states do you operate in?",
-        answer:
-          "We provide telehealth consultations across the U.S., with physicians licensed in the states where they practice to ensure compliant care.",
-      },
-    ],
-  },
-  finalCta: {
-    title: "Start Your Weight Loss",
-    titleHighlight: "Journey Today",
-    description:
-      "Join thousands of patients who have transformed their health with physician-guided GLP-1 therapy.",
-    primaryCta: "Get Started",
-    secondaryCta: "Check Eligibility",
   },
   footer: {
     newsletter: {
@@ -370,3 +627,5 @@ export const homeContent = {
       "Ideal Physician Weight Loss provides telehealth services and does not replace emergency medical care. Individual results may vary. Medications are prescribed only when clinically appropriate.",
   },
 } as const;
+
+export type HomeContent = typeof homeContent;

@@ -38,7 +38,7 @@ export function HeroSection() {
               <circle cx="79" cy="79" r="77" />
               <text>
                 <textPath href="#spinPath" textLength="350">
-                  START YOUR EVALUATION&#160;&#160;•&#160;&#160;START YOUR EVALUATION&#160;&#160;•&#160;&#160;
+                  START MY EVALUATION&#160;&#160;•&#160;&#160;START MY EVALUATION&#160;&#160;•&#160;&#160;
                 </textPath>
               </text>
             </svg>

@@ -132,14 +132,16 @@ export function MedicationWhatIs({ content }: { content: MedicationLandingConten
                 </StaggerChild>
               ))}
             </Stagger>
-            <ul className="mt-8 flex flex-wrap gap-2">
-              {whatIs.highlights.map((h) => (
-                <li key={h} className="hub-trust-badge text-xs sm:text-sm">
-                  <CheckCircle2 className="size-3.5" aria-hidden />
-                  {h}
-                </li>
-              ))}
-            </ul>
+            {whatIs.highlights.length > 0 ? (
+              <ul className="mt-8 flex flex-wrap gap-2">
+                {whatIs.highlights.map((h) => (
+                  <li key={h} className="hub-trust-badge text-xs sm:text-sm">
+                    <CheckCircle2 className="size-3.5" aria-hidden />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
         </div>
       </SectionContainer>
@@ -149,6 +151,7 @@ export function MedicationWhatIs({ content }: { content: MedicationLandingConten
 
 export function MedicationMechanism({ content }: { content: MedicationLandingContent }) {
   const { mechanism } = content;
+  if (!mechanism || mechanism.steps.length === 0) return null;
 
   return (
     <ScrollSection id="mechanism" theme="dark" snap={false} className="noise py-20 sm:py-28">
@@ -160,7 +163,9 @@ export function MedicationMechanism({ content }: { content: MedicationLandingCon
               {mechanism.title}{" "}
               <span className="text-gradient">{mechanism.titleHighlight}</span>
             </DisplayHeading>
-            <p className="mt-6 text-white/55">{mechanism.description}</p>
+            {mechanism.description ? (
+              <p className="mt-6 text-white/55">{mechanism.description}</p>
+            ) : null}
             <RevealLine className="mt-10 bg-accent/30" delay={0.2} />
           </Reveal>
 
@@ -242,7 +247,9 @@ export function MedicationEligibility({ content }: { content: MedicationLandingC
             {eligibility.title}{" "}
             <span className="text-gradient">{eligibility.titleHighlight}</span>
           </DisplayHeading>
-          <p className="mt-5 text-base leading-relaxed text-ink-muted">{eligibility.description}</p>
+          {eligibility.description ? (
+            <p className="mt-5 text-base leading-relaxed text-ink-muted">{eligibility.description}</p>
+          ) : null}
         </Reveal>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -272,7 +279,9 @@ export function MedicationEligibility({ content }: { content: MedicationLandingC
         </div>
 
         <Reveal delay={0.15} className="mt-8 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-          <p className="max-w-2xl text-sm text-ink-subtle">{eligibility.note}</p>
+          {eligibility.note ? (
+            <p className="max-w-2xl text-sm text-ink-subtle">{eligibility.note}</p>
+          ) : null}
           <MagneticButton>
             <LinkButton href={siteConfig.bookingUrl} size="lg" className="rounded-full shrink-0">
               {eligibility.cta}
@@ -297,31 +306,37 @@ export function MedicationExpectedResults({ content }: { content: MedicationLand
             {expectedResults.title}{" "}
             <span className="text-gradient">{expectedResults.titleHighlight}</span>
           </DisplayHeading>
-          <p className="mt-5 text-white/55">{expectedResults.description}</p>
+          {expectedResults.description ? (
+            <p className="mt-5 text-white/55">{expectedResults.description}</p>
+          ) : null}
         </Reveal>
 
-        <Stagger className="mt-12 grid gap-6 sm:grid-cols-3" stagger={0.1}>
-          {expectedResults.stats.map((stat) => (
-            <StaggerChild key={stat.label}>
-              <BentoCard variant="glass" className="text-center" hover={false}>
-                <span className="font-display text-4xl font-bold text-lime-bright sm:text-5xl">{stat.value}</span>
-                <p className="mt-2 font-display text-lg font-semibold text-white">{stat.label}</p>
-                <p className="mt-1 text-sm text-white/50">{stat.detail}</p>
-              </BentoCard>
-            </StaggerChild>
-          ))}
-        </Stagger>
+        {expectedResults.stats.length > 0 ? (
+          <Stagger className="mt-12 grid gap-6 sm:grid-cols-3" stagger={0.1}>
+            {expectedResults.stats.map((stat) => (
+              <StaggerChild key={stat.label}>
+                <BentoCard variant="glass" className="text-center" hover={false}>
+                  <span className="font-display text-4xl font-bold text-lime-bright sm:text-5xl">{stat.value}</span>
+                  <p className="mt-2 font-display text-lg font-semibold text-white">{stat.label}</p>
+                  <p className="mt-1 text-sm text-white/50">{stat.detail}</p>
+                </BentoCard>
+              </StaggerChild>
+            ))}
+          </Stagger>
+        ) : null}
 
-        <Stagger className="mt-10 space-y-4" stagger={0.08}>
-          {expectedResults.timeline.map((item) => (
-            <StaggerChild key={item.period}>
-              <div className="grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 lg:grid-cols-[8rem_1fr]">
-                <span className="text-xs font-semibold uppercase tracking-wider text-lime-bright">{item.period}</span>
-                <p className="text-sm leading-relaxed text-white/65 sm:text-base">{item.text}</p>
-              </div>
-            </StaggerChild>
-          ))}
-        </Stagger>
+        {expectedResults.timeline.length > 0 ? (
+          <Stagger className={cn("space-y-4", expectedResults.stats.length > 0 ? "mt-10" : "mt-12")} stagger={0.08}>
+            {expectedResults.timeline.map((item) => (
+              <StaggerChild key={item.period}>
+                <div className="grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 lg:grid-cols-[8rem_1fr]">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-lime-bright">{item.period}</span>
+                  <p className="text-sm leading-relaxed text-white/65 sm:text-base">{item.text}</p>
+                </div>
+              </StaggerChild>
+            ))}
+          </Stagger>
+        ) : null}
       </SectionContainer>
     </ScrollSection>
   );
@@ -423,6 +438,7 @@ export function MedicationComparison({ content }: { content: MedicationLandingCo
 
 export function MedicationSafety({ content }: { content: MedicationLandingContent }) {
   const { safety } = content;
+  if (!safety || (safety.items.length === 0 && !safety.warning)) return null;
 
   return (
     <ScrollSection id="safety" theme="dark" snap={false} className="noise py-20 sm:py-28">
@@ -445,12 +461,14 @@ export function MedicationSafety({ content }: { content: MedicationLandingConten
           ))}
         </Stagger>
 
-        <Reveal delay={0.15} className="mt-8">
-          <div className="flex gap-4 rounded-2xl border border-amber-500/20 bg-amber-500/10 p-6">
-            <AlertTriangle className="size-6 shrink-0 text-amber-400" aria-hidden />
-            <p className="text-sm leading-relaxed text-white/70">{safety.warning}</p>
-          </div>
-        </Reveal>
+        {safety.warning ? (
+          <Reveal delay={0.15} className="mt-8">
+            <div className="flex gap-4 rounded-2xl border border-amber-500/20 bg-amber-500/10 p-6">
+              <AlertTriangle className="size-6 shrink-0 text-amber-400" aria-hidden />
+              <p className="text-sm leading-relaxed text-white/70">{safety.warning}</p>
+            </div>
+          </Reveal>
+        ) : null}
       </SectionContainer>
     </ScrollSection>
   );
@@ -458,6 +476,7 @@ export function MedicationSafety({ content }: { content: MedicationLandingConten
 
 export function MedicationSideEffects({ content }: { content: MedicationLandingContent }) {
   const { sideEffects } = content;
+  if (!sideEffects || (sideEffects.common.length === 0 && sideEffects.serious.length === 0)) return null;
 
   return (
     <ScrollSection theme="light" snap={false} className="py-20 sm:py-28">
@@ -566,14 +585,14 @@ export function MedicationLandingPage({ content }: { content: MedicationLandingC
     <>
       <MedicationHero content={content} />
       <MedicationWhatIs content={content} />
-      <MedicationMechanism content={content} />
+      {content.mechanism ? <MedicationMechanism content={content} /> : null}
       <MedicationBenefits content={content} />
       <MedicationEligibility content={content} />
       <MedicationExpectedResults content={content} />
       <MedicationTreatment content={content} />
       <MedicationComparison content={content} />
-      <MedicationSafety content={content} />
-      <MedicationSideEffects content={content} />
+      {content.safety ? <MedicationSafety content={content} /> : null}
+      {content.sideEffects ? <MedicationSideEffects content={content} /> : null}
       <MedicationFaq content={content} />
       <MedicationCta content={content} />
     </>

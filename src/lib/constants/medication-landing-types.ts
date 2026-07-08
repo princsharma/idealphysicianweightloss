@@ -31,7 +31,7 @@ export type MedicationLandingContent = {
     paragraphs: readonly string[];
     highlights: readonly string[];
   };
-  mechanism: {
+  mechanism?: {
     eyebrow: string;
     title: string;
     titleHighlight: string;
@@ -74,14 +74,14 @@ export type MedicationLandingContent = {
     titleHighlight: string;
     products: readonly MedicationProduct[];
   };
-  safety: {
+  safety?: {
     eyebrow: string;
     title: string;
     titleHighlight: string;
     items: readonly string[];
     warning: string;
   };
-  sideEffects: {
+  sideEffects?: {
     eyebrow: string;
     title: string;
     titleHighlight: string;

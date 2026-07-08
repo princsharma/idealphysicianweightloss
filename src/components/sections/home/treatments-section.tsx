@@ -16,7 +16,7 @@ export function TreatmentsSection() {
       <SectionContainer className="flex flex-1 flex-col justify-center">
         <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <Reveal className="max-w-2xl" direction="left" distance={28}>
-            <Eyebrow className="text-accent">Treatments</Eyebrow>
+            <Eyebrow className="text-accent">{medications.eyebrow}</Eyebrow>
             <DisplayHeading className="text-ink">
               {medications.title}{" "}
               <span className="text-gradient">{medications.titleHighlight}</span>
