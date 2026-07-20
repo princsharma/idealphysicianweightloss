@@ -86,10 +86,6 @@ export function createPageMetadata(options: PageMetadataOptions): Metadata {
       description,
       images: [ogImage ?? SEO_DEFAULTS.ogImage.url],
     },
-    icons: {
-      icon: [{ url: "/logo.webp", type: "image/webp" }],
-      apple: [{ url: "/logo.webp", type: "image/webp" }],
-    },
     verification: buildVerification(),
   };
 }
