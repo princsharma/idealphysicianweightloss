@@ -10,6 +10,7 @@ function getEnvVar(key: string, required = false): string | undefined {
 
 export const env = {
   siteUrl: getEnvVar("NEXT_PUBLIC_SITE_URL") ?? "http://localhost:3000",
+  gtmId: getEnvVar("NEXT_PUBLIC_GTM_ID") ?? "GTM-WNBBVQZV",
   cms: {
     provider: getEnvVar("CMS_PROVIDER"),
     apiUrl: getEnvVar("CMS_API_URL"),

@@ -1,6 +1,8 @@
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Baloo_2, DM_Sans, Outfit } from "next/font/google";
 
 import { defaultMetadata } from "@/config/metadata";
+import { env } from "@/config/env";
 import { SkipLink } from "@/components/layout";
 import "@/app/globals.css";
 
@@ -39,6 +41,7 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${dmSans.variable} ${baloo2.variable} h-full antialiased`}
     >
+      <GoogleTagManager gtmId={env.gtmId} />
       <body className="min-h-full bg-background font-sans text-foreground">
         <SkipLink />
         {children}
