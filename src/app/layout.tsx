@@ -41,6 +41,12 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${dmSans.variable} ${baloo2.variable} h-full antialiased`}
     >
+      <head>
+        <meta
+          name="google-site-verification"
+          content={env.googleSiteVerification}
+        />
+      </head>
       <GoogleTagManager gtmId={env.gtmId} />
       <body className="min-h-full bg-background font-sans text-foreground">
         <SkipLink />
