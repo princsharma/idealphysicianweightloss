@@ -45,7 +45,7 @@ export const aboutContent = {
     role: `Founder & CEO, ${brand}`,
     linkLabel: "Read More About Our Founder",
     image: {
-      src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=700&q=80",
+      src: "/hero/owner-deep.webp",
       alt: "Deep Chand Sharma, Founder & CEO",
     },
   },
