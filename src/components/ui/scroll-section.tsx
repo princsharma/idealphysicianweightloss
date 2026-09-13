@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -9,6 +9,7 @@ interface ScrollSectionProps {
   theme?: "dark" | "light";
   /** @deprecated Snap scroll removed — kept for API compatibility */
   snap?: false | "screen" | "tall";
+  ref?: Ref<HTMLElement>;
 }
 
 export function ScrollSection({
@@ -16,9 +17,11 @@ export function ScrollSection({
   className,
   id,
   theme = "dark",
+  ref,
 }: ScrollSectionProps) {
   return (
     <section
+      ref={ref}
       id={id}
       className={cn(
         "relative flex flex-col overflow-hidden",

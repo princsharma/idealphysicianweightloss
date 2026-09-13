@@ -1,4 +1,11 @@
 import { siteConfig } from "@/config/site";
+import {
+  PROGRAM_CONSULTATION_PRICE,
+  PROGRAM_IMPORTANT_INFO,
+  PROGRAM_LOWEST_RATE,
+  PROGRAM_POPULAR_PLAN,
+  PROGRAM_PRICING_DISCLAIMER,
+} from "@/lib/constants/program-catalog";
 
 const brand = siteConfig.name;
 
@@ -7,11 +14,10 @@ export const pricingContent = {
     eyebrow: "Transparent pricing",
     title: "Simple plans,",
     titleHighlight: "no surprises",
-    description:
-      "Clear monthly pricing with physician consultation, medication, and ongoing support included. No hidden fees or long-term contracts.",
+    description: `Start with a ${PROGRAM_CONSULTATION_PRICE} physician consultation, then choose the plan length that fits. The longer you stay, the lower your monthly rate.`,
     trustSignals: [
-      { label: "From $299/month", icon: "receipt" as const },
-      { label: "No hidden fees", icon: "shield" as const },
+      { label: `Consultation at ${PROGRAM_CONSULTATION_PRICE}`, icon: "receipt" as const },
+      { label: "No insurance required", icon: "shield" as const },
       { label: "Cancel anytime", icon: "badge-check" as const },
     ],
   },
@@ -19,7 +25,7 @@ export const pricingContent = {
     eyebrow: "Overview",
     title: "What you",
     titleHighlight: "pay for",
-    description: `${brand} is the merchant of record for all charges. Your plan includes everything needed for physician-guided GLP-1 weight loss — not just medication.`,
+    description: `${brand} is the merchant of record for all charges. Rates combine medication and ongoing care fees for illustration — what you actually pay depends on the treatment prescribed, your dosage, and the plan you choose.`,
     highlights: [
       "Licensed physician evaluation and ongoing consultations",
       "GLP-1 medication when clinically prescribed",
@@ -41,7 +47,8 @@ export const pricingContent = {
       {
         id: "meds",
         title: "GLP-1 medication",
-        description: "FDA-approved semaglutide or tirzepatide options, or compounded alternatives when clinically appropriate.",
+        description:
+          "FDA-approved semaglutide or tirzepatide options, prescribed off-label where clinically appropriate, or compounded formulations that are not FDA-approved.",
         icon: "pill" as const,
       },
       {
@@ -72,56 +79,21 @@ export const pricingContent = {
   },
   plans: {
     eyebrow: "Plans",
-    title: "Compare",
-    titleHighlight: "plans",
-    description: "Choose the path that's right for you. Upgrade to a complete care plan anytime after your consultation.",
-    items: [
-      {
-        id: "complete",
-        name: "Complete care plan",
-        price: "$299",
-        period: "/month",
-        description: "Everything you need for physician-guided GLP-1 weight loss.",
-        features: [
-          "Licensed physician evaluation",
-          "GLP-1 medication included",
-          "Ongoing dosage adjustments",
-          "24/7 care team access",
-          "Discreet pharmacy delivery",
-          "No long-term contract",
-        ],
-        highlighted: true,
-        cta: "Get started",
-      },
-      {
-        id: "consult",
-        name: "Free consultation",
-        price: "$0",
-        period: " initial visit",
-        description: "Explore your options with no obligation.",
-        features: [
-          "Same-day telehealth visit",
-          "Personalized health assessment",
-          "Treatment plan recommendation",
-          "No commitment required",
-        ],
-        highlighted: false,
-        cta: "Book free visit",
-      },
-    ],
-    disclaimer:
-      "Pricing may vary based on medication selection, dosage, and geographic location. A licensed provider determines the most appropriate treatment for your individual needs.",
+    title: "Choose a plan",
+    titleHighlight: "that fits",
+    description:
+      "Start with a one-time consultation, or commit to a longer plan and your monthly rate drops automatically. No codes to ask for.",
+    trackLabel: "Rates depend on the medication prescribed",
+    disclaimer: PROGRAM_PRICING_DISCLAIMER,
   },
   medications: {
     eyebrow: "Medications",
-    title: "Medication",
-    titleHighlight: "pricing notes",
-    description: "Medication fees are separate from consultation fees and may be billed on your behalf when medically appropriate.",
+    title: "Important",
+    titleHighlight: "information",
+    description: "Read this before you choose a plan.",
     items: [
-      "Fees charged for prescription medications are separate from consultation fees.",
+      ...PROGRAM_IMPORTANT_INFO,
       `${brand} does not enroll patients in automatic subscription programs unless explicitly stated at the time of purchase.`,
-      "Compounded GLP-1 options may offer cost-effective alternatives with the same active ingredients under physician supervision.",
-      "Branded medications (Wegovy®, Ozempic®, Zepbound®, Mounjaro®) pricing varies — your physician helps select the best option.",
       "Once dispensed or shipped, medication charges are non-refundable except where required by law.",
     ],
   },
@@ -183,7 +155,7 @@ export const pricingContent = {
       "Some manufacturers offer patient assistance programs — inquire during your consultation.",
       `${brand} is the merchant of record. Contact support before initiating a chargeback with your financial institution.`,
     ],
-    note: "We do not guarantee insurance reimbursement. Self-pay plans start at $299/month with no hidden fees.",
+    note: `We do not guarantee insurance reimbursement. No insurance is required — self-pay plans run as low as ${PROGRAM_LOWEST_RATE}/month on the longest term.`,
   },
   faq: {
     eyebrow: "Pricing FAQ",
@@ -193,14 +165,12 @@ export const pricingContent = {
       {
         id: "pr-faq-1",
         question: "How much does the program cost?",
-        answer:
-          "Plans start at $299/month, which includes your physician consultation, medication, and ongoing support. There are no hidden fees or long-term contracts.",
+        answer: `Your initial physician consultation is ${PROGRAM_CONSULTATION_PRICE}. Ongoing plans range from ${PROGRAM_POPULAR_PLAN.prices.semaglutide}/month on our most popular 3-month plan down to ${PROGRAM_LOWEST_RATE}/month on the 12-month plan, depending on the medication prescribed and the plan length you choose.`,
       },
       {
         id: "pr-faq-2",
-        question: "Are there any additional costs?",
-        answer:
-          "In addition to your monthly plan, there may be costs related to consultations and any required medical tests. Medication pricing varies by formulation.",
+        question: `Is the ${PROGRAM_CONSULTATION_PRICE} fee for the medication?`,
+        answer: `No. The ${PROGRAM_CONSULTATION_PRICE} fee covers your initial clinical evaluation. Medication is separate and is only prescribed when clinically appropriate. What you pay for medication depends on the treatment prescribed, dosage, pharmacy, and any applicable coverage.`,
       },
       {
         id: "pr-faq-3",
@@ -219,9 +189,10 @@ export const pricingContent = {
     viewAllLabel: "View all FAQs",
   },
   cta: {
-    title: "Start for",
-    titleHighlight: "$299/month",
-    description: "Physician consultation, GLP-1 medication, and ongoing support — all in one transparent plan.",
+    title: "Talk with a physician for",
+    titleHighlight: PROGRAM_CONSULTATION_PRICE,
+    description:
+      "Understand your treatment options before deciding whether to continue. A prescription is never guaranteed.",
     primaryCta: "Get started",
     secondaryCta: "View how it works",
     secondaryHref: "/weight-loss/how-it-works",

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import { HeaderMedicationsNav } from "@/components/layout/header-medications-nav";
 import { Logo } from "@/components/layout/logo";
-import { HeaderStateSelect } from "@/components/layout/header-state-select";
 import { siteConfig } from "@/config/site";
 
 const navLinksBeforeGlp = [
@@ -13,7 +12,7 @@ const navLinksBeforeGlp = [
 ];
 
 const navLinksAfterGlp = [
-  { label: "Weight Loss", href: "/weight-loss" },
+  { label: "Doctors", href: "/physicians" },
   { label: "FAQ", href: "/weight-loss/faq" },
   { label: "About", href: "/about" },
 ];
@@ -70,9 +69,11 @@ export function Header() {
           </nav>
 
           <div className="mary-header__cta">
-            <HeaderStateSelect />
             <a href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`} className="mary-header__phone">
               {siteConfig.contact.phone}
+            </a>
+            <a {...bookingLinkProps} className="mary-btn--lime mary-btn--sm">
+              Start My Evaluation
             </a>
           </div>
 
@@ -105,7 +106,6 @@ export function Header() {
               </a>
             ))}
           </nav>
-          <HeaderStateSelect variant="drawer" onSelect={closeDrawer} />
           <a {...bookingLinkProps} className="mary-btn--lime mary-drawer__cta" onClick={closeDrawer}>
             Start My Evaluation
           </a>

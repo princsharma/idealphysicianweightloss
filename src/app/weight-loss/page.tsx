@@ -20,7 +20,7 @@ import "@/styles/weight-loss-page.css";
 
 export const metadata = createMetadata({
   title: "Medical Weight Loss Program",
-  description: `Physician-guided GLP-1 weight loss with semaglutide & tirzepatide — same-day telehealth, FDA-approved medications, and plans from $299/month at ${siteConfig.name}.`,
+  description: `Physician-guided GLP-1 weight loss with semaglutide & tirzepatide — same-day telehealth, FDA-approved medications, and plans from $149/month at ${siteConfig.name}.`,
   openGraph: {
     title: `Medical Weight Loss | ${siteConfig.name}`,
     description:

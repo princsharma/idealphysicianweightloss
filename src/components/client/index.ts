@@ -5,6 +5,7 @@ export { Carousel, HorizontalScroll } from "@/components/client/carousel";
 export { HeroCarousel } from "@/components/client/hero-carousel";
 export { HeroStartBand } from "@/components/client/hero-start-band";
 export { HeroReveal } from "@/components/client/hero-reveal";
-export { TreatmentsScroll } from "@/components/client/treatments-scroll";
+export { HeroMedicationShowcase } from "@/components/client/hero-medication-showcase";
+export { StoryBanner } from "@/components/client/story-banner";
 export { TrustMarquee } from "@/components/client/trust-marquee";
 export { Accordion } from "@/components/client/accordion";

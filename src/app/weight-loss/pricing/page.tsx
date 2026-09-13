@@ -18,11 +18,11 @@ import "@/styles/hub-page.css";
 
 export const metadata = createMetadata({
   title: "Pricing",
-  description: `Transparent GLP-1 weight loss pricing from $299/month at ${siteConfig.name} — physician consultation, medication, delivery, and support included.`,
+  description: `Transparent GLP-1 weight loss pricing at ${siteConfig.name} — a $39 physician consultation, then plans from $149/month with no insurance required.`,
   openGraph: {
     title: `Pricing | ${siteConfig.name}`,
     description:
-      "Compare plans, see what's included, and understand billing — no hidden fees or long-term contracts.",
+      "Compare the Kickstart, Momentum, Transform, and Beyond plans, see what's included, and understand billing.",
   },
 });
 

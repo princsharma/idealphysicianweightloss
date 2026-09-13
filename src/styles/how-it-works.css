@@ -1,0 +1,311 @@
+/* How It Works — storytelling motion. Tokens live in globals.css. */
+
+.hiw-hero {
+  min-height: 100vh;
+  padding-top: calc(var(--header-h) + 2.5rem);
+  padding-bottom: 0;
+  background-color: var(--forest-ink);
+}
+
+.hiw-hero__copy {
+  max-width: 58rem;
+}
+
+.hiw-scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.hiw-scroll-hint__line {
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(180deg, var(--lime-bright), transparent);
+  animation: hiw-drip 1.8s var(--ease) infinite;
+}
+
+@keyframes hiw-drip {
+  0%, 100% { transform: scaleY(0.45); opacity: 0.4; transform-origin: top; }
+  50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
+}
+
+.hiw-chapter {
+  position: relative;
+}
+
+.hiw-chapter__grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hiw-chapter__grid {
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - var(--header-h) - 8rem);
+  }
+
+  .hiw-chapter--media-left .hiw-chapter__media {
+    order: 0;
+  }
+
+  .hiw-chapter--media-left .hiw-chapter__copy {
+    order: 1;
+  }
+
+  .hiw-chapter--media-right .hiw-chapter__media {
+    order: 1;
+  }
+}
+
+.hiw-chapter__number {
+  font-family: var(--font-head);
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  color: var(--lime);
+  opacity: 0.18;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.2em;
+  transform-origin: left center;
+  transition: opacity 0.55s var(--ease), color 0.55s var(--ease), transform 0.55s var(--ease),
+    text-shadow 0.55s var(--ease), filter 0.55s var(--ease);
+}
+
+.hiw-chapter__number.is-active {
+  opacity: 1;
+  color: var(--lime-bright);
+  transform: scale(1.08);
+  text-shadow: 0 0 48px rgba(174, 219, 98, 0.5);
+  filter: saturate(1.15);
+}
+
+.bg-dark .hiw-chapter__number {
+  color: var(--lime-soft);
+  opacity: 0.16;
+}
+
+.bg-dark .hiw-chapter__number.is-active {
+  color: var(--lime-bright);
+  opacity: 1;
+  text-shadow: 0 0 64px rgba(174, 219, 98, 0.62);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hiw-chapter__number {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.hiw-path {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(70% 50% at 80% 0%, rgba(174, 219, 98, 0.12) 0%, transparent 55%),
+    var(--forest-ink);
+}
+
+.hiw-path__pin {
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
+  z-index: 20;
+}
+
+.hiw-path__item {
+  position: relative;
+  padding-left: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  .hiw-path__item {
+    padding-left: 7.5rem;
+  }
+}
+
+.hiw-path__index {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.22);
+  line-height: 1;
+  padding-bottom: 0.35em;
+  transform-origin: left top;
+  transition: color 0.45s var(--ease);
+}
+
+.hiw-path__index.is-active {
+  color: var(--lime-bright);
+  text-shadow: 0 0 36px rgba(174, 219, 98, 0.45);
+}
+
+.hiw-path__node {
+  position: absolute;
+  left: 4.35rem;
+  top: 0.85rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 0 6px rgba(11, 42, 22, 0.9);
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+@media (min-width: 768px) {
+  .hiw-path__node {
+    left: 6.15rem;
+  }
+}
+
+.hiw-path__node.is-active {
+  background: var(--lime-bright);
+  transform: scale(1.25);
+  box-shadow:
+    0 0 0 6px rgba(11, 42, 22, 0.9),
+    0 0 22px rgba(174, 219, 98, 0.7);
+}
+
+.hiw-path__rail {
+  position: absolute;
+  top: 0.9rem;
+  bottom: 2.5rem;
+  left: 4.6rem;
+  width: 2px;
+}
+
+@media (min-width: 768px) {
+  .hiw-path__rail {
+    left: 6.4rem;
+  }
+}
+
+.hiw-path__rail-track {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hiw-path__rail-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: linear-gradient(180deg, var(--lime-bright), var(--lime));
+  transform-origin: top;
+}
+
+.hiw-path__bead {
+  position: absolute;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -6px;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: var(--lime-bright);
+  box-shadow: 0 0 18px rgba(174, 219, 98, 0.85);
+  will-change: top;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hiw-scroll-hint__line {
+    animation: none;
+  }
+}
+
+.hiw-clinical__stage {
+  display: grid;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  align-items: center;
+}
+
+.hiw-clinical__col {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.hiw-clinical__art {
+  display: grid;
+  place-items: center;
+  order: -1;
+}
+
+.hiw-clinical__png {
+  width: min(100%, 28rem);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(18, 63, 34, 0.12));
+}
+
+.hiw-clinical__placeholder {
+  display: grid;
+  place-items: center;
+  width: min(100%, 22rem);
+  aspect-ratio: 4 / 5;
+  border: 1px dashed rgba(18, 37, 24, 0.18);
+  border-radius: 2rem;
+  background: transparent;
+}
+
+.hiw-clinical__step {
+  display: flex;
+  gap: 1rem;
+  padding: 1.35rem 1.4rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(18, 37, 24, 0.1);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.hiw-clinical__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 1rem;
+  background: var(--lime-tint);
+  color: var(--forest);
+}
+
+.hiw-clinical__num {
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--forest);
+}
+
+@media (min-width: 1024px) {
+  .hiw-clinical__stage {
+    grid-template-columns: 1fr minmax(16rem, 28%) 1fr;
+    gap: 1.5rem 2.25rem;
+  }
+
+  .hiw-clinical__art {
+    order: 0;
+  }
+
+  .hiw-clinical__col--left .hiw-clinical__step {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  .hiw-clinical__col--left .hiw-clinical__icon {
+    margin-left: 0.15rem;
+  }
+}

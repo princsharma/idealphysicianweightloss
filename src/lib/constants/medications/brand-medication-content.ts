@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { faqPageContent } from "@/lib/constants/faq-page-content";
 import { homeContent } from "@/lib/constants/home-content";
+import { PROGRAM_CONSULTATION_PRICE } from "@/lib/constants/program-catalog";
 
 import type { BrandMedicationPageContent } from "./brand-medication-types";
 import type { MedicationProduct, MedicationSlug } from "./registry";
@@ -18,12 +19,14 @@ const prescriptionDisclaimer =
   "All medications must be prescribed by a licensed provider based on medical necessity. GLP-1 medications are not suitable for everyone. Results may vary.";
 
 const accentById: Record<MedicationSlug, BrandMedicationPageContent["accent"]> = {
-  ozempic: "blue",
+  "compounded-semaglutide": "emerald",
+  "compounded-tirzepatide": "violet",
   wegovy: "teal",
-  mounjaro: "amber",
   zepbound: "violet",
-  rybelsus: "emerald",
-  "victoza-saxenda": "rose",
+  saxenda: "rose",
+  ozempic: "blue",
+  mounjaro: "amber",
+  victoza: "rose",
 };
 
 const processSteps = [
@@ -96,7 +99,7 @@ function buildBaseContent(
     title: `Physician-guided ${displayName}`,
     description: product.description,
     pricingNote:
-      "Program pricing starts at $75. Medication costs vary and are determined after provider evaluation.",
+      `A physician consultation is ${PROGRAM_CONSULTATION_PRICE}. Medication costs are separate and are determined after provider evaluation.`,
     image: product.image,
     imageAlt: `${displayName} — ${product.subtitle}`,
     primaryCta: "Start Medical Evaluation",
@@ -247,6 +250,99 @@ function buildBaseContent(
   };
 }
 
+const compoundedProcessSteps = [
+  {
+    step: "Step 1",
+    title: "Start With a Free Consultation",
+    text: "A care team member learns about your health goals and treatment expectations, and explains which options may be available to you, including compounded medications where legally permitted.",
+  },
+  {
+    step: "Step 2",
+    title: "Meet With a Licensed Provider",
+    text: "Connect with a licensed clinician through a secure video or audio visit to review your health history, BMI, medical factors, and weight management goals.",
+  },
+  {
+    step: "Step 3",
+    title: "Receive a Prescription if Clinically Appropriate",
+    text: "If appropriate, your provider issues an individual prescription. Compounded preparations are dispensed by a licensed U.S. compounding pharmacy for you specifically.",
+  },
+];
+
+const liraglutideProcessSteps = [
+  {
+    step: "Step 1",
+    title: "Begin With a Free Consultation",
+    text: "A care team member speaks with you about your health goals, preferences, and treatment interests while helping you understand available medication options based on provider recommendations.",
+  },
+  {
+    step: "Step 2",
+    title: "Meet With a Qualified Healthcare Provider",
+    text: "A licensed clinician reviews key health details, including medical history, BMI, and wellness goals, through a secure video or audio consultation.",
+  },
+  {
+    step: "Step 3",
+    title: "Receive Treatment Guidance & Prescription Approval",
+    text: "If appropriate, your provider develops a personalized plan and provides prescription guidance. Medication can be obtained through a licensed pharmacy or arranged for home delivery.",
+  },
+];
+
+const liraglutideFaqItems = [
+  {
+    id: "liraglutide-faq-1",
+    question: "What is liraglutide?",
+    answer:
+      "Liraglutide is a GLP-1 receptor agonist medication that helps regulate appetite and blood sugar levels.",
+  },
+  {
+    id: "liraglutide-faq-2",
+    question: "How does liraglutide work for weight management?",
+    answer:
+      "Liraglutide works by mimicking a natural hormone that helps control hunger, increase feelings of fullness, and support weight management.",
+  },
+  {
+    id: "liraglutide-faq-3",
+    question: "Is liraglutide an injection?",
+    answer:
+      "Yes. Liraglutide is administered as a once-daily injection under the skin, as prescribed by a healthcare provider.",
+  },
+  {
+    id: "liraglutide-faq-4",
+    question: "Who may be a candidate for liraglutide?",
+    answer:
+      "A licensed provider evaluates factors such as BMI, medical history, health goals, and overall suitability before recommending treatment.",
+  },
+  {
+    id: "liraglutide-faq-5",
+    question: "How quickly can I start liraglutide treatment?",
+    answer:
+      "After completing a medical evaluation and receiving provider approval, your treatment plan can be started based on your prescription and pharmacy fulfillment.",
+  },
+  {
+    id: "liraglutide-faq-6",
+    question: "What are the common side effects of liraglutide?",
+    answer:
+      "Some people may experience nausea, digestive discomfort, decreased appetite, or other mild effects when starting treatment.",
+  },
+  {
+    id: "liraglutide-faq-7",
+    question: "How long do people stay on liraglutide?",
+    answer:
+      "Treatment duration depends on your progress, goals, and recommendations from your healthcare provider.",
+  },
+  {
+    id: "liraglutide-faq-8",
+    question: "Can liraglutide be combined with lifestyle changes?",
+    answer:
+      "Yes. Liraglutide is typically used along with healthy nutrition, physical activity, and lifestyle strategies for better outcomes.",
+  },
+  {
+    id: "liraglutide-faq-9",
+    question: "Do I need a prescription for liraglutide?",
+    answer:
+      "Yes. Liraglutide requires evaluation and approval from a licensed healthcare provider before use.",
+  },
+];
+
 const pageOverrides: Record<MedicationSlug, PageOverrides> = {
   ozempic: {
     hero: {
@@ -256,7 +352,7 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       description:
         "Connect with a licensed healthcare provider through our HIPAA-compliant platform for an evaluation of Ozempic® (semaglutide) for type 2 diabetes management. Following an individualized medical assessment, a provider may prescribe treatment if clinically appropriate.",
       pricingNote:
-        "Program pricing starts at $75. Medication costs vary and are determined after provider evaluation.",
+        `A physician consultation is ${PROGRAM_CONSULTATION_PRICE}. Medication costs are separate and are determined after provider evaluation.`,
       image: "/ozempic.webp",
       imageAlt: "Ozempic semaglutide injection pens",
       primaryCta: "Start Medical Evaluation",
@@ -576,219 +672,186 @@ const pageOverrides: Record<MedicationSlug, PageOverrides> = {
       ],
     },
   },
-  rybelsus: {
+  "compounded-semaglutide": {
     hero: {
-      title: "Rybelsus® Oral Semaglutide",
-      titleHighlight: "Physician-Guided Evaluation",
+      title: "Compounded Semaglutide",
+      titleHighlight: "Physician-Guided Care",
       description:
-        "Non-injectable oral semaglutide may support off-label weight management when clinically appropriate. Connect with a licensed physician for evaluation.",
+        "A personalized semaglutide formula prepared by a licensed U.S. compounding pharmacy against an individual prescription. Compounded medications are not FDA-approved.",
     },
-    process: {
-      title: `How ${brand} supports your journey`,
-      description:
-        "Our streamlined 3-step approach helps you access expert medical guidance, personalized treatment options, and ongoing support from licensed healthcare providers at home.",
-      steps: [
-        {
-          step: "Step 1",
-          title: "Start With a Free Consultation",
-          text: "A care team member learns about your health goals, treatment expectations, and preferences while helping you explore available medication options based on your provider's guidance.",
-        },
-        {
-          step: "Step 2",
-          title: "Meet With a Licensed Provider",
-          text: "Connect with a licensed clinician through a secure video or audio visit to review your health history, BMI, medical factors, and weight management goals.",
-        },
-        {
-          step: "Step 3",
-          title: "Get Your Prescription When Approved",
-          text: "If appropriate, your provider creates a personalized treatment plan and provides prescription guidance. Medication can be obtained through a licensed pharmacy or convenient home delivery.",
-        },
-      ],
-    },
-    usage: {
-      title: "How to use Rybelsus® safely",
-      description:
-        "Take Rybelsus daily as prescribed on an empty stomach with water. Follow your physician's instructions and report any side effects.",
-    },
-    injection: {
-      title: "Oral dosing guidance",
-      paragraphs: [
-        "Rybelsus is taken as a daily oral tablet, not an injection. Your provider will guide you on timing, dosing, and what to do if you miss a dose.",
-        "Always follow the prescribing information and contact your care team with questions about administration or side effects.",
-      ],
-      image: { src: "/rybluss.webp", alt: "Rybelsus oral semaglutide" },
-    },
+    process: { steps: compoundedProcessSteps },
     mechanism: {
-      title: "How does Rybelsus®",
+      title: "How does compounded semaglutide",
       titleHighlight: "work in the body?",
       paragraphs: [
-        "Rybelsus delivers oral semaglutide, a GLP-1 receptor agonist that helps regulate appetite and blood sugar.",
-        "It is FDA-approved for type 2 diabetes. Off-label use for weight management is determined by your licensed physician.",
+        "Semaglutide is a GLP-1 receptor agonist that helps regulate appetite, slow gastric emptying, and support blood sugar control.",
+        "Compounded semaglutide is prepared by a licensed U.S. compounding pharmacy for an individual patient. Compounded medications are not reviewed or approved by the FDA for safety, effectiveness, or manufacturing quality.",
       ],
       video: semaglutideVideos.howItWorks,
       cta: "Schedule consultation",
     },
+    usage: {
+      title: "How to use compounded semaglutide safely",
+      description:
+        "Compounded semaglutide is typically administered once weekly. Follow your provider's dosing instructions exactly, rotate injection sites, and report side effects promptly.",
+      video: semaglutideVideos.howToUse,
+    },
     faq: {
+      title: "Compounded semaglutide",
+      titleHighlight: "FAQ",
       items: [
         {
-          id: "rybelsus-faq-1",
-          question: "What is Rybelsus®?",
+          id: "compounded-semaglutide-faq-1",
+          question: "What is compounded semaglutide?",
           answer:
-            "Rybelsus® is an oral prescription medication containing semaglutide, used to help improve blood sugar control in adults with type 2 diabetes.",
+            "Compounded semaglutide is a preparation of semaglutide made by a licensed U.S. compounding pharmacy to fill an individual prescription, rather than a mass-manufactured, FDA-approved product.",
         },
         {
-          id: "rybelsus-faq-2",
-          question: "How does Rybelsus® work?",
+          id: "compounded-semaglutide-faq-2",
+          question: "Is compounded semaglutide FDA-approved?",
           answer:
-            "Rybelsus® mimics a natural hormone called GLP-1 that helps regulate blood glucose levels and supports appetite control.",
+            "No. Compounded medications are not FDA-approved and are not reviewed by the FDA for safety, effectiveness, or manufacturing quality. They are prepared by state-licensed pharmacies under federal and state compounding rules.",
         },
         {
-          id: "rybelsus-faq-3",
-          question: "Is Rybelsus® a pill or an injection?",
-          answer: "Unlike many GLP-1 medications, Rybelsus® is taken as a once-daily oral tablet.",
-        },
-        {
-          id: "rybelsus-faq-4",
-          question: "Who may be prescribed Rybelsus®?",
+          id: "compounded-semaglutide-faq-3",
+          question: "Why might a provider prescribe a compounded formula?",
           answer:
-            "A healthcare provider determines eligibility based on your medical history, diabetes management needs, and overall health profile.",
+            "A licensed provider may consider a compounded preparation when it is legally permitted and clinically appropriate for an individual patient. The decision is always made at the provider's discretion.",
         },
         {
-          id: "rybelsus-faq-5",
-          question: "How should Rybelsus® be taken?",
+          id: "compounded-semaglutide-faq-4",
+          question: "How is compounded semaglutide administered?",
           answer:
-            "Rybelsus® should be taken exactly as prescribed by your provider, including instructions regarding timing and food intake.",
+            "It is generally given as a once-weekly subcutaneous injection, with dosing determined by your prescribing provider.",
         },
         {
-          id: "rybelsus-faq-6",
-          question: "Can Rybelsus® help with weight management?",
+          id: "compounded-semaglutide-faq-5",
+          question: "Do I need a prescription?",
           answer:
-            "Some people may experience weight changes while taking Rybelsus®, though it is primarily prescribed for type 2 diabetes management.",
-        },
-        {
-          id: "rybelsus-faq-7",
-          question: "How long does it take to see results with Rybelsus®?",
-          answer:
-            "Response times vary. Your provider monitors your progress and adjusts treatment based on your individual needs.",
-        },
-        {
-          id: "rybelsus-faq-8",
-          question: "Can I switch from another GLP-1 medication to Rybelsus®?",
-          answer: "Medication changes should only be made with guidance from a licensed healthcare provider.",
-        },
-        {
-          id: "rybelsus-faq-9",
-          question: "Does Rybelsus® require a prescription?",
-          answer:
-            "Yes. Rybelsus® is a prescription medication that requires evaluation and approval from a qualified healthcare provider.",
+            "Yes. A licensed healthcare provider must evaluate you and determine that treatment is clinically appropriate before any medication is prescribed.",
         },
       ],
     },
   },
-  "victoza-saxenda": {
+  "compounded-tirzepatide": {
     hero: {
-      title: "Victoza® / Saxenda®",
-      titleHighlight: "Liraglutide GLP-1 Care",
+      title: "Compounded Tirzepatide",
+      titleHighlight: "Physician-Guided Care",
       description:
-        "Victoza and Saxenda are liraglutide-based prescription GLP-1 medications. Your physician determines which formulation is clinically appropriate.",
+        "A personalized tirzepatide formula prepared by a licensed U.S. compounding pharmacy against an individual prescription. Compounded medications are not FDA-approved.",
     },
-    process: {
-      title: `How ${brand} supports your care journey`,
+    process: { steps: compoundedProcessSteps },
+    mechanism: {
+      title: "How does compounded tirzepatide",
+      titleHighlight: "work in the body?",
+      paragraphs: [
+        "Tirzepatide activates both GIP and GLP-1 receptors, which together help regulate appetite, food intake, and blood sugar.",
+        "Compounded tirzepatide is prepared by a licensed U.S. compounding pharmacy for an individual patient. Compounded medications are not reviewed or approved by the FDA for safety, effectiveness, or manufacturing quality.",
+      ],
+      video: tirzepatideVideos.howItWorks,
+      cta: "Schedule consultation",
+    },
+    usage: {
+      title: "How to use compounded tirzepatide safely",
       description:
-        "Our simple 3-step approach helps you access personalized medical guidance, connect with a licensed provider, and receive treatment support from the comfort of your home.",
-      steps: [
+        "Compounded tirzepatide is typically administered once weekly. Follow your provider's dosing instructions exactly, rotate injection sites, and report side effects promptly.",
+      video: tirzepatideVideos.howToUse,
+    },
+    faq: {
+      title: "Compounded tirzepatide",
+      titleHighlight: "FAQ",
+      items: [
         {
-          step: "Step 1",
-          title: "Begin With a Free Consultation",
-          text: "A care team member speaks with you about your health goals, preferences, and treatment interests while helping you understand available medication options based on provider recommendations.",
+          id: "compounded-tirzepatide-faq-1",
+          question: "What is compounded tirzepatide?",
+          answer:
+            "Compounded tirzepatide is a preparation of tirzepatide made by a licensed U.S. compounding pharmacy to fill an individual prescription, rather than a mass-manufactured, FDA-approved product.",
         },
         {
-          step: "Step 2",
-          title: "Meet With a Qualified Healthcare Provider",
-          text: "A licensed clinician reviews key health details, including medical history, BMI, and wellness goals, through a secure video or audio consultation.",
+          id: "compounded-tirzepatide-faq-2",
+          question: "Is compounded tirzepatide FDA-approved?",
+          answer:
+            "No. Compounded medications are not FDA-approved and are not reviewed by the FDA for safety, effectiveness, or manufacturing quality. They are prepared by state-licensed pharmacies under federal and state compounding rules.",
         },
         {
-          step: "Step 3",
-          title: "Receive Treatment Guidance & Prescription Approval",
-          text: "If appropriate, your provider develops a personalized plan and provides prescription guidance. Medication can be obtained through a licensed pharmacy or arranged for home delivery.",
+          id: "compounded-tirzepatide-faq-3",
+          question: "How is it different from Zepbound® or Mounjaro®?",
+          answer:
+            "Zepbound® and Mounjaro® are FDA-approved products manufactured by Eli Lilly. A compounded preparation contains tirzepatide but is prepared by a compounding pharmacy and is not FDA-approved.",
+        },
+        {
+          id: "compounded-tirzepatide-faq-4",
+          question: "How is compounded tirzepatide administered?",
+          answer:
+            "It is generally given as a once-weekly subcutaneous injection, with dosing determined by your prescribing provider.",
+        },
+        {
+          id: "compounded-tirzepatide-faq-5",
+          question: "Do I need a prescription?",
+          answer:
+            "Yes. A licensed healthcare provider must evaluate you and determine that treatment is clinically appropriate before any medication is prescribed.",
         },
       ],
     },
+  },
+  saxenda: {
+    hero: {
+      title: "Saxenda® Liraglutide",
+      titleHighlight: "Physician-Guided Weight Care",
+      description:
+        "Saxenda® is liraglutide, FDA-approved for chronic weight management in qualifying adults. A licensed physician determines whether it is clinically appropriate for you.",
+    },
+    process: { steps: liraglutideProcessSteps },
     mechanism: {
-      title: "How does liraglutide",
+      title: "How does Saxenda®",
       titleHighlight: "work in the body?",
       paragraphs: [
-        "Liraglutide is a GLP-1 receptor agonist that helps regulate appetite and supports weight management or blood sugar control depending on the formulation.",
-        "Victoza® is FDA-approved for type 2 diabetes; Saxenda® is FDA-approved for chronic weight management in qualifying adults.",
+        "Liraglutide is a GLP-1 receptor agonist that helps regulate appetite, increase feelings of fullness, and support weight management.",
+        "Saxenda® is FDA-approved for chronic weight management in adults with obesity or overweight, used alongside a reduced-calorie diet and increased physical activity.",
       ],
       video: liraglutideVideos.howItWorks,
       cta: "Schedule consultation",
     },
     usage: {
-      title: "How to use liraglutide safely",
+      title: "How to use Saxenda® safely",
       description:
-        "Liraglutide is typically administered once daily. Follow your doctor's instructions, rotate injection sites, and report side effects promptly.",
+        "Saxenda® is administered once daily. Follow your doctor's instructions, rotate injection sites, and report side effects promptly.",
       video: liraglutideVideos.howToUse,
     },
     faq: {
-      title: "Liraglutide",
+      title: "Saxenda®",
       titleHighlight: "FAQ",
-      items: [
-        {
-          id: "liraglutide-faq-1",
-          question: "What is liraglutide?",
-          answer:
-            "Liraglutide is a GLP-1 receptor agonist medication that helps regulate appetite and blood sugar levels.",
-        },
-        {
-          id: "liraglutide-faq-2",
-          question: "How does liraglutide work for weight management?",
-          answer:
-            "Liraglutide works by mimicking a natural hormone that helps control hunger, increase feelings of fullness, and support weight management.",
-        },
-        {
-          id: "liraglutide-faq-3",
-          question: "Is liraglutide an injection?",
-          answer:
-            "Yes. Liraglutide is administered as a once-daily injection under the skin, as prescribed by a healthcare provider.",
-        },
-        {
-          id: "liraglutide-faq-4",
-          question: "Who may be a candidate for liraglutide?",
-          answer:
-            "A licensed provider evaluates factors such as BMI, medical history, health goals, and overall suitability before recommending treatment.",
-        },
-        {
-          id: "liraglutide-faq-5",
-          question: "How quickly can I start liraglutide treatment?",
-          answer:
-            "After completing a medical evaluation and receiving provider approval, your treatment plan can be started based on your prescription and pharmacy fulfillment.",
-        },
-        {
-          id: "liraglutide-faq-6",
-          question: "What are the common side effects of Saxenda?",
-          answer:
-            "Some people may experience nausea, digestive discomfort, decreased appetite, or other mild effects when starting treatment.",
-        },
-        {
-          id: "liraglutide-faq-7",
-          question: "How long do people take Victoza?",
-          answer:
-            "Treatment duration depends on your progress, goals, and recommendations from your healthcare provider.",
-        },
-        {
-          id: "liraglutide-faq-8",
-          question: "Can Saxenda be combined with lifestyle changes?",
-          answer:
-            "Yes. Saxenda is typically used along with healthy nutrition, physical activity, and lifestyle strategies for better outcomes.",
-        },
-        {
-          id: "liraglutide-faq-9",
-          question: "Do I need a prescription for Victoza?",
-          answer:
-            "Yes. Victoza requires evaluation and approval from a licensed healthcare provider before use.",
-        },
+      items: liraglutideFaqItems,
+    },
+  },
+  victoza: {
+    hero: {
+      title: "Victoza® Liraglutide",
+      titleHighlight: "Physician-Guided Evaluation",
+      description:
+        "Victoza® contains the same active ingredient as Saxenda®. It is FDA-approved for type 2 diabetes and may be prescribed off-label for weight management when clinically appropriate.",
+    },
+    process: { steps: liraglutideProcessSteps },
+    mechanism: {
+      title: "How does Victoza®",
+      titleHighlight: "work in the body?",
+      paragraphs: [
+        "Liraglutide is a GLP-1 receptor agonist that helps regulate appetite and supports blood sugar control.",
+        "Victoza® is FDA-approved for type 2 diabetes, not weight loss. Off-label use for weight management is determined by your licensed physician based on individual evaluation.",
       ],
+      video: liraglutideVideos.howItWorks,
+      cta: "Schedule consultation",
+    },
+    usage: {
+      title: "How to use Victoza® safely",
+      description:
+        "Victoza® is administered once daily. Follow your doctor's instructions, rotate injection sites, and report side effects promptly.",
+      video: liraglutideVideos.howToUse,
+    },
+    faq: {
+      title: "Victoza®",
+      titleHighlight: "FAQ",
+      items: liraglutideFaqItems,
     },
   },
 };

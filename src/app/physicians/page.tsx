@@ -1,20 +1,16 @@
 import {
-  PhysiciansCommitment,
-  PhysiciansCompliance,
   PhysiciansConditions,
+  PhysiciansCoverage,
   PhysiciansCta,
   PhysiciansHero,
-  PhysiciansPhilosophy,
-  PhysiciansProviders,
   PhysiciansReviewProcess,
-  PhysiciansStates,
-  PhysiciansWhyChoose,
+  PhysiciansSpotlight,
 } from "@/components/sections/physicians";
 import { Footer, Header } from "@/components/layout";
 import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 
-import "@/styles/hub-page.css";
+import "@/styles/physicians.css";
 
 export const metadata = createMetadata({
   title: "Our Physicians",
@@ -32,14 +28,10 @@ export default function PhysiciansPage() {
       <Header />
       <main id="main-content" tabIndex={-1}>
         <PhysiciansHero />
-        <PhysiciansProviders />
-        <PhysiciansWhyChoose />
+        <PhysiciansSpotlight />
         <PhysiciansConditions />
-        <PhysiciansPhilosophy />
         <PhysiciansReviewProcess />
-        <PhysiciansCompliance />
-        <PhysiciansStates />
-        <PhysiciansCommitment />
+        <PhysiciansCoverage />
         <PhysiciansCta />
         <Footer />
       </main>

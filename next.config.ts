@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       { source: "/alabama", destination: "/weight-loss/alabama", permanent: true },
+      { source: "/weight-loss/rybelsus", destination: "/weight-loss/semaglutide", permanent: true },
+      { source: "/weight-loss/victoza-saxenda", destination: "/weight-loss/saxenda", permanent: true },
     ];
   },
 };

@@ -1,8 +1,10 @@
 import { ArrowUpRight, Check } from "lucide-react";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
+import { PricingPlansGrid } from "@/components/client/pricing-plans";
 import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-card";
+import { ImageFrame } from "@/components/ui/image-frame";
 import { LinkButton } from "@/components/ui/link-button";
 import {
   DisplayHeading,
@@ -11,9 +13,8 @@ import {
   SectionContainer,
 } from "@/components/ui/scroll-section";
 import { siteConfig } from "@/config/site";
-import { homeContent } from "@/lib/constants/home-content";
+import { homeContent, homeImages } from "@/lib/constants/home-content";
 import { getIcon } from "@/lib/utils/icons";
-import { cn } from "@/lib/utils";
 
 export function HomeEligibility() {
   const { eligibility } = homeContent;
@@ -40,17 +41,25 @@ export function HomeEligibility() {
             </div>
           </Reveal>
 
-          <BentoCard variant="light">
-            <h3 className="font-display text-lg font-semibold text-ink">You may qualify if you are:</h3>
-            <ul className="mt-6 space-y-4">
-              {eligibility.qualifies.map((item) => (
-                <li key={item.slice(0, 48)} className="flex gap-3 text-sm leading-relaxed text-ink-muted sm:text-base">
-                  <Check className="mt-0.5 size-5 shrink-0 text-forest" aria-hidden />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </BentoCard>
+          <div className="space-y-6">
+            <ImageFrame
+              {...homeImages.eligibility}
+              ratio="wide"
+              sizes="(max-width: 1024px) 100vw, 560px"
+            />
+
+            <BentoCard variant="light">
+              <h3 className="font-display text-lg font-semibold text-ink">You may qualify if you are:</h3>
+              <ul className="mt-6 space-y-4">
+                {eligibility.qualifies.map((item) => (
+                  <li key={item.slice(0, 48)} className="flex gap-3 text-sm leading-relaxed text-ink-muted sm:text-base">
+                    <Check className="mt-0.5 size-5 shrink-0 text-forest" aria-hidden />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </BentoCard>
+          </div>
         </div>
       </SectionContainer>
     </ScrollSection>
@@ -89,6 +98,14 @@ export function HomeBenefits() {
             })}
           </BentoGrid>
         </Stagger>
+
+        <Reveal delay={0.15} variant="scale" className="mt-14">
+          <ImageFrame
+            {...homeImages.benefits}
+            ratio="panorama"
+            sizes="(max-width: 1280px) 100vw, 1200px"
+          />
+        </Reveal>
       </SectionContainer>
     </ScrollSection>
   );
@@ -107,6 +124,15 @@ export function HomeExperience() {
             <span className="text-gradient">{experience.titleHighlight}</span>
           </DisplayHeading>
           <p className="mt-5 text-lg text-white/55">{experience.description}</p>
+        </Reveal>
+
+        <Reveal delay={0.1} variant="scale" className="mt-12">
+          <ImageFrame
+            {...homeImages.experience}
+            ratio="panorama"
+            theme="dark"
+            sizes="(max-width: 1280px) 100vw, 1200px"
+          />
         </Reveal>
 
         <Stagger className="mt-14 space-y-6" stagger={0.1}>
@@ -144,54 +170,21 @@ export function HomePricing() {
           <p className="mt-5 text-base text-ink-muted">{pricing.description}</p>
         </Reveal>
 
-        <Stagger className="mt-14 grid gap-6 lg:mx-auto lg:max-w-4xl lg:grid-cols-2" stagger={0.1}>
-          {pricing.plans.map((plan) => (
-            <StaggerChild key={plan.name}>
-              <BentoCard
-                variant={plan.highlighted ? "accent" : "light"}
-                className={cn("h-full", plan.highlighted && "ring-2 ring-forest/20")}
-              >
-                <h3 className="font-display text-xl font-semibold">{plan.name}</h3>
-                {"pricePrefix" in plan && plan.pricePrefix ? (
-                  <p className="mt-4 text-sm font-medium text-ink-muted">{plan.pricePrefix}</p>
-                ) : null}
-                <p className={cn("flex items-baseline gap-1", "pricePrefix" in plan && plan.pricePrefix ? "mt-1" : "mt-4")}>
-                  <span className="font-display text-4xl font-bold">{plan.price}</span>
-                  <span className={cn("text-sm", plan.highlighted ? "text-accent-foreground/80" : "text-ink-muted")}>
-                    {plan.period}
-                  </span>
-                </p>
-                <p className={cn("mt-3 text-sm", plan.highlighted ? "text-accent-foreground/90" : "text-ink-muted")}>
-                  {plan.description}
-                </p>
-                <ul className="mt-6 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className={cn(
-                        "flex gap-2 text-sm",
-                        plan.highlighted ? "text-accent-foreground/90" : "text-ink-muted",
-                      )}
-                    >
-                      <Check className="mt-0.5 size-4 shrink-0" aria-hidden />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </BentoCard>
-            </StaggerChild>
-          ))}
-        </Stagger>
+        <PricingPlansGrid label={pricing.trackLabel} theme="light" />
 
         <Reveal delay={0.15} className="mt-8 text-center">
           <p className="text-sm text-ink-subtle">{pricing.disclaimer}</p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <MagneticButton>
               <LinkButton href={siteConfig.bookingUrl} size="lg" className="rounded-full">
                 {pricing.cta}
                 <ArrowUpRight className="size-4" aria-hidden />
               </LinkButton>
             </MagneticButton>
+            <LinkButton href={pricing.viewAllHref} variant="ghost" className="text-forest">
+              {pricing.viewAllLabel}
+              <ArrowUpRight className="size-4" aria-hidden />
+            </LinkButton>
           </div>
         </Reveal>
       </SectionContainer>

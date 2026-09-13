@@ -1,13 +1,14 @@
 import { Check, X } from "lucide-react";
 
 import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
+import { ImageFrame } from "@/components/ui/image-frame";
 import {
   DisplayHeading,
   Eyebrow,
   ScrollSection,
   SectionContainer,
 } from "@/components/ui/scroll-section";
-import { homeContent } from "@/lib/constants/home-content";
+import { homeContent, homeImages } from "@/lib/constants/home-content";
 import { getIcon } from "@/lib/utils/icons";
 
 export function WhyUsSection() {
@@ -53,6 +54,14 @@ export function WhyUsSection() {
 
           <Reveal delay={0.15} direction="right" distance={32} variant="scale">
             <div className="lg:pt-16">
+              <ImageFrame
+                {...homeImages.whyUs}
+                ratio="landscape"
+                theme="dark"
+                className="mb-6"
+                sizes="(max-width: 1024px) 100vw, 560px"
+              />
+
               <div className="overflow-hidden rounded-3xl border border-white/10 bg-dark-elevated">
                 <div className="border-b border-white/10 px-8 py-6">
                   <p className="text-xs uppercase tracking-[0.15em] text-white/40">Comparison</p>

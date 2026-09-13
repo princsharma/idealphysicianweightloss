@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "../styles/marydoc-hero.css";
 
+
 /* ── Global design system (MaryDoc forest + lime) ── */
 :root {
   /* brand */
@@ -278,7 +279,8 @@
 
   .reveal-slide,
   .reveal-fade,
-  .reveal-scale {
+  .reveal-scale,
+  .reveal-zoom {
     transition:
       opacity var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
       transform var(--reveal-duration, 0.75s) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
@@ -309,6 +311,16 @@
   .reveal-scale.is-visible {
     opacity: 1;
     transform: scale(1);
+  }
+
+  .reveal-zoom.is-pending {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance, 36px), 0) scale(0.9);
+  }
+
+  .reveal-zoom.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   .reveal-line {
@@ -342,6 +354,7 @@
     .reveal-slide,
     .reveal-fade,
     .reveal-scale,
+    .reveal-zoom,
     .reveal-line,
     .reveal-float {
       animation: none;

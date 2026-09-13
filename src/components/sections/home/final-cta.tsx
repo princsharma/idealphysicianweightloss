@@ -1,18 +1,34 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
 import { Reveal } from "@/components/client/reveal";
 import { LinkButton } from "@/components/ui/link-button";
 import { DisplayHeading, ScrollSection, SectionContainer } from "@/components/ui/scroll-section";
 import { siteConfig } from "@/config/site";
-import { homeContent } from "@/lib/constants/home-content";
+import { homeContent, homeImages } from "@/lib/constants/home-content";
 
 export function FinalCtaSection() {
   const { finalCta } = homeContent;
+  const finalCtaImage = homeImages.finalCta;
 
   return (
     <ScrollSection theme="dark" snap={false} className="gradient-cta noise justify-center">
       <div className="orb left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 bg-accent/15" aria-hidden />
+
+      {finalCtaImage.src ? (
+        <>
+          <Image
+            src={finalCtaImage.src}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-25"
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-forest-ink/70" aria-hidden />
+        </>
+      ) : null}
 
       <SectionContainer className="relative flex flex-1 flex-col items-center justify-center py-20 text-center">
         <Reveal direction="up" distance={40}>

@@ -25,8 +25,12 @@ export function Footer() {
   ].filter((item) => item.href && item.href !== "#");
 
   return (
-    <footer className="border-t border-white/5 bg-dark py-16 text-white">
-      <SectionContainer>
+    <footer className="mary-footer py-16 text-white">
+      <span className="mary-hero__aura mary-hero__aura--spot" aria-hidden />
+      <span className="mary-hero__aura mary-hero__aura--lime" aria-hidden />
+      <span className="mary-hero__aura mary-hero__aura--forest" aria-hidden />
+
+      <SectionContainer className="relative z-10">
         <div className="flex flex-col gap-10 border-b border-white/5 pb-16 lg:flex-row lg:items-end lg:justify-between">
           <Reveal direction="up" distance={24}>
             <div className="max-w-md">

@@ -4,62 +4,102 @@
   to { transform: rotate(360deg); }
 }
 
-@keyframes mary-pop {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: none; }
-}
-
 /* ── HERO ── */
-.mary-hero {
+.mary-hero,
+.mary-footer {
   position: relative;
-  background: linear-gradient(180deg, #215230 0%, #265934 100%);
-  padding-top: calc(var(--header-h) + 48px);
+  isolation: isolate;
   overflow: hidden;
+  background:
+    radial-gradient(
+      140% 100% at 86% -14%,
+      rgba(174, 219, 98, 0.55) 0%,
+      rgba(174, 219, 98, 0.16) 32%,
+      transparent 60%
+    ),
+    radial-gradient(58% 42% at 26% 16%, rgba(200, 228, 150, 0.28) 0%, transparent 66%),
+    radial-gradient(130% 110% at 50% 118%, rgba(31, 104, 56, 0.28) 0%, transparent 62%),
+    linear-gradient(168deg, #3a9a58 0%, #2c7f47 46%, #1f6838 100%);
 }
 
-.mary-hero__deco {
+.mary-hero {
+  padding-top: calc(var(--header-h) + 48px);
+}
+
+/* Depth layer: soft light sweep + fine lattice */
+.mary-hero::before,
+.mary-footer::before {
+  content: "";
   position: absolute;
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 1.5;
-  stroke-linecap: round;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: radial-gradient(105% 80% at 62% 6%, #000 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(105% 80% at 62% 6%, #000 0%, transparent 72%);
+  opacity: 0.55;
+}
+
+/* Grain + bottom vignette so the hero melts into the next section */
+.mary-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 55%, rgba(251, 253, 247, 0.18) 100%);
+}
+
+/* Blurred aura behind the headline */
+.mary-hero__aura {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(90px);
   pointer-events: none;
 }
 
-.mary-hero__deco--1 {
-  width: 120px;
-  height: 120px;
-  top: 14%;
-  right: 4%;
-  transform: rotate(16deg);
+.mary-hero__aura--lime {
+  width: clamp(280px, 34vw, 520px);
+  aspect-ratio: 1;
+  top: -6%;
+  right: -6%;
+  background: radial-gradient(circle, rgba(174, 219, 98, 0.55) 0%, transparent 70%);
 }
 
-.mary-hero__deco--2 {
-  width: 100px;
-  height: 110px;
-  left: 2.5%;
-  bottom: 14%;
-  transform: rotate(-14deg);
+.mary-hero__aura--forest {
+  width: clamp(260px, 30vw, 460px);
+  aspect-ratio: 1;
+  bottom: 6%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(174, 219, 98, 0.32) 0%, transparent 70%);
 }
 
-.mary-hero__deco--3 {
-  width: 64px;
-  height: 64px;
-  top: 9%;
-  right: 40%;
-  transform: rotate(-12deg);
-  opacity: 0.7;
+/* Spotlight so the headline reads against lit ground */
+.mary-hero__aura--spot {
+  width: clamp(420px, 58vw, 900px);
+  height: clamp(240px, 26vw, 420px);
+  top: calc(var(--header-h) + 10px);
+  left: -4%;
+  border-radius: 50%;
+  filter: blur(100px);
+  background: radial-gradient(ellipse, rgba(200, 228, 150, 0.38) 0%, transparent 72%);
 }
 
 .mary-hero__wrap {
-  display: grid;
-  grid-template-columns: 270px 1fr;
-  gap: clamp(36px, 5vw, 84px);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3.5vw, 2.5rem);
   width: min(1180px, 100%);
   max-width: 100%;
   margin-inline: auto;
   padding-inline: 24px;
-  padding-bottom: clamp(48px, 6vw, 80px);
+  padding-bottom: clamp(40px, 5vw, 64px);
 }
 
 .mary-hero__side {
@@ -135,19 +175,29 @@
 }
 
 .mary-hero__title {
-  order: 1;
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: clamp(2.85rem, 7.2vw, 5.75rem);
-  line-height: 1.02;
+  font-size: clamp(2.15rem, 7vw, 4.25rem);
+  line-height: 1.06;
   letter-spacing: -0.035em;
   color: #fff;
-  margin-bottom: clamp(34px, 4.5vw, 60px);
+  margin-bottom: 0;
   text-wrap: balance;
 }
 
 .mary-hero__title-line {
   display: block;
+}
+
+/* Keep each line unbroken once there is room for it */
+@media (min-width: 640px) {
+  .mary-hero__title {
+    text-wrap: nowrap;
+  }
+
+  .mary-hero__title-line {
+    white-space: nowrap;
+  }
 }
 
 .mary-hero__title-line--accent {
@@ -165,6 +215,413 @@
   color: transparent;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 2px 24px rgba(174, 219, 98, 0.22));
+}
+
+.mary-hero__top {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.mary-hero__lede {
+  margin-top: 1.15rem;
+  max-width: 36rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.mary-hero__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mary-hero__benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.mary-hero__benefit-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: rgba(152, 197, 78, 0.18);
+  color: var(--lime-bright);
+}
+
+.mary-hero__benefit-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.mary-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.25rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(174, 219, 98, 0.28);
+  background: rgba(152, 197, 78, 0.12);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--lime-soft);
+}
+
+.mary-hero__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime-bright);
+  box-shadow: 0 0 0 4px rgba(174, 219, 98, 0.18);
+}
+
+.mary-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.mary-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.9rem;
+  font-size: 1rem;
+}
+
+.mary-hero__cta svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mary-hero__cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 1.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.mary-hero__cta-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.mary-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin: 2rem 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  list-style: none;
+}
+
+.mary-hero__trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.mary-hero__trust-item svg {
+  width: 15px;
+  height: 15px;
+  color: var(--lime-bright);
+}
+
+/* ── Featured medication showcase ── */
+.mary-hero__showcase {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 30px 70px rgba(4, 20, 11, 0.45);
+}
+
+.mary-hero__showcase-visual {
+  position: relative;
+  height: clamp(220px, 34vw, 330px);
+  background:
+    radial-gradient(70% 70% at 50% 42%, rgba(174, 219, 98, 0.18) 0%, transparent 68%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.mary-hero__showcase-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem 1.6rem 1.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mary-hero__showcase-fade {
+  flex: 1;
+  animation: heroShowcaseFade 0.55s var(--ease) both;
+}
+
+@keyframes heroShowcaseFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.mary-hero__showcase-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.mary-hero__showcase-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mary-hero__showcase-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: width 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.mary-hero__showcase-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mary-hero__showcase-dot.is-active {
+  width: 22px;
+  border-radius: var(--radius-full);
+  background: var(--lime-bright);
+}
+
+.mary-hero__showcase-badge {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  background: var(--lime);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--forest-ink);
+}
+
+.mary-hero__showcase-type {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mary-hero__showcase-name {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-head);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.mary-hero__showcase-text {
+  margin: 0.7rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.mary-hero__showcase-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--lime-bright);
+  text-decoration: none;
+  transition: gap 0.3s var(--ease);
+}
+
+.mary-hero__showcase-link:hover {
+  gap: 0.7rem;
+}
+
+.mary-hero__showcase-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.mary-hero__meds {
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+}
+
+/* Reveal wrapper: it is the grid item, the card fills it so every card matches height. */
+.mary-med-slot {
+  display: flex;
+  min-width: 0;
+}
+
+.mary-med-slot > .mary-hero-card {
+  flex: 1;
+  min-width: 0;
+}
+
+.mary-hero-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+
+.mary-hero-card--featured {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(152, 197, 78, 0.45);
+}
+
+.mary-hero-card__badge {
+  display: inline-flex;
+  align-self: flex-start;
+  margin: 0 0 0.35rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: var(--lime);
+  color: var(--forest-ink);
+  font-family: var(--font-head);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mary-hero-card__visual {
+  position: relative;
+  height: 148px;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
+}
+
+.mary-hero-card--featured .mary-hero-card__visual {
+  height: 196px;
+}
+
+.mary-hero-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.15rem 1.2rem 1.25rem;
+}
+
+.mary-hero-card__type {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+}
+
+.mary-hero-card__name {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.mary-hero-card--featured .mary-hero-card__name {
+  font-size: 1.5rem;
+}
+
+.mary-hero-card__text {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.mary-hero-card__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: auto 0 0;
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+}
+
+.mary-hero-card__price strong {
+  font-family: var(--font-head);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--forest-ink);
+}
+
+.mary-hero-card__cta {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+.mary-hero__price-note {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .mary-hero__carousel {
@@ -259,7 +716,7 @@
 
 @media (min-width: 900px) {
   .hero-start-section .mary-startband__card {
-    grid-template-columns: minmax(180px, 220px) 1fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: 1.5rem 2rem;
     padding: 1.75rem 2rem;
@@ -294,44 +751,14 @@
   font-style: normal;
 }
 
-.mary-selector {
-  position: relative;
-  display: flex;
-  align-items: center;
-  border-radius: var(--radius-full);
-  padding: 8px 8px 8px 22px;
-  box-shadow: none;
-  border: 1.5px solid var(--line);
-  background: var(--cream);
+.mary-startband__cta {
+  justify-self: start;
 }
 
-.mary-selector__field {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  min-width: 0;
-}
-
-.mary-selector__pin {
-  width: 20px;
-  height: 20px;
-  color: var(--forest);
-  flex-shrink: 0;
-}
-
-.mary-selector__input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  font: 500 1rem var(--font-body);
-  color: var(--ink);
-  padding: 12px 14px;
-  background: transparent;
-}
-
-.mary-selector__input::placeholder {
-  color: var(--ink-subtle);
+@media (min-width: 900px) {
+  .mary-startband__cta {
+    justify-self: end;
+  }
 }
 
 .mary-btn--lime {
@@ -365,56 +792,6 @@
   height: 17px;
 }
 
-.mary-selector__menu {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 0;
-  right: 0;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: var(--shadow-elevated);
-  max-height: 264px;
-  overflow-y: auto;
-  display: none;
-  text-align: left;
-  z-index: 30;
-  padding: 8px;
-}
-
-.mary-selector__menu.is-open {
-  display: block;
-  animation: mary-pop 0.22s var(--ease);
-}
-
-.mary-selector__opt {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 11px 16px;
-  border-radius: 10px;
-  font-size: 0.93rem;
-  font-weight: 500;
-  color: #3d5547;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-body);
-  transition: background 0.15s, color 0.15s;
-}
-
-.mary-selector__opt:hover,
-.mary-selector__opt.is-hot {
-  background: #eef5dd;
-  color: var(--forest-ink);
-}
-
-.mary-selector__none {
-  padding: 16px;
-  font-size: 0.9rem;
-  color: var(--ink-subtle);
-  text-align: center;
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(34px);
@@ -423,6 +800,9 @@
 
 /* Above-the-fold hero content must be visible for LCP / no-JS */
 .mary-hero .mary-hero__title,
+.mary-hero .mary-hero__lede,
+.mary-hero .mary-hero__benefits,
+.mary-hero .mary-hero__meds,
 .mary-hero .mary-hero__carousel,
 .mary-hero .mary-hero__side {
   opacity: 1;
@@ -462,11 +842,11 @@
   min-width: 0;
   padding: 10px 34px 10px 30px;
   border-radius: var(--radius-full);
-  background: rgba(11, 42, 22, 0.58);
+  background: rgba(251, 253, 247, 0.94);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(18, 37, 24, 0.1);
+  box-shadow: 0 8px 32px rgba(18, 63, 34, 0.12);
   transition:
     box-shadow 0.35s var(--ease),
     background 0.35s var(--ease),
@@ -483,10 +863,10 @@
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(18, 37, 24, 0.1);
   padding: 10px clamp(20px, 4vw, 48px);
-  background: rgba(11, 42, 22, 0.94);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+  background: rgba(251, 253, 247, 0.98);
+  box-shadow: 0 4px 24px rgba(18, 63, 34, 0.1);
 }
 
 .mary-logo {
@@ -540,7 +920,7 @@
 .mary-header__link {
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--forest-ink);
   position: relative;
   padding: 6px 2px;
   text-decoration: none;
@@ -562,7 +942,7 @@
 }
 
 .mary-header__link:hover {
-  color: #fff;
+  color: var(--forest);
 }
 
 .mary-header__link:hover::after {
@@ -580,110 +960,13 @@
 .mary-header__phone {
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--lime-bright);
+  color: var(--forest);
   text-decoration: none;
   padding-right: 4px;
   white-space: nowrap;
 }
 
 .mary-header__phone:hover {
-  color: #c8e496;
-}
-
-/* ── HEADER STATE DROPDOWN ── */
-.mary-header-state {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.mary-header-state__trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 38px;
-  padding: 0 14px 0 12px;
-  border-radius: var(--radius-full);
-  border: 1.5px solid var(--line);
-  background: var(--cream);
-  font-family: var(--font-body);
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: var(--ink);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-}
-
-.mary-header-state__trigger:hover {
-  border-color: var(--lime);
-  background: var(--paper);
-  box-shadow: 0 4px 16px rgba(18, 63, 34, 0.12);
-}
-
-.mary-header-state__pin {
-  width: 16px;
-  height: 16px;
-  color: var(--forest);
-  flex-shrink: 0;
-}
-
-.mary-header-state__label {
-  max-width: 110px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mary-header-state__chevron {
-  width: 14px;
-  height: 14px;
-  color: var(--ink-subtle);
-  flex-shrink: 0;
-  transition: transform 0.25s var(--ease);
-}
-
-.mary-header-state__chevron.is-open {
-  transform: rotate(180deg);
-}
-
-.mary-header-state__menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  min-width: 100%;
-  width: max-content;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-elevated);
-  padding: 6px;
-  display: none;
-  z-index: 120;
-}
-
-.mary-header-state__menu.is-open {
-  display: block;
-  animation: mary-pop 0.22s var(--ease);
-}
-
-.mary-header-state__opt {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: none;
-  background: none;
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--ink-muted);
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-}
-
-.mary-header-state__opt:hover,
-.mary-header-state__opt.is-selected {
-  background: var(--lime-tint);
   color: var(--forest-ink);
 }
 
@@ -702,13 +985,13 @@
   background: none;
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--forest-ink);
   cursor: pointer;
   transition: color 0.2s;
 }
 
 .mary-header-meds__trigger:hover {
-  color: #fff;
+  color: var(--forest);
 }
 
 .mary-header-meds__chevron {
@@ -820,49 +1103,6 @@
   color: var(--ink-subtle);
 }
 
-.mary-drawer__states {
-  margin-top: 8px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-}
-
-.mary-drawer__states-label {
-  font-family: var(--font-head);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-subtle);
-  margin-bottom: 12px;
-}
-
-.mary-drawer__states-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.mary-drawer__state-opt {
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  border: 1.5px solid var(--line);
-  background: var(--cream);
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--ink);
-  text-align: left;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.mary-drawer__state-opt:hover,
-.mary-drawer__state-opt.is-selected {
-  border-color: var(--lime);
-  background: var(--lime-tint);
-  color: var(--forest-ink);
-}
-
 .mary-btn--sm {
   padding: 11px 22px;
   font-size: 0.88rem;
@@ -883,7 +1123,7 @@
 .mary-burger span {
   width: 22px;
   height: 2px;
-  background: #fff;
+  background: var(--forest-ink);
   border-radius: 2px;
   transition: 0.3s var(--ease);
 }
@@ -954,10 +1194,6 @@
   text-decoration: none;
 }
 
-.mary-selector__go {
-  flex-shrink: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
@@ -970,16 +1206,74 @@
   }
 }
 
-@media (max-width: 1240px) {
-  .mary-hero__deco--3 {
-    display: none;
+@media (min-width: 640px) {
+  .mary-hero__meds {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mary-hero__meds > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  .mary-hero-card--featured {
+    display: grid;
+    grid-template-columns: minmax(200px, 0.9fr) 1.1fr;
+    align-items: stretch;
+  }
+
+  .mary-hero-card--featured .mary-hero-card__visual {
+    height: auto;
+    min-height: 220px;
+  }
+
+  .mary-hero-card--featured .mary-hero-card__body {
+    padding: 1.5rem 1.6rem 1.6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mary-hero__top {
+    grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+    gap: clamp(2.25rem, 4vw, 4rem);
+    align-items: center;
+  }
+
+  .mary-hero__meds {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.15rem;
+  }
+
+  .mary-hero-card--featured {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+
+  .mary-hero-card--featured .mary-hero-card__visual {
+    height: auto;
+    min-height: 100%;
+  }
+
+  .mary-hero__meds > :first-child {
+    grid-column: span 6;
+  }
+
+  .mary-hero__meds > :nth-child(2),
+  .mary-hero__meds > :nth-child(3) {
+    grid-column: span 3;
+  }
+
+  .mary-hero__meds > :nth-child(n + 4) {
+    grid-column: span 4;
+  }
+
+  .mary-hero__meds > :nth-child(n + 7) {
+    grid-column: span 6;
   }
 }
 
 @media (max-width: 1024px) {
   .mary-header__nav,
   .mary-header__phone,
-  .mary-header-state,
   .mary-header-meds,
   .mary-header__cta {
     display: none;
@@ -1031,8 +1325,7 @@
   }
 
   .mary-hero__wrap {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 2rem;
   }
 
   .mary-hero__main {
@@ -1131,11 +1424,6 @@
     display: none;
   }
 
-  .mary-hero__deco--1,
-  .mary-hero__deco--2 {
-    display: none;
-  }
-
   .mary-carousel__track figure {
     flex-basis: 78vw;
     height: 220px;
@@ -1154,22 +1442,7 @@
     padding: 1.25rem;
   }
 
-  .mary-selector {
-    flex-wrap: wrap;
-    border-radius: var(--radius-xl);
-    padding: 10px;
-    gap: 4px;
-  }
-
-  .mary-selector__pin {
-    display: none;
-  }
-
-  .mary-selector__input {
-    width: 100%;
-    padding: 12px 10px;
-  }
-
+  .mary-startband__cta,
   .mary-btn--lime {
     width: 100%;
   }

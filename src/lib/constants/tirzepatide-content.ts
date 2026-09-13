@@ -1,4 +1,9 @@
 import { siteConfig } from "@/config/site";
+import {
+  PROGRAM_CONSULTATION_PRICE,
+  PROGRAM_POPULAR_PLAN,
+  PROGRAM_TRACK_LOWEST_RATE,
+} from "@/lib/constants/program-catalog";
 
 import type { MedicationLandingContent } from "./medication-landing-types";
 
@@ -179,7 +184,7 @@ export const tirzepatideContent: MedicationLandingContent = {
         id: "compounded",
         name: "Compounded tirzepatide",
         subtitle: "Same active ingredient",
-        image: "/rybluss.webp",
+        image: "/compounded-tirzepatide.webp",
         highlight: "Physician-prescribed alternative",
         description:
           "Compounded tirzepatide may be available when clinically appropriate and prescribed by your licensed physician.",
@@ -231,7 +236,7 @@ export const tirzepatideContent: MedicationLandingContent = {
       {
         id: "tz-faq-1",
         question: "Is tirzepatide covered by insurance?",
-        answer: `Insurance coverage varies based on your plan and medical eligibility. A $75 medical evaluation fee applies for the initial assessment. Our team can help you understand your options, and tirzepatide programs start at $399/month, including consultation, medication, and ongoing support.`,
+        answer: `No insurance is required, though coverage varies based on your plan and medical eligibility. A ${PROGRAM_CONSULTATION_PRICE} physician consultation applies for the initial assessment. Tirzepatide plans run from ${PROGRAM_POPULAR_PLAN.prices.tirzepatide}/month on the 3-month plan down to ${PROGRAM_TRACK_LOWEST_RATE.tirzepatide}/month over 12 months, and medication costs are separate.`,
       },
     ],
   },

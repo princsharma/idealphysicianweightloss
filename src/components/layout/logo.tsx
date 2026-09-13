@@ -9,8 +9,6 @@ type LogoProps = {
   priority?: boolean;
 };
 
-const logoPillClasses = "rounded-full bg-white px-3 py-1.5 sm:px-3.5 sm:py-2";
-
 const sizeClasses = {
   header: "h-14 w-auto sm:h-[3.75rem]",
   footer: "h-14 w-auto sm:h-[3.75rem]",
@@ -22,7 +20,7 @@ export function Logo({ className, size = "header", priority = false }: LogoProps
       href="/"
       className={cn(
         "mary-logo inline-flex w-fit shrink-0 items-center",
-        logoPillClasses,
+        size === "footer" && "rounded-full bg-white px-3 py-1.5 sm:px-3.5 sm:py-2",
         className,
       )}
       aria-label={siteConfig.name}

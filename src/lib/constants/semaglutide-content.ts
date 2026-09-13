@@ -1,4 +1,9 @@
 import { siteConfig } from "@/config/site";
+import {
+  PROGRAM_CONSULTATION_PRICE,
+  PROGRAM_LOWEST_RATE,
+  PROGRAM_POPULAR_PLAN,
+} from "@/lib/constants/program-catalog";
 
 import type { MedicationLandingContent } from "./medication-landing-types";
 
@@ -130,7 +135,7 @@ export const semaglutideContent: MedicationLandingContent = {
         id: "compounded",
         name: "Compounded semaglutide",
         subtitle: "Same active ingredient",
-        image: "/rybluss.webp",
+        image: "/compounded-semaglutide.webp",
         highlight: "Physician-prescribed alternative",
         description:
           "Compounded options with the same active ingredient may be available when clinically appropriate and prescribed by your physician.",
@@ -145,7 +150,7 @@ export const semaglutideContent: MedicationLandingContent = {
       {
         id: "sg-faq-1",
         question: "How much does semaglutide treatment cost?",
-        answer: `Plans at ${brand} start at $299/month, including physician consultation, medication, and ongoing support. A $75 medical evaluation fee applies for the initial assessment. Pricing may vary based on medication formulation and insurance coverage.`,
+        answer: `A ${PROGRAM_CONSULTATION_PRICE} physician consultation applies for the initial assessment. Ongoing plans at ${brand} run from ${PROGRAM_POPULAR_PLAN.prices.semaglutide}/month on the 3-month plan down to ${PROGRAM_LOWEST_RATE}/month over 12 months. Medication costs are separate and vary based on the treatment prescribed, dosage, and any applicable coverage.`,
       },
     ],
   },

@@ -14,7 +14,7 @@ import { useInView } from "@/lib/hooks/use-in-view";
 import { usePrefersReducedMotion } from "@/lib/hooks/use-prefers-reduced-motion";
 import { cn } from "@/lib/utils";
 
-type AnimationVariant = "reveal" | "fade" | "scale" | "blur";
+type AnimationVariant = "reveal" | "fade" | "scale" | "zoom" | "blur";
 type RevealDirection = "up" | "down" | "left" | "right";
 
 interface RevealBaseProps {
@@ -33,6 +33,7 @@ interface RevealBaseProps {
 function getRevealClass(variant: AnimationVariant, direction: RevealDirection) {
   if (variant === "fade") return "reveal-fade";
   if (variant === "scale") return "reveal-scale";
+  if (variant === "zoom") return "reveal-zoom";
   return `reveal-slide reveal-slide--${direction}`;
 }
 
@@ -124,6 +125,8 @@ interface StaggerChildProps {
   className?: string;
   direction?: RevealDirection;
   distance?: number;
+  variant?: AnimationVariant;
+  duration?: number;
 }
 
 export function StaggerChild({
@@ -131,12 +134,21 @@ export function StaggerChild({
   className,
   direction = "up",
   distance = 28,
+  variant,
+  duration,
 }: StaggerChildProps) {
   const ctx = useContext(StaggerContext);
   const delay = ctx?.nextDelay() ?? 0;
 
   return (
-    <RevealBase className={className} direction={direction} distance={distance} delay={delay}>
+    <RevealBase
+      className={className}
+      direction={direction}
+      distance={distance}
+      delay={delay}
+      variant={variant}
+      duration={duration}
+    >
       {children}
     </RevealBase>
   );

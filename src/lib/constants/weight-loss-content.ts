@@ -1,4 +1,10 @@
 import { siteConfig } from "@/config/site";
+import {
+  PROGRAM_CONSULTATION_PRICE,
+  PROGRAM_LOWEST_RATE,
+  PROGRAM_POPULAR_PLAN,
+  PROGRAM_PRICING_DISCLAIMER,
+} from "@/lib/constants/program-catalog";
 
 const brand = siteConfig.name;
 
@@ -13,7 +19,7 @@ export const weightLossContent = {
       { label: "HIPAA secure", icon: "shield" as const },
       { label: "FDA-approved options", icon: "badge-check" as const },
       { label: "48 states covered", icon: "globe" as const },
-      { label: "From $299/month", icon: "receipt" as const },
+      { label: `From ${PROGRAM_LOWEST_RATE}/month`, icon: "receipt" as const },
     ],
     primaryCta: "Start my evaluation",
     secondaryCta: "See how it works",
@@ -108,7 +114,7 @@ export const weightLossContent = {
         "Once-weekly injection options",
         "Reduces appetite and food cravings",
         "Supports metabolic health",
-        "Compounded semaglutide available when appropriate",
+        "Compounded semaglutide available when clinically appropriate — not FDA-approved",
       ],
     },
     tirzepatide: {
@@ -136,10 +142,10 @@ export const weightLossContent = {
         "Dual hormone receptor action",
         "Once-weekly dosing",
         "Significant sustained weight reduction",
-        "Compounded tirzepatide available when appropriate",
+        "Compounded tirzepatide available when clinically appropriate — not FDA-approved",
       ],
     },
-    note: "Medications are prescribed only when a licensed healthcare provider determines they are clinically appropriate. Individual results may vary.",
+    note: `Medications are prescribed only when a licensed healthcare provider determines they are clinically appropriate, and a prescription is not guaranteed. Ozempic® and Mounjaro® are FDA-approved for type 2 diabetes, not weight loss, and may be prescribed off-label. Compounded medications are not FDA-approved. Wegovy®, Ozempic®, Victoza®, and Saxenda® are registered trademarks of Novo Nordisk A/S; Zepbound® and Mounjaro® are registered trademarks of Eli Lilly and Company. ${brand} is not affiliated with, sponsored by, or endorsed by either company. Individual results may vary.`,
   },
   howItWorks: {
     eyebrow: "Process",
@@ -232,7 +238,7 @@ export const weightLossContent = {
       {
         id: "pricing",
         title: "Transparent pricing",
-        description: "Plans from $299/month with no hidden fees or long-term contracts.",
+        description: `Plans from ${PROGRAM_LOWEST_RATE}/month with no hidden fees and no insurance required.`,
         icon: "receipt" as const,
       },
     ],
@@ -281,35 +287,34 @@ export const weightLossContent = {
     description: "No surprise fees. No long-term contracts. Everything you need for physician-guided weight loss.",
     plans: [
       {
-        name: "Complete care plan",
-        price: "$299",
-        period: "/month",
-        description: "Physician consultation, medication, and ongoing support — all included.",
+        name: PROGRAM_POPULAR_PLAN.name,
+        price: PROGRAM_POPULAR_PLAN.prices.semaglutide,
+        period: PROGRAM_POPULAR_PLAN.period,
+        description: `${PROGRAM_POPULAR_PLAN.billing} — our most popular option. ${PROGRAM_POPULAR_PLAN.savings.semaglutide} against the 1-month rate.`,
         features: [
-          "Licensed physician evaluation",
-          "GLP-1 medication included",
-          "Ongoing dosage adjustments",
-          "24/7 care team access",
-          "Discreet pharmacy delivery",
+          "3 virtual physician consultations",
+          "3-month medication delivery",
+          "Ongoing progress monitoring",
+          "Priority support",
+          "No insurance required",
         ],
         highlighted: true,
       },
       {
-        name: "Consultation only",
-        price: "Free",
-        period: " initial visit",
-        description: "Schedule a no-obligation virtual consultation to discuss your options.",
+        name: "One-Time Consultation",
+        price: PROGRAM_CONSULTATION_PRICE,
+        period: " one-time",
+        description: "Meet a licensed physician and review your options before committing to a plan.",
         features: [
-          "Same-day telehealth visit",
-          "Personalized health assessment",
-          "Treatment plan recommendation",
-          "No commitment required",
+          "Virtual physician consultation",
+          "Health history & goals review",
+          "Personalized treatment recommendations",
+          "Prescription evaluation",
         ],
         highlighted: false,
       },
     ],
-    disclaimer:
-      "Pricing may vary based on medication selection and insurance. A licensed provider determines the most appropriate treatment for your individual needs.",
+    disclaimer: PROGRAM_PRICING_DISCLAIMER,
     cta: "View plans & get started",
   },
   faq: {
@@ -332,8 +337,7 @@ export const weightLossContent = {
       {
         id: "wl-faq-3",
         question: "How much does the program cost?",
-        answer:
-          "Plans start at $299/month, which includes your physician consultation, medication, and ongoing support. There are no hidden fees or long-term contracts.",
+        answer: `Your initial physician consultation is ${PROGRAM_CONSULTATION_PRICE}. Ongoing plans run from ${PROGRAM_POPULAR_PLAN.prices.semaglutide}/month on the 3-month plan down to ${PROGRAM_LOWEST_RATE}/month over 12 months, depending on the medication prescribed. Medication costs are separate from care fees.`,
       },
       {
         id: "wl-faq-4",

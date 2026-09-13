@@ -1,12 +1,8 @@
 export {
-  PhysiciansCommitment,
-  PhysiciansCompliance,
-  PhysiciansConditions,
+  PhysiciansCoverage,
   PhysiciansCta,
+  PhysiciansConditions,
   PhysiciansHero,
-  PhysiciansPhilosophy,
-  PhysiciansProviders,
   PhysiciansReviewProcess,
-  PhysiciansStates,
-  PhysiciansWhyChoose,
+  PhysiciansSpotlight,
 } from "./physicians-sections";

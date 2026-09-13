@@ -1,20 +1,16 @@
 import {
+  HowItWorksChapters,
   HowItWorksCta,
-  HowItWorksDelivery,
   HowItWorksFaq,
-  HowItWorksFollowUp,
   HowItWorksHero,
   HowItWorksMedicalEvaluation,
-  HowItWorksOngoingSupport,
-  HowItWorksOverview,
-  HowItWorksPrescription,
-  HowItWorksTimeline,
+  HowItWorksPath,
 } from "@/components/sections/how-it-works";
 import { Footer, Header } from "@/components/layout";
 import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 
-import "@/styles/hub-page.css";
+import "@/styles/how-it-works.css";
 
 export const metadata = createMetadata({
   title: "How It Works",
@@ -32,13 +28,9 @@ export default function HowItWorksPage() {
       <Header />
       <main id="main-content" tabIndex={-1}>
         <HowItWorksHero />
-        <HowItWorksOverview />
-        <HowItWorksTimeline />
+        <HowItWorksChapters />
+        <HowItWorksPath />
         <HowItWorksMedicalEvaluation />
-        <HowItWorksPrescription />
-        <HowItWorksDelivery />
-        <HowItWorksOngoingSupport />
-        <HowItWorksFollowUp />
         <HowItWorksFaq />
         <HowItWorksCta />
         <Footer />

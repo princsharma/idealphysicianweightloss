@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { PROGRAM_PHYSICIANS } from "@/lib/constants/program-catalog";
 
 const brand = siteConfig.name;
 
@@ -150,40 +151,11 @@ export const aboutContent = {
     title: "The Expertise Behind Our Care",
     subtitle:
       "U.S. board-certified clinicians bring interdisciplinary expertise and years of experience. This ensures the highest standard of care. We invest in top medical talent for the best patient outcomes.",
-    members: [
-      {
-        name: "Dr. Miller",
-        bio: "Dr. Miller is a licensed physician who provides physician-guided weight loss and metabolic health consultations aligned with established clinical standards. He earned his medical degree from Columbia University and completed postgraduate training at Washington University in St. Louis. Dr. Miller conducts individualized medical evaluations and may prescribe treatment when clinically appropriate.",
-        image: {
-          src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80",
-          alt: "Dr. Miller",
-        },
-      },
-      {
-        name: "Dr. Niles",
-        bio: "Dr. Niles is a licensed physician with over 30 years of clinical experience. She provides physician-guided weight loss consultations focused on individualized medical assessment and patient-centered care. Dr. Niles evaluates each patient's health history and goals to determine appropriate treatment options when clinically indicated.",
-        image: {
-          src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
-          alt: "Dr. Niles",
-        },
-      },
-      {
-        name: "Dr. Krasne",
-        bio: "Dr. Krasne is a board-certified, licensed physician who conducts weight loss evaluations and provides physician-guided care. He completed medical training at the University of Florida and the University of Miami Miller School of Medicine, with residency completed in 2017. Dr. Krasne may prescribe GLP-1 medications when clinically appropriate based on individualized assessment.",
-        image: {
-          src: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80",
-          alt: "Dr. Krasne",
-        },
-      },
-      {
-        name: "Dr. Bugailiskis",
-        bio: "Dr. Bugailiskis is a licensed physician who provides physician-guided weight loss care focused on individualized treatment planning. She earned her medical degree from the University of Illinois at Chicago and evaluates patients based on their health history, goals, and clinical needs to determine appropriate care options.",
-        image: {
-          src: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80",
-          alt: "Dr. Bugailiskis",
-        },
-      },
-    ],
+    members: PROGRAM_PHYSICIANS.map((doctor) => ({
+      name: doctor.name,
+      bio: doctor.shortBio,
+      image: doctor.image,
+    })),
     cta: "Book Your Free Consultation",
   },
   delivery: {

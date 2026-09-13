@@ -1,39 +1,177 @@
 import { siteConfig } from "@/config/site";
+import {
+  PROGRAM_CONSULTATION_PRICE,
+  PROGRAM_LOWEST_RATE,
+  PROGRAM_POPULAR_PLAN,
+  PROGRAM_PRICING_DISCLAIMER,
+  PROGRAM_TRACK_LOWEST_RATE,
+} from "@/lib/constants/program-catalog";
 
 const brand = siteConfig.name;
 
+type ImageSlot = { src: string | null; alt: string; label: string };
+
+/**
+ * Homepage artwork slots. Assets live in `public/images/home` — see the README
+ * there for filenames, ratios, and export guidance. Swap `src` from `null` to
+ * the asset path and the placeholder is replaced by the real image.
+ */
+export const homeImages = {
+  stats: {
+    src: "/images/home/stats.webp?v=2",
+    alt: "Semaglutide vial and injector pen on a pale studio backdrop",
+    label: "Medication",
+  },
+  whyUs: {
+    src: "/images/home/why-us.webp",
+    alt: "Notepad, reading glasses, and a medication carton on a physician's desk",
+    label: "Physician oversight",
+  },
+  process: {
+    src: "/images/home/process.webp",
+    alt: "Hands completing an online medical evaluation on a phone",
+    label: "Online evaluation",
+  },
+  eligibility: {
+    src: "/images/home/eligibility.webp",
+    alt: "Qualification checklist card, pen, and a glass of water on a cream surface",
+    label: "Eligibility review",
+  },
+  benefits: {
+    src: "/images/home/Benefits.webp?v=2",
+    alt: "Medication package being prepared for discreet home delivery",
+    label: "Home delivery",
+  },
+  experience: {
+    src: "/images/home/experience.webp",
+    alt: "Hands preparing fresh vegetables on a dark green kitchen counter",
+    label: "Ongoing support",
+  },
+  finalCta: {
+    src: null, // "/images/home/final-cta.webp"
+    alt: "Soft morning light filtering through green leaves",
+    label: "Your next step",
+  },
+} satisfies Record<string, ImageSlot>;
+
 export const homeContent = {
   hero: {
+    eyebrow: "Physician-guided GLP-1 care",
     titleLine1: "Medical weight loss",
     titleLine2: "that actually works",
     title: "Medical weight loss",
     titleHighlight: "that actually works",
     description:
       "Licensed doctors, same-day evaluations, and HIPAA-secure telehealth. You receive personalized GLP-1 programs with FDA-approved medications shipped to your door.",
+    /** The single medication featured beside the headline. */
+    featuredMedicationId: "wegovy",
+    medicationsLink: { label: "See all 8 GLP-1 options", href: "#treatments" },
     trustSignals: [
       { label: "HIPAA secure", icon: "shield" as const },
       { label: "FDA-approved options", icon: "badge-check" as const },
       { label: "48 states covered", icon: "globe" as const },
-      { label: "Doctor Evaluation at $75", icon: "receipt" as const },
+      { label: `Doctor Consultation at ${PROGRAM_CONSULTATION_PRICE}`, icon: "receipt" as const },
     ],
     primaryCta: "Start My Evaluation",
     secondaryCta: "See How it Works",
     secondaryHref: "#how-it-works",
+    benefits: [
+      "Licensed physicians and same-day virtual evaluations",
+      "FDA-approved GLP-1 medications when clinically appropriate",
+      "HIPAA-secure telehealth across 48 states",
+      `Physician consultation at ${PROGRAM_CONSULTATION_PRICE} · plans from ${PROGRAM_LOWEST_RATE}/month`,
+    ],
+    /** Shared: the hero features one card, the medications section renders them all. */
+    medicationCta: "Get Started",
+    medicationPriceNote: `Rates shown are the 12-month plan and combine medication with ongoing care for illustration. A ${PROGRAM_CONSULTATION_PRICE} physician consultation comes first, and medication is prescribed only when clinically appropriate. Individual results may vary.`,
+    medicationCards: [
+      {
+        id: "wegovy",
+        featured: true,
+        badge: `From ${PROGRAM_TRACK_LOWEST_RATE.semaglutide}/mo`,
+        shortText:
+          "Wegovy® is FDA-approved for chronic weight management under medical supervision. Up to 15% body weight loss (results may vary).",
+        price: PROGRAM_TRACK_LOWEST_RATE.semaglutide,
+        period: "/mo",
+      },
+      {
+        id: "compounded-semaglutide",
+        featured: false,
+        badge: "New",
+        shortText:
+          "A personalized semaglutide formula prepared by a licensed U.S. compounding pharmacy. Compounded medications are not FDA-approved.",
+        price: PROGRAM_TRACK_LOWEST_RATE.semaglutide,
+        period: "/mo",
+      },
+      {
+        id: "compounded-tirzepatide",
+        featured: false,
+        badge: "New",
+        shortText:
+          "A personalized tirzepatide formula prepared by a licensed U.S. compounding pharmacy. Compounded medications are not FDA-approved.",
+        price: PROGRAM_TRACK_LOWEST_RATE.tirzepatide,
+        period: "/mo",
+      },
+      {
+        id: "zepbound",
+        featured: false,
+        badge: null,
+        shortText:
+          "Zepbound® is FDA-approved for chronic weight management, with reductions of up to ~20% body weight (results may vary).",
+        price: PROGRAM_TRACK_LOWEST_RATE.tirzepatide,
+        period: "/mo",
+      },
+      {
+        id: "saxenda",
+        featured: false,
+        badge: null,
+        shortText:
+          "Saxenda® is liraglutide taken once daily and is FDA-approved for chronic weight management in qualifying adults.",
+        price: null,
+        period: "Quoted at consultation",
+      },
+      {
+        id: "ozempic",
+        featured: false,
+        badge: null,
+        shortText:
+          "Ozempic® contains semaglutide and is FDA-approved for type 2 diabetes. It may be prescribed off-label for weight management.",
+        price: PROGRAM_TRACK_LOWEST_RATE.semaglutide,
+        period: "/mo",
+      },
+      {
+        id: "mounjaro",
+        featured: false,
+        badge: null,
+        shortText:
+          "Mounjaro® contains tirzepatide and is FDA-approved for type 2 diabetes. It may be prescribed off-label for weight management.",
+        price: PROGRAM_TRACK_LOWEST_RATE.tirzepatide,
+        period: "/mo",
+      },
+      {
+        id: "victoza",
+        featured: false,
+        badge: null,
+        shortText:
+          "Victoza® is liraglutide, FDA-approved for type 2 diabetes. It may be prescribed off-label for weight management.",
+        price: null,
+        period: "Quoted at consultation",
+      },
+    ],
     image: {
       src: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200&q=80",
       alt: "FDA-approved GLP-1 weight loss medications",
     },
     startBar: {
-      placeholder: "Select your state to begin…",
       cta: "Start My Evaluation",
-      steps: "Select your state — takes 2–3 minutes",
+      steps: "A short health quiz — takes 2–3 minutes",
     },
   },
   trustBar: [
     { label: "HIPAA secure", icon: "shield" as const },
     { label: "FDA-approved options", icon: "badge-check" as const },
     { label: "48 states covered", icon: "globe" as const },
-    { label: "Doctor Evaluation at $75", icon: "receipt" as const },
+    { label: `Doctor Consultation at ${PROGRAM_CONSULTATION_PRICE}`, icon: "receipt" as const },
   ],
   statsSection: {
     title: "A complete",
@@ -43,21 +181,25 @@ export const homeContent = {
   stats: [
     {
       display: "01",
+      icon: "stethoscope" as const,
       label: "Personalized medical evaluation",
       detail: "Licensed physicians review your health history, goals, and lifestyle before any treatment is recommended.",
     },
     {
       display: "02",
+      icon: "pill" as const,
       label: "Evidence-based GLP-1 therapy",
       detail: "Access to semaglutide, tirzepatide, and liraglutide options, including Wegovy®, Ozempic®, Zepbound®, and Mounjaro® when medically appropriate.",
     },
     {
       display: "03",
+      icon: "activity" as const,
       label: "Ongoing physician oversight",
       detail: "Regular check-ins, dosage adjustments, and dedicated support. We do not offer a one-time prescription.",
     },
     {
       display: "04",
+      icon: "truck" as const,
       label: "Pharmacy fulfillment to your door",
       detail: "If prescribed, your medication is dispensed by a licensed U.S. pharmacy and shipped discreetly in 3 to 5 business days.",
     },
@@ -107,7 +249,7 @@ export const homeContent = {
         { label: "Evidence-based treatment protocols", us: true, them: false },
         { label: "Ongoing medical support", us: true, them: false },
         { label: "Discreet pharmacy delivery", us: true, them: false },
-        { label: "Plans from", us: "$299/mo", them: "$500+" },
+        { label: "Plans from", us: `${PROGRAM_LOWEST_RATE}/mo`, them: "$500+" },
       ],
     },
   },
@@ -170,7 +312,8 @@ export const homeContent = {
     title: "GLP-1",
     titleHighlight: "therapies",
     description:
-      "Our licensed physicians prescribe clinically proven GLP-1 and dual-action medications tailored to your unique needs only after a complete medical evaluation.",
+      "Our licensed physicians prescribe compounded, off-label, and FDA-approved GLP-1 options tailored to your needs, only after a complete medical evaluation.",
+    detailsCta: "View details",
     semaglutide: {
       name: "Semaglutide",
       tagline: "GLP-1 Receptor Agonist: Semaglutide",
@@ -195,7 +338,8 @@ export const homeContent = {
       benefits: [
         "Once-weekly administration",
         "Supports appetite regulation and metabolic function",
-        "Compounded versions may be available when clinically appropriate",
+        "Oral semaglutide available as a once-daily tablet",
+        "Compounded semaglutide may be prepared by a licensed U.S. compounding pharmacy when clinically appropriate — it is not FDA-approved",
       ],
     },
     tirzepatide: {
@@ -223,88 +367,127 @@ export const homeContent = {
         "Dual hormone receptor activity",
         "Once-weekly administration",
         "Supports long-term weight management",
-        "Compounded options may be considered when appropriate",
+        "Compounded tirzepatide may be prepared by a licensed U.S. compounding pharmacy when clinically appropriate — it is not FDA-approved",
       ],
     },
     products: [
       {
-        id: "ozempic",
-        name: "Ozempic®",
+        id: "compounded-semaglutide",
+        name: "Compounded Semaglutide",
         subtitle: "Semaglutide Injection",
-        image: "/ozempic.webp",
-        description: "Ozempic® contains semaglutide and is primarily prescribed for type 2 diabetes management.",
+        image: "/compounded-semaglutide.webp",
+        isNew: true,
+        description: "A personalized semaglutide formula prepared by a licensed U.S. compounding pharmacy against an individual prescription. Compounded medications are not FDA-approved.",
         benefits: [
-          "FDA-approved for type 2 diabetes",
-          "Semaglutide injection",
-          "Once-weekly self-injection",
+          "Personalized, pharmacy-compounded formula",
+          "Licensed U.S. pharmacy prepared",
+          "Doctor-led prescription",
         ],
-        color: "from-blue-500/20 to-indigo-500/10",
+        color: "from-teal-500/20 to-emerald-500/10",
+      },
+      {
+        id: "compounded-tirzepatide",
+        name: "Compounded Tirzepatide",
+        subtitle: "Tirzepatide Injection",
+        image: "/compounded-tirzepatide.webp",
+        isNew: true,
+        description: "A personalized tirzepatide formula prepared by a licensed U.S. compounding pharmacy against an individual prescription. Compounded medications are not FDA-approved.",
+        benefits: [
+          "Personalized, pharmacy-compounded formula",
+          "Licensed U.S. pharmacy prepared",
+          "Doctor-led prescription",
+        ],
+        color: "from-violet-500/20 to-indigo-500/10",
       },
       {
         id: "wegovy",
         name: "Wegovy®",
         subtitle: "Semaglutide Injection",
         image: "/wegovy.webp",
-        description: "Wegovy® supports chronic weight management under medical supervision. Up to 15% body weight loss (results may vary).",
+        isNew: false,
+        description: "Wegovy® is semaglutide, FDA-approved for chronic weight management in adults with obesity or overweight, alongside diet and exercise.",
         benefits: [
-          "FDA-approved for chronic weight management",
-          "Up to 15% body weight loss (results may vary)",
-          "Once-weekly injectable medication",
+          "FDA-approved for weight management",
+          "Doctor-led prescription",
+          "Once-weekly injection",
         ],
         color: "from-teal-500/20 to-cyan-500/10",
-      },
-      {
-        id: "mounjaro",
-        name: "Mounjaro®",
-        subtitle: "Tirzepatide Injection",
-        image: "/mounjaro.webp",
-        description: "Mounjaro® contains tirzepatide and is primarily used for type 2 diabetes management.",
-        benefits: [
-          "FDA-approved for type 2 diabetes",
-          "Tirzepatide injection",
-          "Once-weekly injectable treatment",
-        ],
-        color: "from-amber-500/20 to-orange-500/10",
       },
       {
         id: "zepbound",
         name: "Zepbound®",
         subtitle: "Tirzepatide Injection",
         image: "/zepbound.webp",
-        description: "Zepbound® is FDA-approved for chronic weight management. Clinical trials show reductions of up to ~20% body weight (results may vary).",
+        isNew: false,
+        description: "Zepbound® is tirzepatide, FDA-approved for chronic weight management and the first dual GIP and GLP-1 receptor agonist approved for weight loss.",
         benefits: [
-          "FDA-approved for chronic weight management",
-          "Up to ~20% body weight loss (results may vary)",
-          "Once-weekly medically supervised injection",
+          "FDA-approved for weight management",
+          "Doctor-led prescription",
+          "Once-weekly injection",
         ],
         color: "from-violet-500/20 to-purple-500/10",
       },
       {
-        id: "rybelsus",
-        name: "Rybelsus®",
-        subtitle: "Oral Semaglutide",
-        image: "/rybluss.webp",
-        description: "Non-injectable oral semaglutide may support off-label weight management.",
-        benefits: [
-          "FDA-approved for type 2 diabetes",
-          "May be prescribed off-label for weight loss",
-          "Taken daily as an oral tablet",
-        ],
-        color: "from-emerald-500/20 to-teal-500/10",
-      },
-      {
-        id: "victoza-saxenda",
-        name: "Victoza® / Saxenda®",
+        id: "saxenda",
+        name: "Saxenda®",
         subtitle: "Liraglutide Injection",
         image: "/liraglutide.webp",
-        description: "Victoza and Saxenda are liraglutide-based prescription GLP-1 medications.",
+        isNew: false,
+        description: "Saxenda® is liraglutide, FDA-approved for chronic weight management in adults with obesity or overweight, taken once daily.",
         benefits: [
-          "Liraglutide for diabetes and chronic weight management",
-          "Personalized treatment under medical supervision",
-          "Once-daily prescription injection",
+          "FDA-approved for weight management",
+          "Doctor-led prescription",
+          "Once-daily injection",
         ],
         color: "from-rose-500/20 to-pink-500/10",
       },
+      {
+        id: "ozempic",
+        name: "Ozempic®",
+        subtitle: "Semaglutide Injection",
+        image: "/ozempic.webp",
+        isNew: false,
+        description: "Ozempic® contains the same active ingredient as Wegovy®. It is FDA-approved for type 2 diabetes, not weight loss, and may be prescribed off-label for weight management.",
+        benefits: [
+          "Same active ingredient as Wegovy®",
+          "Doctor-led off-label prescription",
+          "Once-weekly injection",
+        ],
+        color: "from-blue-500/20 to-indigo-500/10",
+      },
+      {
+        id: "mounjaro",
+        name: "Mounjaro®",
+        subtitle: "Tirzepatide Injection",
+        image: "/mounjaro.webp",
+        isNew: false,
+        description: "Mounjaro® contains the same active ingredient as Zepbound®. It is FDA-approved for type 2 diabetes, not weight loss, and may be prescribed off-label for weight management.",
+        benefits: [
+          "Same active ingredient as Zepbound®",
+          "Doctor-led off-label prescription",
+          "Once-weekly injection",
+        ],
+        color: "from-amber-500/20 to-orange-500/10",
+      },
+      {
+        id: "victoza",
+        name: "Victoza®",
+        subtitle: "Liraglutide Injection",
+        image: "/liraglutide.webp",
+        isNew: false,
+        description: "Victoza® contains the same active ingredient as Saxenda®. It is FDA-approved for type 2 diabetes, not weight loss, and may be prescribed off-label for weight management.",
+        benefits: [
+          "Same active ingredient as Saxenda®",
+          "Doctor-led off-label prescription",
+          "Once-daily injection",
+        ],
+        color: "from-rose-500/20 to-red-500/10",
+      },
+    ],
+    footnotes: [
+      "Medication is only prescribed when a licensed provider determines it is clinically appropriate for you. Compounded medications are prepared by a licensed U.S. compounding pharmacy per individual prescription and are not FDA-approved. FDA-approved products are dispensed as manufactured by their maker. Product packaging, labeling, and appearance may differ from the images shown on this site.",
+      "Ozempic®, Victoza®, and Mounjaro® are FDA-approved for type 2 diabetes and, in adults with type 2 diabetes at high cardiovascular risk, for reducing the risk of major cardiovascular events. They are not FDA-approved for weight loss. Where clinically appropriate, a licensed provider may prescribe them off-label for weight management based on individual evaluation.",
+      `Wegovy®, Ozempic®, Victoza®, and Saxenda® are registered trademarks of Novo Nordisk A/S. Zepbound® and Mounjaro® are registered trademarks of Eli Lilly and Company. ${brand} is not affiliated with, sponsored by, or endorsed by Novo Nordisk or Eli Lilly.`,
     ],
   },
   howItWorks: {
@@ -399,7 +582,7 @@ export const homeContent = {
       {
         id: "pricing",
         title: "Transparent pricing",
-        description: "Plans from $299/month with no hidden fees or long-term contracts.",
+        description: `Plans from ${PROGRAM_LOWEST_RATE}/month with no hidden fees and no insurance required.`,
         icon: "receipt" as const,
       },
     ],
@@ -434,41 +617,15 @@ export const homeContent = {
   },
   pricing: {
     eyebrow: "Pricing",
-    title: "Simple, transparent",
-    titleHighlight: "plans",
+    title: "Choose a plan",
+    titleHighlight: "that fits",
     description:
-      "No surprise fees. No long-term contracts. Everything you need for physician-guided weight loss.",
-    plans: [
-      {
-        name: "Complete care plan",
-        price: "$299",
-        period: "/month",
-        pricePrefix: "Starting at",
-        description: "Medication and ongoing support.",
-        features: [
-          "Dosage adjustments",
-          "24/7 care team access",
-          "Discreet pharmacy delivery",
-        ],
-        highlighted: true,
-      },
-      {
-        name: "Care Team Consultation only",
-        price: "Free",
-        period: " initial visit",
-        description: "Schedule a no-obligation virtual consultation to discuss your options.",
-        features: [
-          "Same-day telehealth visit",
-          "Personalized health assessment",
-          "Treatment plan recommendation",
-          "No commitment required",
-        ],
-        highlighted: false,
-      },
-    ],
-    disclaimer:
-      "Pricing may vary based on medication selection and insurance. A licensed provider determines the most appropriate treatment for your individual needs.",
+      "Start with a one-time consultation, or commit to a longer plan and your monthly rate drops automatically. No codes to ask for.",
+    trackLabel: "Rates depend on the medication prescribed",
+    disclaimer: PROGRAM_PRICING_DISCLAIMER,
     cta: "Start My Evaluation",
+    viewAllLabel: "View full pricing details",
+    viewAllHref: "/weight-loss/pricing",
   },
   faq: {
     eyebrow: "FAQ",
@@ -526,8 +683,7 @@ export const homeContent = {
       {
         id: "home-faq-9",
         question: "How much does the GLP-1 weight loss program cost?",
-        answer:
-          "The initial evaluation fee is $75. Medication costs vary based on the treatment plan and services included. Your provider can explain pricing details during the consultation.",
+        answer: `The initial physician consultation is ${PROGRAM_CONSULTATION_PRICE}. Ongoing plans run from ${PROGRAM_POPULAR_PLAN.prices.semaglutide}/month on the 3-month plan down to ${PROGRAM_LOWEST_RATE}/month over 12 months, and medication costs depend on the treatment prescribed. Your provider can explain pricing details during the consultation.`,
       },
     ],
   },
@@ -593,11 +749,11 @@ export const homeContent = {
           { label: "Semaglutide", href: "/weight-loss/semaglutide" },
           { label: "Tirzepatide", href: "/weight-loss/tirzepatide" },
           { label: "Wegovy", href: "/weight-loss/wegovy" },
+          { label: "Zepbound", href: "/weight-loss/zepbound" },
+          { label: "Saxenda", href: "/weight-loss/saxenda" },
           { label: "Ozempic", href: "/weight-loss/ozempic" },
           { label: "Mounjaro", href: "/weight-loss/mounjaro" },
-          { label: "Zepbound", href: "/weight-loss/zepbound" },
-          { label: "Rybelsus", href: "/weight-loss/rybelsus" },
-          { label: "Victoza / Saxenda", href: "/weight-loss/victoza-saxenda" },
+          { label: "Victoza", href: "/weight-loss/victoza" },
         ],
       },
       {

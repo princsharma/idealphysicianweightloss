@@ -8,13 +8,9 @@ import {
   HomePricing,
 } from "@/components/sections/home/home-sections";
 import { Header } from "@/components/layout";
-import { HERO_LCP } from "@/lib/constants/hero-gallery";
 import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 
-const HeroStartSection = dynamic(() =>
-  import("@/components/sections/home/hero-start-section").then((m) => ({ default: m.HeroStartSection })),
-);
 const StatsSection = dynamic(() =>
   import("@/components/sections/home/stats-section").then((m) => ({ default: m.StatsSection })),
 );
@@ -43,7 +39,7 @@ export const metadata = createMetadata({
   openGraph: {
     title: `Medical Weight Loss | ${siteConfig.name}`,
     description:
-      "Physician-guided GLP-1 weight loss with semaglutide, tirzepatide, and liraglutide — evaluations from $75 and plans from $299/month.",
+      "Physician-guided GLP-1 weight loss with semaglutide, tirzepatide, and liraglutide — a $39 physician consultation and plans from $149/month.",
   },
 });
 
@@ -53,14 +49,13 @@ export default function HomePage() {
       <link
         rel="preload"
         as="image"
-        href={HERO_LCP.src}
+        href="/wegovy.webp"
         type="image/webp"
         fetchPriority="high"
       />
       <Header />
       <main id="main-content" tabIndex={-1}>
         <HeroSection />
-        <HeroStartSection />
         <StatsSection />
         <WhyUsSection />
         <TreatmentsSection />

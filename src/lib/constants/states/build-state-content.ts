@@ -1,4 +1,5 @@
 import type { StatePageContent, StateSlug } from "@/lib/constants/states/state-page-types";
+import { PROGRAM_CONSULTATION_PRICE } from "@/lib/constants/program-catalog";
 import {
   STATE_TREATMENT_PRODUCTS,
   STATE_TREATMENTS_DISCLAIMER,
@@ -40,14 +41,14 @@ const SHARED_TREATMENTS = {
 
 const SHARED_PATH_BASE = {
   eyebrow: "How It Works",
-  price: "$75",
+  price: PROGRAM_CONSULTATION_PRICE,
   priceNote:
-    "Includes a doctor evaluation and, if clinically appropriate, a prescription, along with guidance on dose adjustments and side effect management.",
+    "Includes a doctor evaluation and, if clinically appropriate, a prescription, along with guidance on dose adjustments and side effect management. Medication costs are separate.",
   priceFeatures: [
     "HIPAA compliant",
     "Doctor Care",
     "Online Evaluation",
-    "Insurance Verification",
+    "No Insurance Required",
     "Prescription Based Medication",
   ],
   cta: "Book Your Consultation",

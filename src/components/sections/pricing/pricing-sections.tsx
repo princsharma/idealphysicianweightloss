@@ -4,6 +4,7 @@ import {
 } from "lucide-react";
 
 import { MagneticButton } from "@/components/client/magnetic-button";
+import { PricingPlansGrid } from "@/components/client/pricing-plans";
 import { Reveal, Stagger, StaggerChild } from "@/components/client/reveal";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-card";
 import { LinkButton } from "@/components/ui/link-button";
@@ -133,57 +134,7 @@ export function PricingComparePlans() {
           <p className="mt-5 text-white/55">{plans.description}</p>
         </Reveal>
 
-        <Stagger className="mt-14 grid gap-6 lg:mx-auto lg:max-w-4xl lg:grid-cols-2" stagger={0.1}>
-          {plans.items.map((plan) => (
-            <StaggerChild key={plan.id}>
-              <BentoCard
-                variant={plan.highlighted ? "accent" : "glass"}
-                className={cn("flex h-full flex-col", plan.highlighted && "ring-2 ring-lime/30")}
-                hover={false}
-              >
-                {plan.highlighted ? (
-                  <span className="mb-4 inline-block w-fit rounded-full bg-white/20 px-3 py-1 text-xs font-medium">
-                    Most popular
-                  </span>
-                ) : null}
-                <h3 className="font-display text-xl font-semibold">{plan.name}</h3>
-                <p className="mt-4 flex items-baseline gap-1">
-                  <span className="font-display text-5xl font-bold">{plan.price}</span>
-                  <span className={cn("text-sm", plan.highlighted ? "text-accent-foreground/80" : "text-white/60")}>
-                    {plan.period}
-                  </span>
-                </p>
-                <p className={cn("mt-3 text-sm", plan.highlighted ? "text-accent-foreground/90" : "text-white/60")}>
-                  {plan.description}
-                </p>
-                <ul className="mt-6 flex-1 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className={cn(
-                        "flex gap-2 text-sm",
-                        plan.highlighted ? "text-accent-foreground/90" : "text-white/70",
-                      )}
-                    >
-                      <Check className="mt-0.5 size-4 shrink-0" aria-hidden />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8">
-                  <LinkButton
-                    href={siteConfig.bookingUrl}
-                    size="lg"
-                    className={cn("w-full rounded-full", !plan.highlighted && "border-white/20 text-white hover:bg-white/10")}
-                    variant={plan.highlighted ? "primary" : "outline-dark"}
-                  >
-                    {plan.cta}
-                  </LinkButton>
-                </div>
-              </BentoCard>
-            </StaggerChild>
-          ))}
-        </Stagger>
+        <PricingPlansGrid label={plans.trackLabel} />
 
         <p className="mt-8 text-center text-sm text-white/45">{plans.disclaimer}</p>
       </SectionContainer>

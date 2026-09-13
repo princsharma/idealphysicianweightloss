@@ -1,3 +1,5 @@
+import { PROGRAM_CONSULTATION_PRICE } from "@/lib/constants/program-catalog";
+
 export type FaqItem = { id: string; question: string; answer: string };
 
 export type FaqCategory = {
@@ -30,7 +32,7 @@ export const faqPageContent = {
           id: "faq-1",
           question: "Do I need insurance to get started?",
           answer:
-            "No. You can get started without insurance. Our consultation fee is $75 out-of-pocket, and medication costs vary depending on insurance coverage or discount programs.",
+            `No insurance is required. Our physician consultation fee is ${PROGRAM_CONSULTATION_PRICE} out-of-pocket, and medication costs are separate — they vary depending on the treatment prescribed, dosage, pharmacy, and any applicable coverage.`,
         },
         {
           id: "faq-2",

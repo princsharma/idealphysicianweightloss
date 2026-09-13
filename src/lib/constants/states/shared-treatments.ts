@@ -36,24 +36,42 @@ export const STATE_TREATMENT_PRODUCTS = [
     color: "from-violet-500/20 to-purple-500/10",
   },
   {
-    id: "rybelsus",
-    name: "Rybelsus",
-    image: "/rybluss.webp",
+    id: "compounded-semaglutide",
+    name: "Compounded Semaglutide",
+    image: "/compounded-semaglutide.webp",
     description:
-      "An oral GLP-1 option that may be prescribed as an alternative to injections for weight management when appropriate based on your medical assessment.",
-    dosing: "Daily Tablet",
+      "A personalized semaglutide formula prepared by a licensed U.S. compounding pharmacy against an individual prescription when clinically appropriate.",
+    dosing: "Weekly Injection",
     color: "from-emerald-500/20 to-teal-500/10",
   },
   {
-    id: "liraglutide",
-    name: "Liraglutide",
+    id: "compounded-tirzepatide",
+    name: "Compounded Tirzepatide",
+    image: "/compounded-tirzepatide.webp",
+    description:
+      "A personalized tirzepatide formula prepared by a licensed U.S. compounding pharmacy against an individual prescription when clinically appropriate.",
+    dosing: "Weekly Injection",
+    color: "from-violet-500/20 to-indigo-500/10",
+  },
+  {
+    id: "saxenda",
+    name: "Saxenda",
     image: "/liraglutide.webp",
     description:
-      "A daily GLP-1 medication that may be prescribed to help manage appetite and promote gradual weight loss under medical supervision.",
+      "A daily GLP-1 medication FDA-approved for chronic weight management, prescribed to qualified individuals under medical supervision.",
     dosing: "Daily Injection",
     color: "from-rose-500/20 to-pink-500/10",
+  },
+  {
+    id: "victoza",
+    name: "Victoza",
+    image: "/liraglutide.webp",
+    description:
+      "A daily GLP-1 medication approved for type 2 diabetes that may be prescribed off-label to help manage appetite and support gradual weight loss.",
+    dosing: "Daily Injection",
+    color: "from-rose-500/20 to-red-500/10",
   },
 ] as const;
 
 export const STATE_TREATMENTS_DISCLAIMER =
-  "Ozempic, Mounjaro, Rybelsus, and Victoza (liraglutide) are not FDA-approved for weight loss and may be prescribed off-label when clinically appropriate. Not all individuals will qualify, and all treatment decisions are based on a clinical evaluation.";
+  "Ozempic, Mounjaro, and Victoza are not FDA-approved for weight loss and may be prescribed off-label when clinically appropriate. Compounded medications are prepared by a licensed U.S. compounding pharmacy and are not FDA-approved. Not all individuals will qualify, and all treatment decisions are based on a clinical evaluation.";

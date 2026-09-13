@@ -1,11 +1,12 @@
 import { Reveal, RevealLi, RevealLine } from "@/components/client/reveal";
+import { ImageFrame } from "@/components/ui/image-frame";
 import {
   DisplayHeading,
   Eyebrow,
   ScrollSection,
   SectionContainer,
 } from "@/components/ui/scroll-section";
-import { homeContent } from "@/lib/constants/home-content";
+import { homeContent, homeImages } from "@/lib/constants/home-content";
 import { getIcon } from "@/lib/utils/icons";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +27,13 @@ export function ProcessSection() {
               {howItWorks.description}
             </p>
             <RevealLine className="mt-10 bg-accent/30" delay={0.2} />
+            <ImageFrame
+              {...homeImages.process}
+              ratio="portrait"
+              theme="dark"
+              className="mt-10 hidden lg:block"
+              sizes="360px"
+            />
           </Reveal>
 
           <div className="relative lg:col-span-8">

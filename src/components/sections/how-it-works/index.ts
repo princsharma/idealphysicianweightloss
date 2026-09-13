@@ -1,12 +1,8 @@
 export {
+  HowItWorksChapters,
   HowItWorksCta,
-  HowItWorksDelivery,
   HowItWorksFaq,
-  HowItWorksFollowUp,
   HowItWorksHero,
   HowItWorksMedicalEvaluation,
-  HowItWorksOngoingSupport,
-  HowItWorksOverview,
-  HowItWorksPrescription,
-  HowItWorksTimeline,
+  HowItWorksPath,
 } from "./how-it-works-sections";
