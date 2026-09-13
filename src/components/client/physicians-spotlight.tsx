@@ -13,7 +13,9 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export function PhysiciansSpotlight() {
   const { providers } = physiciansContent;
-  const [activeId, setActiveId] = useState(providers.members[0].id);
+  const [activeId, setActiveId] = useState<(typeof providers.members)[number]["id"]>(
+    providers.members[0].id,
+  );
   const reduce = usePrefersReducedMotion();
   const doctor = providers.members.find((member) => member.id === activeId) ?? providers.members[0];
 

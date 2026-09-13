@@ -14,6 +14,7 @@ interface StoryBannerProps {
   className?: string;
   sizes?: string;
   priority?: boolean;
+  lockScale?: boolean;
 }
 
 export function StoryBanner({
@@ -26,6 +27,7 @@ export function StoryBanner({
   className,
   sizes = "100vw",
   priority = false,
+  lockScale = false,
 }: StoryBannerProps) {
   const { ref, inView } = useInView<HTMLDivElement>({ amount: 0.2, once: true });
 
@@ -34,7 +36,7 @@ export function StoryBanner({
       <div
         className={cn(
           "h-full origin-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-          inView ? "scale-100" : "scale-[1.12]",
+          lockScale || inView ? "scale-100" : "scale-[1.12]",
         )}
       >
         <ImageFrame
