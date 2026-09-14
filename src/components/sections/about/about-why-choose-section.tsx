@@ -20,7 +20,7 @@ export function AboutWhyChooseSection() {
     <section className="about-ref-why">
       <SectionContainer>
         <Reveal direction="up" distance={24} className="about-ref-section-header">
-          <h2 className="about-ref-heading text-center">{whyChoose.title}</h2>
+          <h2 className="about-ref-heading type-h2 text-center">{whyChoose.title}</h2>
           <p className="about-ref-body about-ref-section-header__sub mx-auto mt-4 text-center">
             {whyChoose.subtitle}
           </p>

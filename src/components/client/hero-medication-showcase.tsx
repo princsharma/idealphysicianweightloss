@@ -4,6 +4,8 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { cn } from "@/lib/utils";
+
 export interface HeroShowcaseItem {
   id: string;
   name: string;
@@ -39,8 +41,7 @@ export function HeroMedicationShowcase({
     return () => window.clearInterval(timer);
   }, [isPaused, items.length, intervalMs]);
 
-  const active = items[index];
-  if (!active) return null;
+  if (items.length === 0) return null;
 
   return (
     <div
@@ -66,11 +67,28 @@ export function HeroMedicationShowcase({
       </div>
 
       <div className="mary-hero__showcase-body">
-        <div key={active.id} className="mary-hero__showcase-fade">
-          {active.badge ? <p className="mary-hero__showcase-badge">{active.badge}</p> : null}
-          <p className="mary-hero__showcase-type">{active.subtitle}</p>
-          <p className="mary-hero__showcase-name">{active.name}</p>
-          <p className="mary-hero__showcase-text">{active.shortText}</p>
+        <div className="mary-hero__showcase-copy" aria-live="polite">
+          {items.map((item, itemIndex) => (
+            <div
+              key={item.id}
+              className={cn(
+                "mary-hero__showcase-slide",
+                itemIndex === index && "is-active",
+              )}
+              aria-hidden={itemIndex !== index}
+            >
+              <div className="mary-hero__showcase-badge-slot">
+                {item.badge ? (
+                  <p className="mary-hero__showcase-badge">{item.badge}</p>
+                ) : (
+                  <span className="mary-hero__showcase-badge-placeholder" aria-hidden />
+                )}
+              </div>
+              <p className="mary-hero__showcase-type">{item.subtitle}</p>
+              <p className="mary-hero__showcase-name">{item.name}</p>
+              <p className="mary-hero__showcase-text">{item.shortText}</p>
+            </div>
+          ))}
         </div>
 
         <div className="mary-hero__showcase-foot">

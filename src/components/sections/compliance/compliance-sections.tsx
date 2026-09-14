@@ -51,7 +51,7 @@ export function ComplianceHero() {
           <Reveal variant="scale" duration={0.85} delay={0.1} className="hidden lg:flex lg:justify-end">
             <div className="hub-hero-visual" aria-hidden>
               <ShieldCheck className="size-12 text-lime-bright" />
-              <p className="mt-4 font-display text-xl font-semibold text-white">HIPAA · FDA · Licensed</p>
+              <p className="mt-4 type-h3 text-white">HIPAA · FDA · Licensed</p>
               <p className="mt-1 text-sm text-white/50">Regulated telehealth care</p>
             </div>
           </Reveal>
@@ -229,7 +229,7 @@ export function CompliancePrescription() {
                       <span className="hub-timeline-dot" aria-hidden>
                         {index + 1}
                       </span>
-                      <h3 className="font-display text-xl font-semibold text-white sm:text-2xl">{step.title}</h3>
+                      <h3 className="type-h3 text-white">{step.title}</h3>
                       <p className="mt-3 max-w-xl text-base leading-relaxed text-white/55">{step.text}</p>
                   </RevealLi>
                 );

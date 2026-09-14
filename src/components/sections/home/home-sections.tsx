@@ -49,7 +49,7 @@ export function HomeEligibility() {
             />
 
             <BentoCard variant="light">
-              <h3 className="font-display text-lg font-semibold text-ink">You may qualify if you are:</h3>
+              <h3 className="type-h4 text-ink">You may qualify if you are:</h3>
               <ul className="mt-6 space-y-4">
                 {eligibility.qualifies.map((item) => (
                   <li key={item.slice(0, 48)} className="flex gap-3 text-sm leading-relaxed text-ink-muted sm:text-base">
@@ -68,10 +68,15 @@ export function HomeEligibility() {
 
 export function HomeBenefits() {
   const { benefits } = homeContent;
+  const colSpans = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-4", "lg:col-span-4", "lg:col-span-4", "lg:col-span-12"];
 
   return (
-    <ScrollSection theme="light" snap={false} className="py-20 sm:py-28">
-      <SectionContainer>
+    <ScrollSection theme="light" snap={false} className="relative overflow-hidden py-24 sm:py-32">
+      <div className="home-atmosphere" aria-hidden>
+        <div className="home-grid-lines" />
+        <div className="orb -left-24 top-1/4 size-80 bg-lime/20" />
+      </div>
+      <SectionContainer className="relative">
         <Reveal direction="up" distance={24} className="mx-auto max-w-3xl text-center">
           <Eyebrow className="text-forest">{benefits.eyebrow}</Eyebrow>
           <DisplayHeading size="lg" className="text-ink">
@@ -82,16 +87,20 @@ export function HomeBenefits() {
 
         <Stagger className="mt-14" stagger={0.08}>
           <BentoGrid>
-            {benefits.items.map((item) => {
+            {benefits.items.map((item, index) => {
               const Icon = getIcon(item.icon);
+              const featured = index === 0;
               return (
-                <StaggerChild key={item.id} className="lg:col-span-4">
-                  <BentoCard variant="light" className="h-full">
+                <StaggerChild key={item.id} className={colSpans[index] ?? "lg:col-span-4"}>
+                  <BentoCard
+                    variant="light"
+                    className={featured ? "home-benefits-feature h-full min-h-[14rem]" : "h-full"}
+                  >
                     <div className="flex size-12 items-center justify-center rounded-2xl border border-forest/10 bg-forest/5">
                       <Icon className="size-5 text-forest" aria-hidden />
                     </div>
-                    <h3 className="mt-5 font-display text-lg font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.description}</p>
+                    <h3 className="mt-5 type-h4 text-ink">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">{item.description}</p>
                   </BentoCard>
                 </StaggerChild>
               );
@@ -99,12 +108,14 @@ export function HomeBenefits() {
           </BentoGrid>
         </Stagger>
 
-        <Reveal delay={0.15} variant="scale" className="mt-14">
-          <ImageFrame
-            {...homeImages.benefits}
-            ratio="panorama"
-            sizes="(max-width: 1280px) 100vw, 1200px"
-          />
+        <Reveal delay={0.15} variant="scale" className="home-benefits-banner">
+          <div className="home-benefits-banner__inner">
+            <ImageFrame
+              {...homeImages.benefits}
+              ratio="panorama"
+              sizes="(max-width: 1280px) 100vw, 1200px"
+            />
+          </div>
         </Reveal>
       </SectionContainer>
     </ScrollSection>
@@ -143,7 +154,7 @@ export function HomeExperience() {
                   {index + 1}
                 </span>
                 <BentoCard variant="glass" hover={false}>
-                  <h3 className="font-display text-lg font-semibold text-white">{item.title}</h3>
+                  <h3 className="type-h4 text-white">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/60 sm:text-base">{item.text}</p>
                 </BentoCard>
               </div>
@@ -159,8 +170,11 @@ export function HomePricing() {
   const { pricing } = homeContent;
 
   return (
-    <ScrollSection id="pricing" theme="light" snap={false} className="gradient-light py-20 sm:py-28">
-      <SectionContainer>
+    <ScrollSection id="pricing" theme="light" snap={false} className="relative overflow-hidden py-24 sm:py-32">
+      <div className="home-atmosphere" aria-hidden>
+        <div className="orb left-1/2 top-0 size-[28rem] -translate-x-1/2 bg-lime/12" />
+      </div>
+      <SectionContainer className="relative">
         <Reveal direction="up" distance={24} className="mx-auto max-w-3xl text-center">
           <Eyebrow className="text-forest">{pricing.eyebrow}</Eyebrow>
           <DisplayHeading size="lg" className="text-ink">

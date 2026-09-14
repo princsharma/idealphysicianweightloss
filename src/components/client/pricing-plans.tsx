@@ -93,7 +93,7 @@ export function PricingPlansGrid({
                   </span>
                 ) : null}
 
-                <h3 className="font-display text-lg font-semibold">{plan.name}</h3>
+                <h3 className="type-h4">{plan.name}</h3>
 
                 <p className="mt-3 flex items-baseline gap-1">
                   <span className="font-display text-4xl font-bold">{plan.prices[track]}</span>

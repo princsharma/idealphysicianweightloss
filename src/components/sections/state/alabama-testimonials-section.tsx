@@ -50,7 +50,7 @@ export function StateTestimonialsSection({ content }: StateTestimonialsSectionPr
                   <Star key={i} className="size-4 fill-current" aria-hidden />
                 ))}
               </div>
-              <blockquote className="relative mt-6 font-display text-xl font-medium leading-snug text-white sm:text-2xl lg:text-3xl">
+              <blockquote className="relative mt-6 type-lede font-medium leading-snug text-white">
                 &ldquo;{featured.quote}&rdquo;
               </blockquote>
               <footer className="relative mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">

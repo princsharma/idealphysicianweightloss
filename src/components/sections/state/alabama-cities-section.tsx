@@ -48,7 +48,7 @@ export function StateCitiesSection({ content }: StateCitiesSectionProps) {
                   <p className="relative text-xs font-medium uppercase tracking-[0.18em] text-accent-bright">
                     {stateName} hub
                   </p>
-                  <h3 className="relative mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
+                  <h3 className="relative mt-3 type-h3 text-white">
                     {featured.city}
                   </h3>
                   <p className="relative mt-2 text-base text-white/60">{featured.region}</p>
@@ -63,7 +63,7 @@ export function StateCitiesSection({ content }: StateCitiesSectionProps) {
               {rest.map((location) => (
                 <StaggerChild key={location.city}>
                   <BentoCard variant="light" className="h-full !p-5">
-                    <h3 className="font-display text-base font-semibold text-ink">{location.city}</h3>
+                    <h3 className="type-h4 text-ink">{location.city}</h3>
                     <p className="mt-1 text-sm text-ink-muted">{location.region}</p>
                     <p className="mt-2 text-xs text-ink-subtle">{location.counties}</p>
                   </BentoCard>

@@ -119,7 +119,7 @@ export function WeightLossOverview() {
               <StaggerChild key={pillar.title} className={cn(index < 2 ? "lg:col-span-6" : "lg:col-span-6")}>
                 <BentoCard variant="light" className="h-full">
                   <span className="font-display text-sm font-semibold text-forest">0{index + 1}</span>
-                  <h3 className="mt-3 font-display text-xl font-semibold text-ink">{pillar.title}</h3>
+                  <h3 className="mt-3 type-h3 text-ink">{pillar.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">{pillar.text}</p>
                 </BentoCard>
               </StaggerChild>
@@ -163,7 +163,7 @@ export function WeightLossWhyMedical() {
             {whyMedical.reasons.map((reason) => (
               <StaggerChild key={reason.title}>
                 <BentoCard variant="glass" hover={false}>
-                  <h3 className="font-display text-lg font-semibold text-white">{reason.title}</h3>
+                  <h3 className="type-h4 text-white">{reason.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/60 sm:text-base">{reason.text}</p>
                 </BentoCard>
               </StaggerChild>
@@ -187,7 +187,7 @@ function MedicationFamilyCard({
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-forest">{family.tagline}</p>
-          <h3 className="mt-2 font-display text-2xl font-semibold text-ink sm:text-3xl">{family.name}</h3>
+          <h3 className="mt-2 type-h3 text-ink">{family.name}</h3>
         </div>
         <span
           className={cn(
@@ -311,7 +311,7 @@ export function WeightLossHowItWorks() {
                       </span>
 
                       <div>
-                        <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">{step.title}</h3>
+                        <h3 className="type-h3 text-white">{step.title}</h3>
                         <p className="mt-3 max-w-lg text-base leading-relaxed text-white/55">{step.description}</p>
                       </div>
 
@@ -355,7 +355,7 @@ export function WeightLossEligibility() {
           </Reveal>
 
           <BentoCard variant="light">
-            <h3 className="font-display text-lg font-semibold text-ink">You may qualify if you are:</h3>
+            <h3 className="type-h4 text-ink">You may qualify if you are:</h3>
             <ul className="mt-6 space-y-4">
               {eligibility.qualifies.map((item) => (
                 <li key={item.slice(0, 48)} className="flex gap-3 text-sm leading-relaxed text-ink-muted sm:text-base">
@@ -395,7 +395,7 @@ export function WeightLossBenefits() {
                     <div className="flex size-12 items-center justify-center rounded-2xl border border-forest/10 bg-forest/5">
                       <Icon className="size-5 text-forest" aria-hidden />
                     </div>
-                    <h3 className="mt-5 font-display text-lg font-semibold text-ink">{item.title}</h3>
+                    <h3 className="mt-5 type-h4 text-ink">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.description}</p>
                   </BentoCard>
                 </StaggerChild>
@@ -436,7 +436,7 @@ export function WeightLossJourney() {
                     <span className="text-xs font-semibold uppercase tracking-wider text-lime-bright">{phase.phase}</span>
                   </div>
                   <BentoCard variant="glass" hover={false}>
-                    <h3 className="font-display text-lg font-semibold text-white">{phase.title}</h3>
+                    <h3 className="type-h4 text-white">{phase.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/60 sm:text-base">{phase.text}</p>
                   </BentoCard>
                 </div>
@@ -471,7 +471,7 @@ export function WeightLossPricing() {
                 variant={plan.highlighted ? "accent" : "light"}
                 className={cn("h-full", plan.highlighted && "ring-2 ring-forest/20")}
               >
-                <h3 className="font-display text-xl font-semibold">{plan.name}</h3>
+                <h3 className="type-h3">{plan.name}</h3>
                 <p className="mt-4 flex items-baseline gap-1">
                   <span className="font-display text-4xl font-bold">{plan.price}</span>
                   <span className={cn("text-sm", plan.highlighted ? "text-accent-foreground/80" : "text-ink-muted")}>

@@ -62,7 +62,7 @@ export function StatePathSection({ content }: StatePathSectionProps) {
                     {index < path.steps.length - 1 ? <span className="state-path-step__line" /> : null}
                   </div>
                   <div className="state-path-step__body">
-                    <h3 className="font-display text-xl font-semibold text-ink sm:text-2xl">{step.title}</h3>
+                    <h3 className="type-h3 text-ink">{step.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">{step.description}</p>
                   </div>
                 </div>

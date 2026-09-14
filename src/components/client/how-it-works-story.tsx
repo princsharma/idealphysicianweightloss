@@ -102,7 +102,7 @@ export function HowItWorksStoryHero() {
         >
           <SectionContainer className="w-full py-6 sm:py-10">
             <Eyebrow>{hero.kicker}</Eyebrow>
-            <h1 className="mt-3 max-w-5xl font-display text-[clamp(2.15rem,7vh,6.2rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-white">
+            <h1 className="type-h1 mt-3 max-w-5xl text-white">
               {splitWords(hero.title, !animateIntro)}{" "}
               <span className="text-gradient">{splitWords(hero.titleHighlight, !animateIntro, 0.42)}</span>
             </h1>
@@ -362,7 +362,7 @@ export function HowItWorksStoryPath() {
                 transition={{ duration: 0.75, ease }}
               >
                 <span className="hiw-path__index">{phase.phase}</span>
-                <h3 className="font-display text-2xl font-semibold tracking-tight text-white sm:text-4xl">
+                <h3 className="type-h3 tracking-tight text-white">
                   {phase.title}
                 </h3>
                 <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/55 sm:text-lg">

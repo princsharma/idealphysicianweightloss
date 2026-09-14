@@ -161,7 +161,7 @@ function ClinicalCareStep({
         </span>
         <div>
           <p className="hiw-clinical__num">0{index + 1}</p>
-          <h3 className="mt-1 font-display text-lg font-semibold text-ink">{item.title}</h3>
+          <h3 className="mt-1 type-h4 text-ink">{item.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.text}</p>
         </div>
       </article>

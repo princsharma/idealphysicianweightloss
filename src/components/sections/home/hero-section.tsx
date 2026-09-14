@@ -40,7 +40,7 @@ export function HeroSection() {
               {hero.eyebrow}
             </p>
 
-            <h1 className="mary-hero__title">
+            <h1 className="mary-hero__title type-h1">
               <span className="mary-hero__title-line">{hero.titleLine1}</span>
               <span className="mary-hero__title-line mary-hero__title-line--accent">
                 {hero.titleLine2}

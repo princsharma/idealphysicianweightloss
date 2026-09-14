@@ -28,7 +28,7 @@ export function AboutMissionSection() {
             <Reveal direction="right" distance={24} delay={0.1}>
               <div>
                 <span className="about-ref-pill">{mission.eyebrow}</span>
-                <h2 className="about-ref-heading">{mission.title}</h2>
+                <h2 className="about-ref-heading type-h2">{mission.title}</h2>
                 <p className="about-ref-body mt-4">{mission.description}</p>
 
                 <p className="about-ref-subheading mt-8">Our Core Principles</p>

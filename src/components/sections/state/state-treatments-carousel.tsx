@@ -86,7 +86,7 @@ export function StateTreatmentsCarousel({ products }: StateTreatmentsCarouselPro
                 />
               </div>
               <div className={cn("bg-gradient-to-br px-5 py-4", product.color)}>
-                <h3 className="font-display text-xl font-semibold text-white">{product.name}</h3>
+                <h3 className="type-h3 text-white">{product.name}</h3>
                 <p className="mt-1 text-[0.65rem] font-semibold uppercase tracking-widest text-white/70">
                   {product.dosing}
                 </p>

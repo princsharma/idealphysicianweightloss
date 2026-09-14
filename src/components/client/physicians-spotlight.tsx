@@ -2,9 +2,12 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
-
+import {
+  physiciansSpotlightImageHidden,
+  usePhysiciansFly,
+} from "@/components/client/physicians-fly";
 import { Reveal } from "@/components/client/reveal";
+import { cn } from "@/lib/utils";
 import { DisplayHeading, Eyebrow, ScrollSection, SectionContainer } from "@/components/ui/scroll-section";
 import { physiciansContent } from "@/lib/constants/physicians-content";
 import { usePrefersReducedMotion } from "@/lib/hooks/use-prefers-reduced-motion";
@@ -13,11 +16,10 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export function PhysiciansSpotlight() {
   const { providers } = physiciansContent;
-  const [activeId, setActiveId] = useState<(typeof providers.members)[number]["id"]>(
-    providers.members[0].id,
-  );
+  const { spotlightTargetRef, progress, enabled, activeId, setActiveId, activeDoctor: doctor } =
+    usePhysiciansFly();
   const reduce = usePrefersReducedMotion();
-  const doctor = providers.members.find((member) => member.id === activeId) ?? providers.members[0];
+  const hidePlateImage = physiciansSpotlightImageHidden(progress, enabled);
 
   return (
     <ScrollSection id="providers" theme="light" snap={false} className="gradient-light py-20 sm:py-28">
@@ -32,13 +34,13 @@ export function PhysiciansSpotlight() {
 
         <div className="phys-spotlight mt-14 lg:mt-20">
           <div className="phys-spotlight__stage">
-            <div className="phys-plate phys-plate--cream">
+            <div ref={spotlightTargetRef} className="phys-plate phys-plate--cream">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={doctor.id}
-                  className="absolute inset-0"
+                  className={cn("absolute inset-0", hidePlateImage && "opacity-0")}
                   initial={reduce ? false : { opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: hidePlateImage ? 0 : 1, y: 0 }}
                   exit={reduce ? undefined : { opacity: 0, y: -12 }}
                   transition={{ duration: 0.45, ease }}
                 >
@@ -85,7 +87,7 @@ export function PhysiciansSpotlight() {
               transition={{ duration: 0.4, ease }}
             >
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-forest">{doctor.title}</p>
-              <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              <h3 className="mt-3 type-h3 tracking-tight text-ink">
                 {doctor.name}
               </h3>
               <p className="mt-6 text-base leading-relaxed text-ink-muted sm:text-lg">{doctor.bio}</p>

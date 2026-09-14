@@ -9,11 +9,6 @@
 /* ── Shared typography ── */
 
 .about-ref-heading {
-  font-family: var(--font-head);
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
@@ -756,9 +751,6 @@
 }
 
 .about-ref-final-cta__title {
-  font-family: var(--font-head);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
   color: #fff;
 }
 

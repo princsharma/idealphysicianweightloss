@@ -106,7 +106,7 @@ export function PricingIncluded() {
                 <StaggerChild key={item.id} className="lg:col-span-4">
                   <BentoCard variant="light" className="h-full">
                     <Icon className="size-5 text-forest" aria-hidden />
-                    <h3 className="mt-4 font-display text-lg font-semibold text-ink">{item.title}</h3>
+                    <h3 className="mt-4 type-h4 text-ink">{item.title}</h3>
                     <p className="mt-2 text-sm text-ink-muted">{item.description}</p>
                   </BentoCard>
                 </StaggerChild>
@@ -187,7 +187,7 @@ export function PricingConsultation() {
           {consultation.items.map((item) => (
             <StaggerChild key={item.title}>
               <BentoCard variant="light" className="h-full">
-                <h3 className="font-display text-lg font-semibold text-ink">{item.title}</h3>
+                <h3 className="type-h4 text-ink">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.text}</p>
               </BentoCard>
             </StaggerChild>
@@ -226,7 +226,7 @@ export function PricingMonthlyProcess() {
                   <span className="text-xs font-semibold uppercase tracking-wider text-lime-bright">
                     Step {index + 1}
                   </span>
-                  <h3 className="mt-2 font-display text-lg font-semibold text-white">{step.title}</h3>
+                  <h3 className="mt-2 type-h4 text-white">{step.title}</h3>
                   <p className="mt-2 text-sm text-white/60">{step.text}</p>
                 </BentoCard>
               </StaggerChild>

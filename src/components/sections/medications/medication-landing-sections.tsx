@@ -176,13 +176,13 @@ export function MedicationMechanism({ content }: { content: MedicationLandingCon
                 <StaggerChild key={step.title}>
                   <BentoCard variant="glass" hover={false}>
                     <div className="flex gap-5">
-                      <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 font-display text-lg font-semibold text-accent-bright">
+                      <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 type-h4 text-accent-bright">
                         {index + 1}
                       </span>
                       <div>
                         <div className="flex items-center gap-3">
                           <Icon className="size-5 text-lime-bright" aria-hidden />
-                          <h3 className="font-display text-lg font-semibold text-white">{step.title}</h3>
+                          <h3 className="type-h4 text-white">{step.title}</h3>
                         </div>
                         <p className="mt-2 text-sm leading-relaxed text-white/60 sm:text-base">{step.text}</p>
                       </div>
@@ -222,7 +222,7 @@ export function MedicationBenefits({ content }: { content: MedicationLandingCont
                     <div className="flex size-12 items-center justify-center rounded-2xl border border-forest/10 bg-forest/5">
                       <Icon className="size-5 text-forest" aria-hidden />
                     </div>
-                    <h3 className="mt-5 font-display text-lg font-semibold text-ink">{item.title}</h3>
+                    <h3 className="mt-5 type-h4 text-ink">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.description}</p>
                   </BentoCard>
                 </StaggerChild>
@@ -254,7 +254,7 @@ export function MedicationEligibility({ content }: { content: MedicationLandingC
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <BentoCard variant="light">
-            <h3 className="font-display text-lg font-semibold text-ink">You may qualify if:</h3>
+            <h3 className="type-h4 text-ink">You may qualify if:</h3>
             <ul className="mt-6 space-y-4">
               {eligibility.qualifies.map((item) => (
                 <li key={item.slice(0, 48)} className="flex gap-3 text-sm leading-relaxed text-ink-muted sm:text-base">
@@ -266,7 +266,7 @@ export function MedicationEligibility({ content }: { content: MedicationLandingC
           </BentoCard>
 
           <BentoCard variant="light" className="border-amber-200/50 bg-amber-50/30">
-            <h3 className="font-display text-lg font-semibold text-ink">May not be appropriate if:</h3>
+            <h3 className="type-h4 text-ink">May not be appropriate if:</h3>
             <ul className="mt-6 space-y-4">
               {eligibility.mayNotQualify.map((item) => (
                 <li key={item.slice(0, 48)} className="flex gap-3 text-sm leading-relaxed text-ink-muted sm:text-base">
@@ -317,7 +317,7 @@ export function MedicationExpectedResults({ content }: { content: MedicationLand
               <StaggerChild key={stat.label}>
                 <BentoCard variant="glass" className="text-center" hover={false}>
                   <span className="font-display text-4xl font-bold text-lime-bright sm:text-5xl">{stat.value}</span>
-                  <p className="mt-2 font-display text-lg font-semibold text-white">{stat.label}</p>
+                  <p className="mt-2 type-h4 text-white">{stat.label}</p>
                   <p className="mt-1 text-sm text-white/50">{stat.detail}</p>
                 </BentoCard>
               </StaggerChild>
@@ -376,7 +376,7 @@ export function MedicationTreatment({ content }: { content: MedicationLandingCon
                       </span>
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div>
-                          <h3 className="font-display text-xl font-semibold text-ink">{step.title}</h3>
+                          <h3 className="type-h3 text-ink">{step.title}</h3>
                           <p className="mt-2 max-w-lg text-sm leading-relaxed text-ink-muted sm:text-base">{step.text}</p>
                         </div>
                         <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-forest/10 bg-forest/5">
@@ -416,7 +416,7 @@ export function MedicationComparison({ content }: { content: MedicationLandingCo
                 <div className="relative mx-auto size-24 overflow-hidden rounded-2xl bg-white">
                   <Image src={product.image} alt={product.name} fill className="object-contain p-2" sizes="96px" />
                 </div>
-                <h3 className="mt-5 text-center font-display text-xl font-semibold text-ink">{product.name}</h3>
+                <h3 className="mt-5 text-center type-h3 text-ink">{product.name}</h3>
                 <p className="text-center text-sm text-ink-muted">{product.subtitle}</p>
                 <span
                   className={cn(
@@ -491,7 +491,7 @@ export function MedicationSideEffects({ content }: { content: MedicationLandingC
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <BentoCard variant="light">
-            <h3 className="font-display text-lg font-semibold text-ink">Common side effects</h3>
+            <h3 className="type-h4 text-ink">Common side effects</h3>
             <ul className="mt-5 grid gap-2 sm:grid-cols-2">
               {sideEffects.common.map((effect) => (
                 <li key={effect} className="flex gap-2 text-sm text-ink-muted">
@@ -503,7 +503,7 @@ export function MedicationSideEffects({ content }: { content: MedicationLandingC
           </BentoCard>
 
           <BentoCard variant="light" className="border-amber-200/50">
-            <h3 className="font-display text-lg font-semibold text-ink">Serious side effects</h3>
+            <h3 className="type-h4 text-ink">Serious side effects</h3>
             <ul className="mt-5 space-y-3">
               {sideEffects.serious.map((effect) => (
                 <li key={effect} className="flex gap-2 text-sm text-ink-muted">

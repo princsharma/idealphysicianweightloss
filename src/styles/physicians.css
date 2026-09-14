@@ -40,6 +40,34 @@
   filter: drop-shadow(0 18px 28px rgba(11, 42, 22, 0.28));
 }
 
+.phys-hero__plate-btn {
+  padding: 0;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition:
+    border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.phys-hero__plate-btn.is-selected {
+  border-color: rgba(174, 219, 98, 0.55);
+  box-shadow: 0 0 0 3px rgba(174, 219, 98, 0.14);
+}
+
+.phys-hero__plate-btn.is-fly-hidden .phys-plate__img {
+  opacity: 0;
+}
+
+.phys-hero__plate-btn:focus-visible {
+  outline: 2px solid var(--lime-bright);
+  outline-offset: 3px;
+}
+
+.phys-fly-portrait__inner {
+  overflow: hidden;
+}
+
 .phys-plate__badge {
   position: absolute;
   left: 0.85rem;

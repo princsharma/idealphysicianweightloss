@@ -81,7 +81,7 @@ export function HipaaHero() {
             <div className="hipaa-hero-visual" aria-hidden>
               <div className="hipaa-hero-visual__card">
                 <Shield className="size-10 text-lime-bright" />
-                <p className="mt-4 font-display text-lg font-semibold text-white">HIPAA NPP</p>
+                <p className="mt-4 type-h4 text-white">HIPAA NPP</p>
                 <p className="mt-1 text-sm text-white/50">Protected Health Information</p>
               </div>
             </div>
@@ -104,7 +104,7 @@ export function HipaaCommitment() {
               <span className="hipaa-icon-badge" aria-hidden>
                 <HeartHandshake className="size-5" />
               </span>
-              <h2 className="mt-5 font-display text-2xl font-semibold text-ink">{commitment.title}</h2>
+              <h2 className="mt-5 type-h3 text-ink">{commitment.title}</h2>
               <p className="mt-4 text-base leading-relaxed text-ink-muted">{commitment.text}</p>
             </BentoCard>
           </StaggerChild>
@@ -113,7 +113,7 @@ export function HipaaCommitment() {
               <span className="hipaa-icon-badge" aria-hidden>
                 <ShieldCheck className="size-5" />
               </span>
-              <h2 className="mt-5 font-display text-2xl font-semibold text-ink">{promise.title}</h2>
+              <h2 className="mt-5 type-h3 text-ink">{promise.title}</h2>
               <p className="mt-4 text-base leading-relaxed text-ink-muted">{promise.text}</p>
             </BentoCard>
           </StaggerChild>
@@ -146,7 +146,7 @@ export function HipaaInformationUsage() {
                     <span className="hipaa-icon-badge" aria-hidden>
                       <Icon className="size-5" />
                     </span>
-                    <h3 className="mt-5 font-display text-xl font-semibold text-ink">{item.title}</h3>
+                    <h3 className="mt-5 type-h3 text-ink">{item.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">{item.text}</p>
                   </BentoCard>
                 </StaggerChild>
@@ -191,7 +191,7 @@ export function HipaaPatientRights() {
                       <Icon className="size-4" />
                     </span>
                     <div>
-                      <h3 className="font-display text-lg font-semibold text-white">{right.title}</h3>
+                      <h3 className="type-h4 text-white">{right.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-white/65">{right.text}</p>
                     </div>
                   </div>

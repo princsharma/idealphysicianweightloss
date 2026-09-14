@@ -26,8 +26,8 @@ export const physiciansImages = {
     label: "State coverage",
   },
   cta: {
-    src: null,
-    alt: "An open path through green leaves",
+    src: "/images/how-it-works/hiw-cta.webp",
+    alt: "Patient beginning a telehealth weight loss consultation",
     label: "Begin care",
   },
 } satisfies Record<string, ImageSlot>;

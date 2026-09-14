@@ -175,14 +175,8 @@
 }
 
 .mary-hero__title {
-  font-family: var(--font-head);
-  font-weight: 600;
-  font-size: clamp(2.15rem, 7vw, 4.25rem);
-  line-height: 1.06;
-  letter-spacing: -0.035em;
   color: #fff;
   margin-bottom: 0;
-  text-wrap: balance;
 }
 
 .mary-hero__title-line {
@@ -386,20 +380,46 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.mary-hero__showcase-fade {
+.mary-hero__showcase-copy {
+  position: relative;
   flex: 1;
-  animation: heroShowcaseFade 0.55s var(--ease) both;
+  /* Fixed copy block — badge + type + name + 4 lines of body */
+  min-height: 13.25rem;
 }
 
-@keyframes heroShowcaseFade {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
+@media (min-width: 640px) {
+  .mary-hero__showcase-copy {
+    min-height: 12.5rem;
   }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+}
+
+.mary-hero__showcase-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s var(--ease), visibility 0.45s var(--ease);
+  pointer-events: none;
+}
+
+.mary-hero__showcase-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mary-hero__showcase-badge-slot {
+  display: flex;
+  align-items: center;
+  min-height: 1.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.mary-hero__showcase-badge-placeholder {
+  display: block;
+  width: 1px;
+  height: 1.85rem;
+  visibility: hidden;
 }
 
 .mary-hero__showcase-foot {
@@ -440,7 +460,7 @@
 
 .mary-hero__showcase-badge {
   display: inline-block;
-  margin: 0 0 0.75rem;
+  margin: 0;
   padding: 0.35rem 0.8rem;
   border-radius: var(--radius-full);
   background: var(--lime);
@@ -475,6 +495,11 @@
   font-size: 0.9rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.62);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  min-height: calc(1.7em * 4);
 }
 
 .mary-hero__showcase-link {

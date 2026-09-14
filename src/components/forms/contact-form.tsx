@@ -66,11 +66,11 @@ export function ContactForm({ className, id = "contact-form" }: ContactFormProps
         role="status"
       >
         <div className="mb-6 flex size-16 items-center justify-center rounded-full bg-accent-soft shadow-soft">
-          <span className="font-display text-2xl font-semibold text-accent" aria-hidden>
+          <span className="type-h3 text-accent" aria-hidden>
             ✓
           </span>
         </div>
-        <h3 className="font-display text-2xl font-semibold text-ink sm:text-3xl">{form.successTitle}</h3>
+        <h3 className="type-h3 text-ink">{form.successTitle}</h3>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-muted sm:text-base">
           {form.successDescription}
         </p>

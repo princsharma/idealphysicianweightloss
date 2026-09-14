@@ -29,7 +29,7 @@ export function EligibilityForm({ className }: EligibilityFormProps) {
         <div className="mb-5 flex size-16 items-center justify-center rounded-full bg-accent-soft">
           <span className="text-2xl text-accent" aria-hidden>✓</span>
         </div>
-        <h3 className="font-display text-2xl font-semibold text-ink">You may be eligible</h3>
+        <h3 className="type-h3 text-ink">You may be eligible</h3>
         <p className="mt-2 max-w-xs text-sm leading-relaxed text-ink-muted">
           A physician will review your profile and reach out within 24 hours.
         </p>
@@ -46,7 +46,7 @@ export function EligibilityForm({ className }: EligibilityFormProps) {
       <p className="text-xs font-medium uppercase tracking-[0.15em] text-accent">
         Free assessment
       </p>
-      <h3 className="mt-2 font-display text-xl font-semibold text-ink sm:text-2xl">
+      <h3 className="mt-2 type-h3 text-ink">
         Check your eligibility
       </h3>
       <p className="mt-1 text-sm text-ink-muted">Takes less than 60 seconds</p>

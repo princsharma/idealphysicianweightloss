@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
+import { PhysiciansHeroWall } from "@/components/client/physicians-hero-wall";
 import { MagneticButton } from "@/components/client/magnetic-button";
 import {
   PhysiciansCoverageStat,
@@ -18,10 +19,9 @@ import {
 } from "@/components/ui/scroll-section";
 import { siteConfig } from "@/config/site";
 import { physiciansContent, physiciansImages } from "@/lib/constants/physicians-content";
-import { cn } from "@/lib/utils";
 
 export function PhysiciansHero() {
-  const { hero, providers } = physiciansContent;
+  const { hero } = physiciansContent;
 
   return (
     <ScrollSection
@@ -54,21 +54,8 @@ export function PhysiciansHero() {
             </div>
           </Reveal>
 
-          <Reveal variant="zoom" duration={1} delay={0.08} className="flex justify-center lg:justify-end">
-            <div className="phys-hero__wall">
-              {providers.members.map((doctor) => (
-                <div key={doctor.id} className="phys-plate">
-                  <Image
-                    src={doctor.image.src}
-                    alt={doctor.image.alt}
-                    fill
-                    sizes="(max-width: 1024px) 40vw, 200px"
-                    className="phys-plate__img"
-                    priority={doctor.id === "miller" || doctor.id === "okonkwo"}
-                  />
-                </div>
-              ))}
-            </div>
+          <Reveal variant="fade" duration={0.85} delay={0.08} className="flex justify-center lg:justify-end">
+            <PhysiciansHeroWall />
           </Reveal>
         </div>
       </SectionContainer>
@@ -100,7 +87,7 @@ export function PhysiciansConditions() {
           {conditions.items.map((item) => (
             <StaggerChild key={item.title}>
               <article className="phys-condition">
-                <h3 className="font-display text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                <h3 className="type-h3 tracking-tight text-white">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/55 sm:text-base">{item.text}</p>
@@ -148,7 +135,7 @@ export function PhysiciansCoverage() {
           <Reveal className="lg:col-span-6" variant="zoom" distance={20}>
             <Eyebrow>{states.eyebrow}</Eyebrow>
             <PhysiciansCoverageStat value={states.stat.value} />
-            <p className="mt-4 font-display text-xl font-semibold text-white sm:text-2xl">
+            <p className="mt-4 type-h3 text-white">
               {states.stat.label}
             </p>
             <p className="mt-4 max-w-md text-base leading-relaxed text-white/55">{states.text}</p>
@@ -200,28 +187,43 @@ export function PhysiciansCta() {
   const art = physiciansImages.cta;
 
   return (
-    <ScrollSection theme="dark" snap={false} className="relative overflow-hidden">
-      <div className="absolute inset-0">
-        <ImageFrame
-          {...art}
-          theme="dark"
-          ratio="screen"
-          rounded="rounded-none"
-          className="h-full min-h-full border-0"
-          sizes="100vw"
-        />
-      </div>
-      <div
-        className={cn("absolute inset-0", art.src ? "bg-forest-ink/75" : "bg-forest-ink/20")}
-        aria-hidden
-      />
-      <SectionContainer className="relative py-24 text-center sm:py-32">
+    <ScrollSection
+      theme="dark"
+      snap={false}
+      className="gradient-cta noise relative justify-center overflow-hidden py-24 sm:py-32"
+    >
+      {art.src ? (
+        <>
+          <Image
+            src={art.src}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-forest-ink via-forest-ink/82 to-forest-ink/55"
+            aria-hidden
+          />
+        </>
+      ) : (
+        <>
+          <div
+            className="orb left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 bg-accent/15"
+            aria-hidden
+          />
+          <div className="orb -right-24 top-10 size-72 bg-lime/15" aria-hidden />
+        </>
+      )}
+
+      <SectionContainer className="relative flex min-h-[min(52vh,440px)] flex-1 flex-col items-center justify-center py-16 text-center sm:min-h-[min(58vh,480px)] sm:py-20">
         <Reveal direction="up" distance={28}>
           <DisplayHeading size="lg" className="mx-auto max-w-3xl text-white">
             {cta.title}{" "}
             <span className="text-gradient">{cta.titleHighlight}</span>
           </DisplayHeading>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-white/60">{cta.description}</p>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-white/60 sm:text-xl">{cta.description}</p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <MagneticButton>
               <LinkButton href={siteConfig.bookingUrl} size="xl" className="rounded-full">

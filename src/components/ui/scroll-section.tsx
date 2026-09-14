@@ -37,17 +37,19 @@ export function ScrollSection({
 
 interface DisplayHeadingProps {
   children: ReactNode;
-  as?: "h1" | "h2" | "h3";
+  as?: "h1" | "h2" | "h3" | "h4";
   className?: string;
   id?: string;
-  size?: "xl" | "lg" | "md";
+  /** xl = page hero · lg = section · md = subsection · sm = card title */
+  size?: "xl" | "lg" | "md" | "sm";
 }
 
 const sizeStyles = {
-  xl: "text-[clamp(2.75rem,8vw,5.5rem)] leading-[0.95] tracking-[-0.03em]",
-  lg: "text-[clamp(2rem,5vw,3.75rem)] leading-[1.05] tracking-[-0.025em]",
-  md: "text-[clamp(1.5rem,3vw,2.5rem)] leading-[1.1] tracking-[-0.02em]",
-};
+  xl: "type-h1",
+  lg: "type-h2",
+  md: "type-h3",
+  sm: "type-h4",
+} as const;
 
 export function DisplayHeading({
   children,
@@ -57,14 +59,7 @@ export function DisplayHeading({
   size = "lg",
 }: DisplayHeadingProps) {
   return (
-    <Component
-      id={id}
-      className={cn(
-        "font-display font-semibold text-balance",
-        sizeStyles[size],
-        className,
-      )}
-    >
+    <Component id={id} className={cn("font-display font-semibold", sizeStyles[size], className)}>
       {children}
     </Component>
   );
