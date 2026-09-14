@@ -150,7 +150,7 @@ export function BrandMedicationPage({ content }: { content: BrandMedicationPageC
               <StaggerChild key={step.title}>
                 <article className="med-step-card">
                   <p className="med-step-card__label">{step.step}</p>
-                  <h3 className="mt-3 font-display text-xl font-semibold text-white">{step.title}</h3>
+                  <h3 className="mt-3 type-h3 text-white">{step.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/55">{step.text}</p>
                 </article>
               </StaggerChild>
@@ -179,7 +179,7 @@ export function BrandMedicationPage({ content }: { content: BrandMedicationPageC
                     <span className="med-safety-card__icon">
                       <Icon className="size-5" aria-hidden />
                     </span>
-                    <h3 className="font-display text-lg font-semibold text-ink">{card.title}</h3>
+                    <h3 className="type-h4 text-ink">{card.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink-muted">{card.text}</p>
                   </article>
                 </StaggerChild>
@@ -284,7 +284,7 @@ export function BrandMedicationPage({ content }: { content: BrandMedicationPageC
                       <li key={item.title} className="med-benefit-card">
                         <Icon className="size-5 text-forest" aria-hidden />
                         <div>
-                          <h3 className="font-display font-semibold text-ink">{item.title}</h3>
+                          <h3 className="type-h4 text-ink">{item.title}</h3>
                           <p className="mt-1 text-sm text-ink-muted">{item.text}</p>
                         </div>
                       </li>
@@ -361,7 +361,7 @@ export function BrandMedicationPage({ content }: { content: BrandMedicationPageC
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  <h3 className="mt-4 font-display text-lg font-semibold text-white">{doctor.name}</h3>
+                  <h3 className="mt-4 type-h4 text-white">{doctor.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/55">{doctor.bio}</p>
                 </article>
               </StaggerChild>

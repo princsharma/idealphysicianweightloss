@@ -45,7 +45,7 @@ export function ContactMethodsSection() {
                 <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-accent/15 text-accent-bright">
                   <Phone className="size-5" aria-hidden />
                 </div>
-                <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">{phoneCard.title}</h3>
+                <h3 className="type-h3 text-white">{phoneCard.title}</h3>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-white/55 sm:text-base">
                   {phoneCard.description}
                 </p>
@@ -66,7 +66,7 @@ export function ContactMethodsSection() {
                 <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-accent-soft text-accent">
                   <Mail className="size-5" aria-hidden />
                 </div>
-                <h3 className="font-display text-2xl font-semibold text-ink">{emailCard.title}</h3>
+                <h3 className="type-h3 text-ink">{emailCard.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">{emailCard.description}</p>
                 {siteConfig.contact.email ? (
                   <p className="mt-6 text-base font-medium text-ink">{siteConfig.contact.email}</p>
@@ -95,7 +95,7 @@ export function ContactMethodsSection() {
                 <div className="mb-5 flex size-11 items-center justify-center rounded-2xl bg-forest-ink/10 text-forest-ink">
                   <Calendar className="size-5" aria-hidden />
                 </div>
-                <h3 className="font-display text-xl font-semibold">{scheduleCard.title}</h3>
+                <h3 className="type-h3">{scheduleCard.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed opacity-80">{scheduleCard.description}</p>
               </div>
               <LinkButton
@@ -115,7 +115,7 @@ export function ContactMethodsSection() {
               <div className="mb-5 flex size-11 items-center justify-center rounded-2xl bg-cream text-ink">
                 <Clock className="size-5" aria-hidden />
               </div>
-              <h3 className="font-display text-xl font-semibold text-ink">{hoursCard.title}</h3>
+              <h3 className="type-h3 text-ink">{hoursCard.title}</h3>
               <ul className="mt-4 space-y-2">
                 {hoursCard.lines.map((line) => (
                   <li key={line} className="text-sm text-ink-muted">
@@ -132,7 +132,7 @@ export function ContactMethodsSection() {
                 <Sparkles className="size-5" aria-hidden />
               </div>
               <p className="font-display text-4xl font-semibold tracking-tight text-white">{responseCard.stat}</p>
-              <h3 className="mt-2 font-display text-lg font-semibold text-white">{responseCard.title}</h3>
+              <h3 className="mt-2 type-h4 text-white">{responseCard.title}</h3>
               <p className="mt-2 text-sm text-white/50">{responseCard.detail}</p>
             </BentoCard>
           </Reveal>
@@ -144,7 +144,7 @@ export function ContactMethodsSection() {
                   <Shield className="size-5" aria-hidden />
                 </div>
                 <div>
-                  <h3 className="font-display text-lg font-semibold text-ink">{securityCard.title}</h3>
+                  <h3 className="type-h4 text-ink">{securityCard.title}</h3>
                   <p className="mt-1 text-sm text-ink-muted">{securityCard.detail}</p>
                 </div>
               </div>

@@ -43,7 +43,7 @@ export function ContactFaqSection() {
                         aria-expanded={isOpen}
                         onClick={() => setOpenId(isOpen ? null : item.id)}
                       >
-                        <span className="font-display text-lg font-medium text-ink sm:text-xl">
+                        <span className="type-h4 font-medium text-ink">
                           {item.question}
                         </span>
                         <ChevronDown

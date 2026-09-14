@@ -14,7 +14,7 @@ export function AboutFounderSection() {
           <Reveal direction="left" distance={24}>
             <div>
               <p className="about-ref-eyebrow">{founder.eyebrow}</p>
-              <h2 className="about-ref-heading">{founder.title}</h2>
+              <h2 className="about-ref-heading type-h2">{founder.title}</h2>
               <blockquote className="about-ref-quote mt-6">&ldquo;{founder.quote}&rdquo;</blockquote>
               <footer className="about-ref-founder__meta mt-8">
                 <p className="about-ref-founder__name">{founder.name}</p>

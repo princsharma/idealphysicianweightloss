@@ -4,6 +4,12 @@ export {
   HomeExperience,
   HomePricing,
 } from "@/components/sections/home/home-sections";
+export { HomeMedicationsSection } from "@/components/sections/home/home-medications-section";
+export {
+  HomeProcessDeck,
+  HomeShowcase,
+  HomeTrustBand,
+} from "@/components/sections/home/home-page-sections";
 export { HeroSection } from "@/components/sections/home/hero-section";
 export { HeroStartSection } from "@/components/sections/home/hero-start-section";
 export { StatsSection } from "@/components/sections/home/stats-section";

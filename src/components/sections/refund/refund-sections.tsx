@@ -69,7 +69,7 @@ export function RefundOverview() {
                 <StaggerChild key={card.title} className="lg:col-span-4">
                   <BentoCard variant="light" className="h-full">
                     <Icon className="size-5 text-forest" aria-hidden />
-                    <h3 className="mt-4 font-display text-lg font-semibold text-ink">{card.title}</h3>
+                    <h3 className="mt-4 type-h4 text-ink">{card.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">{card.text}</p>
                   </BentoCard>
                 </StaggerChild>
@@ -99,7 +99,7 @@ export function RefundEligibility() {
           {eligibility.sections.map((section) => (
             <StaggerChild key={section.title}>
               <BentoCard variant="light">
-                <h3 className="font-display text-xl font-semibold text-ink">{section.title}</h3>
+                <h3 className="type-h3 text-ink">{section.title}</h3>
                 <ul className="mt-4 space-y-3">
                   {section.items.map((item) => (
                     <li key={item.slice(0, 48)} className="flex gap-3 text-sm leading-relaxed text-ink-muted sm:text-base">
@@ -157,7 +157,7 @@ export function RefundCancellation() {
             <p className="mt-5 text-base leading-relaxed text-ink-muted">{cancellation.intro}</p>
             <div className="mt-8 flex items-center gap-4 rounded-2xl border border-accent/20 bg-accent/5 p-5">
               <Clock className="size-8 shrink-0 text-forest" aria-hidden />
-              <p className="font-display text-lg font-medium text-ink">{cancellation.highlight}</p>
+              <p className="type-h4 font-medium text-ink">{cancellation.highlight}</p>
             </div>
           </Reveal>
 
@@ -216,7 +216,7 @@ export function RefundCommitment() {
         <Reveal direction="up" distance={20}>
           <BentoCard variant="glass" className="mx-auto max-w-3xl text-center">
             <Shield className="mx-auto size-8 text-lime-bright" aria-hidden />
-            <h3 className="mt-4 font-display text-2xl font-semibold text-white">{commitment.title}</h3>
+            <h3 className="mt-4 type-h3 text-white">{commitment.title}</h3>
             <p className="mt-4 text-base leading-relaxed text-white/65">{commitment.text}</p>
           </BentoCard>
         </Reveal>

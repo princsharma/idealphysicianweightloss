@@ -74,7 +74,7 @@ function FaqAccordion({
               >
                 <span
                   className={cn(
-                    "font-display text-lg font-medium sm:text-xl",
+                    "type-h4 font-medium",
                     isDark ? "text-white" : "text-ink",
                   )}
                 >
@@ -192,7 +192,7 @@ export function FaqPageDocument() {
         <ScrollSection theme="light" snap={false} className="gradient-light py-16 sm:py-20">
           <SectionContainer>
             <Reveal direction="up" distance={20}>
-              <h2 className="font-display text-2xl font-semibold text-ink">{popular.title}</h2>
+              <h2 className="type-h3 text-ink">{popular.title}</h2>
             </Reveal>
             <Stagger className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
               {popularItems.map((item) => (
@@ -274,7 +274,7 @@ export function FaqPageDocument() {
                         <span className="flex size-10 items-center justify-center rounded-xl border border-forest/10 bg-forest/5">
                           <Icon className="size-5 text-forest" aria-hidden />
                         </span>
-                        <h2 className="font-display text-2xl font-semibold text-ink sm:text-3xl">{cat.title}</h2>
+                        <h2 className="type-h3 text-ink">{cat.title}</h2>
                       </div>
                       <FaqAccordion
                         items={cat.items}

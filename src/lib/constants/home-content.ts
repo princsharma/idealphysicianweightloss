@@ -48,8 +48,8 @@ export const homeImages = {
     label: "Ongoing support",
   },
   finalCta: {
-    src: null, // "/images/home/final-cta.webp"
-    alt: "Soft morning light filtering through green leaves",
+    src: "/images/how-it-works/hiw-cta.webp",
+    alt: "Soft morning light filtering through green leaves — your next step",
     label: "Your next step",
   },
 } satisfies Record<string, ImageSlot>;

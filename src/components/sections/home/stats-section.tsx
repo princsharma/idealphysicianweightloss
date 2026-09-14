@@ -19,7 +19,7 @@ export function StatsSection() {
       <SectionContainer className="flex flex-1 flex-col justify-center py-12 sm:py-16">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <Reveal direction="left" distance={24}>
-            <DisplayHeading size="md" className="max-w-xl text-ink">
+            <DisplayHeading className="max-w-xl text-ink">
               {statsSection.title}{" "}
               <span className="text-gradient">{statsSection.titleHighlight}</span>
             </DisplayHeading>
@@ -66,7 +66,7 @@ export function StatsSection() {
                       </span>
                     </div>
 
-                    <h3 className="relative mt-6 font-display text-lg font-semibold leading-snug text-ink">
+                    <h3 className="relative mt-6 type-h4 leading-snug text-ink">
                       {stat.label}
                     </h3>
                     <p className="relative mt-3 text-sm leading-relaxed text-ink-muted">

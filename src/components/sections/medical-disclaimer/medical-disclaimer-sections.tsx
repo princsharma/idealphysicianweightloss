@@ -101,7 +101,7 @@ export function MedicalDisclaimerCards() {
                     <span className="md-card-icon" aria-hidden>
                       <Icon className="size-5" />
                     </span>
-                    <h3 className="mt-5 font-display text-xl font-semibold text-ink">{card.title}</h3>
+                    <h3 className="mt-5 type-h3 text-ink">{card.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">
                       {card.text}
                     </p>
@@ -232,7 +232,7 @@ export function MedicalDisclaimerEmergency() {
               <Phone className="size-7" />
             </div>
             <div className="flex-1">
-              <h2 className="font-display text-2xl font-semibold text-white sm:text-3xl">
+              <h2 className="type-h3 text-white">
                 {emergency.title}
               </h2>
               <p className="mt-3 text-base leading-relaxed text-white/70">{emergency.text}</p>

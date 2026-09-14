@@ -223,7 +223,7 @@ export function PrivacyPolicyDocument() {
                   <span className="privacy-section-card__num" aria-hidden>
                     {String(section.number).padStart(2, "0")}
                   </span>
-                  <h2 className="privacy-section-card__title">{section.title}</h2>
+                  <h2 className="privacy-section-card__title type-h3 text-ink">{section.title}</h2>
                 </header>
                 <div className="privacy-prose">
                   {section.blocks.map((block, blockIndex) => (
@@ -251,7 +251,7 @@ export function PrivacyHero() {
               <Calendar className="size-3.5" aria-hidden />
               Last updated {lastUpdated}
             </span>
-            <h1 className="privacy-hero__title">{hero.title}</h1>
+            <h1 className="privacy-hero__title type-h1 text-white">{hero.title}</h1>
             <p className="privacy-hero__intro">{hero.intro}</p>
           </div>
         </Reveal>
@@ -273,7 +273,7 @@ export function PrivacyContactBand() {
           <div className="privacy-contact-band__inner">
             <div>
               <p className="privacy-contact-band__eyebrow">Questions about your privacy?</p>
-              <h2 className="privacy-contact-band__title">We&apos;re here to help</h2>
+              <h2 className="privacy-contact-band__title type-h2 text-white">We&apos;re here to help</h2>
               <p className="privacy-contact-band__desc">
                 Reach our team for privacy requests, data access, or any concerns about how your
                 information is handled.

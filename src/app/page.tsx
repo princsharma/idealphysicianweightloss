@@ -1,27 +1,21 @@
 import dynamic from "next/dynamic";
 
 import { HeroSection } from "@/components/sections/home/hero-section";
+import { HomeMedicationsSection } from "@/components/sections/home/home-medications-section";
+import { HomeBenefits, HomePricing } from "@/components/sections/home/home-sections";
 import {
-  HomeBenefits,
-  HomeEligibility,
-  HomeExperience,
-  HomePricing,
-} from "@/components/sections/home/home-sections";
+  HomeProcessDeck,
+  HomeShowcase,
+  HomeTrustBand,
+} from "@/components/sections/home/home-page-sections";
 import { Header } from "@/components/layout";
 import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 
-const StatsSection = dynamic(() =>
-  import("@/components/sections/home/stats-section").then((m) => ({ default: m.StatsSection })),
-);
+import "@/styles/home-page.css";
+
 const WhyUsSection = dynamic(() =>
   import("@/components/sections/home/why-us").then((m) => ({ default: m.WhyUsSection })),
-);
-const TreatmentsSection = dynamic(() =>
-  import("@/components/sections/home/treatments-section").then((m) => ({ default: m.TreatmentsSection })),
-);
-const ProcessSection = dynamic(() =>
-  import("@/components/sections/home/process-section").then((m) => ({ default: m.ProcessSection })),
 );
 const FaqSection = dynamic(() =>
   import("@/components/sections/home/faq").then((m) => ({ default: m.FaqSection })),
@@ -56,13 +50,12 @@ export default function HomePage() {
       <Header />
       <main id="main-content" tabIndex={-1}>
         <HeroSection />
-        <StatsSection />
+        <HomeTrustBand />
+        <HomeShowcase />
         <WhyUsSection />
-        <TreatmentsSection />
-        <ProcessSection />
-        <HomeEligibility />
+        <HomeProcessDeck />
+        <HomeMedicationsSection />
         <HomeBenefits />
-        <HomeExperience />
         <HomePricing />
         <FaqSection />
         <FinalCtaSection />

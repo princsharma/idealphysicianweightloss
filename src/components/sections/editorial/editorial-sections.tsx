@@ -108,14 +108,14 @@ export function EditorialStandards() {
             <StaggerChild className="lg:col-span-6">
               <BentoCard variant="light" className="h-full">
                 <Shield className="size-5 text-forest" aria-hidden />
-                <h3 className="mt-4 font-display text-lg font-semibold text-ink">{standards.privacy.title}</h3>
+                <h3 className="mt-4 type-h4 text-ink">{standards.privacy.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">{standards.privacy.text}</p>
               </BentoCard>
             </StaggerChild>
             <StaggerChild className="lg:col-span-6">
               <BentoCard variant="light" className="h-full">
                 <Users className="size-5 text-forest" aria-hidden />
-                <h3 className="mt-4 font-display text-lg font-semibold text-ink">{standards.tone.title}</h3>
+                <h3 className="mt-4 type-h4 text-ink">{standards.tone.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted sm:text-base">{standards.tone.description}</p>
                 <p className="mt-4 rounded-xl border border-forest/10 bg-forest/5 p-4 text-sm font-medium text-forest">
                   {standards.tone.principle}
@@ -143,7 +143,7 @@ export function EditorialReviewProcess() {
 
           <div className="space-y-8 lg:col-span-8">
             <BentoCard variant="glass">
-              <h3 className="font-display text-lg font-semibold text-white">{reviewProcess.creation.title}</h3>
+              <h3 className="type-h4 text-white">{reviewProcess.creation.title}</h3>
               <ul className="mt-4 space-y-2">
                 {reviewProcess.creation.items.map((item) => (
                   <li key={item} className="flex gap-3 text-sm text-white/70 sm:text-base">
@@ -225,7 +225,7 @@ export function EditorialSources() {
               <StaggerChild key={source.title} className="lg:col-span-4">
                 <BentoCard variant="light" className="h-full text-center">
                   <BookOpen className="mx-auto size-6 text-forest" aria-hidden />
-                  <h3 className="mt-4 font-display text-lg font-semibold text-ink">{source.title}</h3>
+                  <h3 className="mt-4 type-h4 text-ink">{source.title}</h3>
                   <p className="mt-2 text-sm text-ink-muted">{source.description}</p>
                 </BentoCard>
               </StaggerChild>
@@ -250,7 +250,7 @@ export function EditorialUpdates() {
             <p className="mt-5 text-white/55">{updates.text}</p>
           </Reveal>
           <BentoCard variant="glass">
-            <h3 className="font-display text-lg font-semibold text-white">{updates.testimonials.title}</h3>
+            <h3 className="type-h4 text-white">{updates.testimonials.title}</h3>
             <ul className="mt-4 space-y-3">
               {updates.testimonials.items.map((item) => (
                 <li key={item} className="flex gap-3 text-sm text-white/70 sm:text-base">
@@ -281,13 +281,13 @@ export function EditorialProfessionals() {
         </Reveal>
 
         <div className="mt-14">
-          <h3 className="mb-6 text-center font-display text-xl font-semibold text-ink">Content authors</h3>
+          <h3 className="mb-6 text-center type-h3 text-ink">Content authors</h3>
           <Stagger className="grid gap-6 sm:grid-cols-2" stagger={0.08}>
             {professionals.authors.map((author) => (
               <StaggerChild key={author.name}>
                 <BentoCard variant="light" className="h-full">
                   <Stethoscope className="size-5 text-forest" aria-hidden />
-                  <h4 className="mt-4 font-display text-lg font-semibold text-ink">{author.name}</h4>
+                  <h4 className="mt-4 type-h4 text-ink">{author.name}</h4>
                   <p className="mt-1 text-sm font-medium text-forest">{author.role}</p>
                   <p className="mt-3 text-sm leading-relaxed text-ink-muted">{author.bio}</p>
                 </BentoCard>
@@ -335,7 +335,7 @@ export function EditorialTimeline() {
               <StaggerChild key={step.title} className="lg:col-span-3">
                 <BentoCard variant="glass" className="h-full">
                   <span className="font-display text-2xl font-bold text-lime-bright">0{index + 1}</span>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-white">{step.title}</h3>
+                  <h3 className="mt-3 type-h4 text-white">{step.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/60">{step.text}</p>
                 </BentoCard>
               </StaggerChild>
@@ -368,7 +368,7 @@ export function EditorialReviewTeam() {
                   <Shield className="size-4" aria-hidden />
                   Medical reviewer
                 </span>
-                <h3 className="mt-5 font-display text-xl font-semibold text-ink">{reviewer.name}</h3>
+                <h3 className="mt-5 type-h3 text-ink">{reviewer.name}</h3>
                 <p className="mt-1 text-sm font-medium text-forest">{reviewer.credentials}</p>
                 <p className="mt-1 text-sm text-ink-muted">{reviewer.role}</p>
                 <p className="mt-4 text-sm leading-relaxed text-ink-muted">{reviewer.bio}</p>
@@ -401,7 +401,7 @@ export function EditorialDisclaimers() {
           <div className="flex gap-4">
             <AlertTriangle className="size-6 shrink-0 text-amber-700" aria-hidden />
             <div>
-              <h3 className="font-display text-lg font-semibold text-ink">{disclaimers.title}</h3>
+              <h3 className="type-h4 text-ink">{disclaimers.title}</h3>
               <ul className="mt-4 space-y-2">
                 {disclaimers.items.map((item) => (
                   <li key={item} className="text-sm leading-relaxed text-ink-muted sm:text-base">

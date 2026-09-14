@@ -9,7 +9,7 @@ export function AboutStepsSection() {
     <section className="about-ref-steps" id={steps.id}>
       <SectionContainer>
         <Reveal direction="up" distance={24} className="about-ref-section-header">
-          <h2 className="about-ref-heading text-center">{steps.title}</h2>
+          <h2 className="about-ref-heading type-h2 text-center">{steps.title}</h2>
         </Reveal>
 
         <Stagger className="about-ref-steps__grid mt-12" stagger={0.1}>

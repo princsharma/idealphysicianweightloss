@@ -53,7 +53,7 @@ function PathBeat({
         className={cn("hiw-path__node", active && "is-active")}
         aria-hidden
       />
-      <h3 className="font-display text-2xl font-semibold tracking-tight text-white sm:text-4xl">
+      <h3 className="type-h3 tracking-tight text-white">
         {phase.title}
       </h3>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/55 sm:text-lg">
@@ -115,7 +115,7 @@ export function HowItWorksPath() {
                 <span className="relative mt-4 block h-px overflow-hidden bg-white/10">
                   <motion.span className="absolute inset-y-0 left-0 bg-accent" style={{ width: barWidth }} />
                 </span>
-                <p className="mt-5 font-display text-xl font-semibold text-white">{current.title}</p>
+                <p className="mt-5 type-h3 text-white">{current.title}</p>
               </div>
             </div>
           </aside>

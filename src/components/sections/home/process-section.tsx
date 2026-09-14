@@ -63,7 +63,7 @@ export function ProcessSection() {
                       </span>
 
                       <div>
-                        <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl">
+                        <h3 className="type-h4 text-white">
                           {step.title}
                         </h3>
                         <p className="mt-3 max-w-lg text-base leading-relaxed text-white/55">

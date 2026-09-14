@@ -108,7 +108,7 @@ function TermsSectionCard({
         <span className="privacy-section-card__num" aria-hidden>
           {String(section.number).padStart(2, "0")}
         </span>
-        <h2 className="privacy-section-card__title">{section.title}</h2>
+        <h2 className="privacy-section-card__title type-h3 text-ink">{section.title}</h2>
         <ChevronDown
           className={cn("privacy-section-card__chevron size-5", isOpen && "is-open")}
           aria-hidden
@@ -305,7 +305,7 @@ export function TermsHero() {
               <Calendar className="size-3.5" aria-hidden />
               Last updated {lastUpdated}
             </span>
-            <h1 className="privacy-hero__title">{hero.title}</h1>
+            <h1 className="privacy-hero__title type-h1 text-white">{hero.title}</h1>
             <p className="privacy-hero__intro">{hero.intro}</p>
           </div>
         </Reveal>
@@ -327,7 +327,7 @@ export function TermsContactBand() {
           <div className="privacy-contact-band__inner">
             <div>
               <p className="privacy-contact-band__eyebrow">Questions about these terms?</p>
-              <h2 className="privacy-contact-band__title">Contact our team</h2>
+              <h2 className="privacy-contact-band__title type-h2 text-white">Contact our team</h2>
               <p className="privacy-contact-band__desc">
                 Reach us for questions about your account, billing, services, or these Terms &
                 Conditions.

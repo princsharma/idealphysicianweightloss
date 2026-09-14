@@ -83,7 +83,7 @@ export function ErrorPageLayout({
                 >
                   <BentoCard variant="light" className="flex h-full flex-col transition-transform duration-300 group-hover:-translate-y-0.5">
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="font-display text-lg font-semibold text-ink">{link.label}</h3>
+                      <h3 className="type-h4 text-ink">{link.label}</h3>
                       <ArrowUpRight
                         className="size-5 shrink-0 text-forest transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                         aria-hidden

@@ -13,7 +13,7 @@ export function AboutCtaSection() {
       <section className="about-ref-trust">
         <SectionContainer>
           <Reveal direction="up" distance={24} className="about-ref-section-header">
-            <h2 className="about-ref-heading text-center">{trust.title}</h2>
+            <h2 className="about-ref-heading type-h2 text-center">{trust.title}</h2>
             <p className="about-ref-body about-ref-section-header__sub mx-auto mt-4 text-center">
               {trust.description}
             </p>
@@ -25,7 +25,7 @@ export function AboutCtaSection() {
       <section className="about-ref-join">
         <SectionContainer>
           <Reveal direction="up" distance={24} className="about-ref-join__inner">
-            <h2 className="about-ref-heading text-center">{join.title}</h2>
+            <h2 className="about-ref-heading type-h2 text-center">{join.title}</h2>
             <p className="about-ref-body mx-auto mt-4 max-w-2xl text-center">{join.description}</p>
             <div className="mt-8 text-center">
               <a
@@ -49,7 +49,7 @@ export function AboutCtaSection() {
               <span className="about-ref-final-cta__icon" aria-hidden>
                 <Users className="size-8" />
               </span>
-              <h2 className="about-ref-final-cta__title">{finalCta.title}</h2>
+              <h2 className="about-ref-final-cta__title type-h2">{finalCta.title}</h2>
               <p className="about-ref-final-cta__desc">{finalCta.description}</p>
               <a
                 href={siteConfig.bookingUrl}

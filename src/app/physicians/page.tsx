@@ -1,3 +1,4 @@
+import { PhysiciansFlyProvider } from "@/components/client/physicians-fly";
 import {
   PhysiciansConditions,
   PhysiciansCoverage,
@@ -27,12 +28,14 @@ export default function PhysiciansPage() {
     <>
       <Header />
       <main id="main-content" tabIndex={-1}>
-        <PhysiciansHero />
-        <PhysiciansSpotlight />
-        <PhysiciansConditions />
-        <PhysiciansReviewProcess />
-        <PhysiciansCoverage />
-        <PhysiciansCta />
+        <PhysiciansFlyProvider>
+          <PhysiciansHero />
+          <PhysiciansSpotlight />
+          <PhysiciansConditions />
+          <PhysiciansReviewProcess />
+          <PhysiciansCoverage />
+          <PhysiciansCta />
+        </PhysiciansFlyProvider>
         <Footer />
       </main>
     </>

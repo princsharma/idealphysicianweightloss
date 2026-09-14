@@ -53,7 +53,7 @@ export function AccessibilityHero() {
           <Reveal variant="scale" duration={0.85} delay={0.1} className="hidden lg:block">
             <div className="a11y-hero-visual" aria-hidden>
               <Accessibility className="size-12 text-lime-bright" />
-              <p className="mt-4 font-display text-xl font-semibold text-white">WCAG 2.1 AA</p>
+              <p className="mt-4 type-h3 text-white">WCAG 2.1 AA</p>
               <p className="mt-1 text-sm text-white/50">Inclusive by design</p>
             </div>
           </Reveal>
@@ -116,7 +116,7 @@ export function AccessibilityTechnologies() {
                     <span className="a11y-icon-badge" aria-hidden>
                       <Icon className="size-5" />
                     </span>
-                    <h3 className="mt-5 font-display text-xl font-semibold text-ink">{item.title}</h3>
+                    <h3 className="mt-5 type-h3 text-ink">{item.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">{item.text}</p>
                   </BentoCard>
                 </StaggerChild>
@@ -225,7 +225,7 @@ export function AccessibilityImprovements() {
                   <span className="a11y-icon-badge" aria-hidden>
                     <Icon className="size-5" />
                   </span>
-                  <h3 className="mt-4 font-display text-lg font-semibold text-ink">{item.title}</h3>
+                  <h3 className="mt-4 type-h4 text-ink">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.text}</p>
                 </BentoCard>
               </StaggerChild>

@@ -149,6 +149,56 @@
   }
 }
 
+/* Display type scale — match How It Works / DisplayHeading */
+@layer components {
+  .type-h1 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .type-h2 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .type-h3 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .type-h4 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .type-lede {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.625;
+  }
+
+  @media (min-width: 640px) {
+    .type-lede {
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+  }
+}
+
 @layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;

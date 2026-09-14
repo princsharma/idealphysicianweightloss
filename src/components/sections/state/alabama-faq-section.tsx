@@ -48,7 +48,7 @@ export function StateFaqSection({ content }: StateFaqSectionProps) {
                         aria-expanded={isOpen}
                         onClick={() => setOpenId(isOpen ? null : item.id)}
                       >
-                        <span className="font-display text-lg font-medium text-ink">{item.question}</span>
+                        <span className="type-h4 font-medium text-ink">{item.question}</span>
                         <ChevronDown
                           className={cn(
                             "mt-1 size-5 shrink-0 text-accent transition-transform duration-300",

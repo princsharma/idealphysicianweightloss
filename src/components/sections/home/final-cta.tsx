@@ -13,9 +13,11 @@ export function FinalCtaSection() {
   const finalCtaImage = homeImages.finalCta;
 
   return (
-    <ScrollSection theme="dark" snap={false} className="gradient-cta noise justify-center">
-      <div className="orb left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 bg-accent/15" aria-hidden />
-
+    <ScrollSection
+      theme="dark"
+      snap={false}
+      className="gradient-cta noise relative justify-center overflow-hidden py-24 sm:py-32"
+    >
       {finalCtaImage.src ? (
         <>
           <Image
@@ -23,16 +25,27 @@ export function FinalCtaSection() {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover opacity-25"
+            className="object-cover object-center"
             aria-hidden
           />
-          <div className="absolute inset-0 bg-forest-ink/70" aria-hidden />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-forest-ink via-forest-ink/82 to-forest-ink/55"
+            aria-hidden
+          />
         </>
-      ) : null}
+      ) : (
+        <>
+          <div className="home-atmosphere" aria-hidden>
+            <div className="home-grid-lines" />
+          </div>
+          <div className="orb left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 bg-accent/15" aria-hidden />
+          <div className="orb -right-24 top-10 size-72 bg-lime/15" aria-hidden />
+        </>
+      )}
 
-      <SectionContainer className="relative flex flex-1 flex-col items-center justify-center py-20 text-center">
+      <SectionContainer className="relative flex min-h-[min(52vh,440px)] flex-1 flex-col items-center justify-center py-16 text-center sm:min-h-[min(58vh,480px)] sm:py-20">
         <Reveal direction="up" distance={40}>
-          <DisplayHeading size="xl" className="max-w-4xl text-white">
+          <DisplayHeading size="lg" className="max-w-4xl text-white">
             {finalCta.title}{" "}
             <span className="text-gradient">{finalCta.titleHighlight}</span>
           </DisplayHeading>
